@@ -13,8 +13,8 @@ public class itemDAOImpl implements ItemDAO {
 	SqlSessionFactory factory;
 	
 	public int insert(Item item) {
-		//À¯È¿¼º °Ë»ç´Â svc¿¡¼­
-		int num=-1; //¼º°ø ¿©ºÎ¸¦ Ç¥±â. ¼º°øÀº 1,½ÇÆĞ´Â 10
+		//ìœ íš¨ì„± ê²€ì‚¬ëŠ” svcì—ì„œ
+		int num=-1; //ì„±ê³µ ì—¬ë¶€ë¥¼ í‘œê¸°, ì„±ê³µì€ 1,ì‹¤íŒ¨ëŠ” 10
 		SqlSession session = factory.openSession();
 		session.insert("item.insert",item);
 		
