@@ -5,12 +5,14 @@
 <configuration> 
 	<typeAliases>
 		<!-- <typeAlias type="com.dto.Member" alias="Member" /> -->
-		<typeAlias type="com.item.Item" alias="Item" />
+		<typeAlias type="shop.dto.Item" alias="Item" />
+		<typeAlias type="shop.dto.Member" alias="Member" />
 		<!-- <typeAlias type="com.dto.Board" alias="Board"/> -->
 	</typeAliases>
 	<mappers>
 		<!-- <mapper resource="com/mybatis/Member.xml" /> -->
-		<mapper resource="com/mybatis/Item.xml" />
+		<mapper resource="shop/mybatis/Item.xml" />
+		<mapper resource="shop/mybatis/Member.xml" />
 		<!-- <mapper resource="com/mybatis/Board.xml"/> -->
 	</mappers>
 

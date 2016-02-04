@@ -14,13 +14,13 @@
 	xmlns:lang="http://www.springframework.org/schema/lang" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util">
 
-	<context:component-scan base-package="com">
+	<context:component-scan base-package="shop">
 		<context:exclude-filter expression="org.springframework.stereotype.Controller"
 			type="annotation" />
 	</context:component-scan>
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		p:driverClassName="oracle.jdbc.driver.OracleDriver" p:url="jdbc:oracle:thin:@211.183.8.61:1521:orcl"
-		p:username="spring" p:password="1234">
+		p:username="shop" p:password="1234">
 	</bean>
 	<tx:annotation-driven />
 	<bean id="transactionManager"
