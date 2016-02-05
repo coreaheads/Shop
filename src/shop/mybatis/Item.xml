@@ -10,7 +10,6 @@
 		select * from item order by idx
 	</select>
 	<insert id="insert">
-		
 	</insert>
 
 	<select id="detail" resultType="Item">
@@ -18,16 +17,11 @@
 	</select>
 	
 	<update id="update" parameterType="Item">
-	update item set itemName=#{itemName} , itemPrice= #{itemPrice} , itemContent= #{itemContent} 
-	, itemCount= #{itemCount} , url= #{url} where itemid=#{itemId} 
-	</update>
-	<update id="updateCount" parameterType="Item">
-	update item set  itemCount = # {itemCount} ,  where itemid= # {itemId} 
 	</update>
 	
-	<delete id="delete">
-	delete from item where itemId = #{itemId}
+	 <delete id="delete">
+	delete from item where idx = #{idx}
 	
-	</delete>
+	</delete> 
 
 </mapper>
