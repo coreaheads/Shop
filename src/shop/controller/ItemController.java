@@ -20,6 +20,6 @@ public class ItemController {
 	public String ItemList(Model model) {
 		ArrayList<Item> list = svc.itemList();
 		model.addAttribute("itemList", list);
-		return "list";
+		return "item/itemList";
 	}
 }

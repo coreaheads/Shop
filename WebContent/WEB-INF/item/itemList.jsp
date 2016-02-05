@@ -9,7 +9,7 @@
 </head>
 <body>
 	<c:forEach items="${itemList}" var="x">
-	<a href="WEB_INF/detail.do?idx=${x.idx }">${x.idx}</a> &nbsp; ${x.itemName} &nbsp; ${x.itemContent} &nbsp; ${x.itemPrice} <br>
+	<a href="detail.do?idx=${x.idx }">${x.idx}</a> &nbsp; ${x.itemName} &nbsp; ${x.itemContent} &nbsp; ${x.itemPrice} <br>
 	</c:forEach>
 	
 	
