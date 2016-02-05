@@ -8,12 +8,14 @@
 		<typeAlias type="shop.dto.Item" alias="Item" />
 		<!-- <typeAlias type="shop.dto.Member" alias="Member" />
 		<typeAlias type="shop.dto.Board" alias="Board"/> -->
+		<typeAlias type="shop.dto.Category" alias="Category" />
 	</typeAliases>
 	<mappers>
 		<!-- <mapper resource="com/mybatis/Member.xml" /> -->
 		<mapper resource="shop/mybatis/Item.xml" />
 		<!-- <mapper resource="shop/mybatis/Member.xml" />
 		<mapper resource="shop/mybatis/Board.xml"/> -->
+		<mapper resource="shop/mybatis/Category.xml" />
 	</mappers>
 
 </configuration>
