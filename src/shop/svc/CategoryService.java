@@ -8,5 +8,7 @@ public interface CategoryService {
 
 	ArrayList<Category> categoryList();
 
+	void topCategoryInsert(String categoryName, String division);
+
 	
 }

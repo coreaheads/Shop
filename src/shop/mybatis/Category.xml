@@ -4,8 +4,13 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="category">
-	<select id="list" resultType="Category">
-		select * from item_category
+	<select id="categoryList" resultType="Category">
+		select * from item_category where isDel = 'N'
 	</select>
+	
+	<insert id="topCategoryInsert" parameterType="Category">
+		insert into item_category(idx, categoryName, rootNum, step, division, seq, isDel) 
+		                   values(category_idx.nextval, #{categoryName}, 0,0,#{division},category_seq.nextval ,'N')	
+	</insert>
 
 </mapper>
