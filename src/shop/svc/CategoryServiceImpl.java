@@ -22,6 +22,11 @@ public class CategoryServiceImpl implements CategoryService{
 		return dao.categoryList();
 	}
 
-	
+	@Override
+	public void topCategoryInsert(String categoryName, String division){
+		
+		dao.topCategoryInsert(categoryName, division);
+		
+	}
 	
 }

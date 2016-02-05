@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import shop.dto.Category;
 import shop.svc.CategoryService;
@@ -23,9 +24,30 @@ public class CategoryController {
 		
 		ArrayList<Category> list = svc.categoryList();
 		
-		model.addAttribute("list", list);
+		model.addAttribute("categoryList", list);
 		
-		return "categoryList";
+		return "category/categoryList";
+	}
+	
+	
+	@RequestMapping("/topCategoryInsert.do")
+	public String topCategoryInsert(@RequestParam String categoryName, @RequestParam String division){
+		
+		if (categoryName == null || categoryName == "") {
+			return "redirect:/categoryList.do";
+		} else {
+			svc.topCategoryInsert(categoryName, division);
+			return "redirect:/categoryList.do";	
+		}
+			
+	}
+	
+	@RequestMapping("/subCategoryInsertForm.do")
+	public String subCategoryInsertForm(@RequestParam String idx, Model model){
+		
+		model.addAttribute("idx", idx);
+		
+		return "category/subCategoryInsertForm";
 	}
 	
 	
