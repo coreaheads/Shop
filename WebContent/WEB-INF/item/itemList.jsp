@@ -8,8 +8,8 @@
 <title>list</title>
 </head>
 <body>
-	<c:forEach items="itemList" var="x">
-	{x.idx} &nbsp; {x.itemName} &nbsp; {x.itemContent} &nbsp; {x.itemPrice} <br>
+	<c:forEach items="${itemList}" var="x">
+	<a href="WEB_INF/detail.do?idx=${x.idx }">${x.idx}</a> &nbsp; ${x.itemName} &nbsp; ${x.itemContent} &nbsp; ${x.itemPrice} <br>
 	</c:forEach>
 	
 	
