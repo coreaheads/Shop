@@ -2,7 +2,7 @@
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="head.jsp"/>	
-<section id="slider"><!--slider-->
+<section id="slider"><!--dslider-->
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
