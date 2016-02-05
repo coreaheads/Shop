@@ -13,14 +13,13 @@ import shop.svc.ItemService;
 @Controller
 public class ItemController {
 
-@Autowired
-ItemService svc;
-	
+	@Autowired
+	ItemService svc;
 
-@RequestMapping("/itemList.do")
-public String ItemList(Model model){
-	ArrayList<Item> list = svc.itemList();
-	model.addAttribute("itemList",list);
-	return "item/itemList";
-}
+	@RequestMapping("/itemList.do")
+	public String ItemList(Model model) {
+		ArrayList<Item> list = svc.itemList();
+		model.addAttribute("itemList", list);
+		return "list";
+	}
 }
