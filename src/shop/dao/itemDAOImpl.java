@@ -18,7 +18,7 @@ public class itemDAOImpl implements ItemDAO {
 		SqlSession session = factory.openSession();
 		session.insert("item.insert",item);
 		
-		if (selectId(item.getItemId())==null) {
+		if (selectIdx(item.getIdx())==null) {
 			num=10;
 		}else {
 			num=1;
@@ -28,7 +28,7 @@ public class itemDAOImpl implements ItemDAO {
 		
 	}
 
-	public Item selectId(String itemId) {
+	public Item selectIdx(int idx) {
 		return null;
 		// TODO Auto-generated method stub
 		
