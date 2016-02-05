@@ -29,8 +29,11 @@ public class itemDAOImpl implements ItemDAO {
 	}
 
 	public Item selectId(String itemId) {
+		SqlSession session = factory.openSession();
+		
+		
+		session.close();
 		return null;
-		// TODO Auto-generated method stub
 		
 	}
 }
