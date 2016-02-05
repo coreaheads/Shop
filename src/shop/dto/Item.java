@@ -6,6 +6,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class Item implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int idx;
 	private String itemName;
 	private String itemContent;
