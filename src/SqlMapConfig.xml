@@ -6,16 +6,14 @@
 	<typeAliases>
 		<!-- <typeAlias type="com.dto.Member" alias="Member" /> -->
 		<typeAlias type="shop.dto.Item" alias="Item" />
-		<typeAlias type="shop.dto.Member" alias="Member" />
-		<!-- <typeAlias type="com.dto.Board" alias="Board"/> -->
+		<!-- <typeAlias type="shop.dto.Member" alias="Member" />
+		<typeAlias type="shop.dto.Board" alias="Board"/> -->
 	</typeAliases>
 	<mappers>
 		<!-- <mapper resource="com/mybatis/Member.xml" /> -->
 		<mapper resource="shop/mybatis/Item.xml" />
-		<mapper resource="shop/mybatis/Member.xml" />
-		<!-- <mapper resource="com/mybatis/Board.xml"/> -->
+		<!-- <mapper resource="shop/mybatis/Member.xml" />
+		<mapper resource="shop/mybatis/Board.xml"/> -->
 	</mappers>
-
-
 
 </configuration>
