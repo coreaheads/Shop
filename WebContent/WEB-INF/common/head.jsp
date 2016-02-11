@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,13 +43,33 @@ pageEncoding="UTF-8"%>
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index.do"><img src="images/home/logox.png" alt="" /></a>
+							<a href="index.do"><img src="images/home/center.png" alt="" /></a>
 						</div>
 					</div>
 					<div class="col-sm-8">
 						<div class="collapse navbar-collapse">
 							<ul class="nav navbar-nav navbar-right">
-								<li><a href="login.do">로그인</a></li>
+							<c:if test="${not empty myInfo}">
+								<li><a href="logOut.do">로그아웃</a></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">나의정보<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="index.do">비밀번호 변경</a>
+										</li>
+										<li>
+											<a href="index.do">정보수정</a>
+										</li>
+										<li>
+											<a href="index.do">회원탈퇴</a>
+										</li>
+									</ul>
+								</li>	
+							</c:if>
+							<c:if test="${empty myInfo}">
+								<li><a href="loginForm.do">로그인</a></li>
+								<li><a href="registForm.do">회원가입</a></li>
+								</c:if>
 								<li><a href="cart.do">장바구니</a></li>
 								
 								<li class="dropdown">

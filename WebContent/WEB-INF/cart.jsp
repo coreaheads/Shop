@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<jsp:include page="head.jsp"/>	    
+<jsp:include page="./common/head.jsp"/>	    
 <section id="cart_items">
 	<div class="container">
 		<div class="breadcrumbs">
@@ -79,4 +79,4 @@ pageEncoding="UTF-8"%>
 		</div>
 	</div>
 </section><!--/#do_action-->
-<jsp:include page="footer.jsp"/>	
+<jsp:include page="./common/footer.jsp"/>	

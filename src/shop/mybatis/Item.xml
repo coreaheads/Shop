@@ -7,12 +7,15 @@
 <mapper namespace="item">
 
 	<insert id="insert">
-	INSERT INTO ITEM ( IDX,ITEMNAME,ITEMCONTENT,ITEMLEVEL,SALE,ITEMPRICE,ITEMCOUNT,ITEMCATEGORY,URL )
-VALUES ( member_seq.nextval , #{itemName} , #{itemContent} , #{itemLevel} , #{sale} , #{itemPrice} , #{itemCount} , #{itemCategory} , #{url} )
+	INSERT INTO ITEM ( IDX,ITEMNAME,ITEMCONTENT,ITEMLEVEL,SALE,ITEMPRICE,ITEMCOUNT,ITEMCATEGORY,URL,ISDEL )
+VALUES ( member_seq.nextval , ${itemName} , ${itemContent} , ${itemLevel} , ${sale} , ${itemPrice} , ${itemCount} , ${itemCategory} , ${url} ,   )
+	ITEMNAME,  ITEMCONTENT,  ITEMLEVEL,  SALE,ITEMPRICE,  
+	ITEMCOUNT,  ITEMCATEGORY,  URL   ,ISDEL
 	</insert>
 	<select id="list" resultType="Item">
 		select * from item order by idx
 	</select>
+	
 
 	<select id="detail" resultType="Item">
 		select * from item where idx =

@@ -1,4 +1,4 @@
-package shop.category.svc;
+package shop.svc;
 
 import java.util.ArrayList;
 
@@ -10,11 +10,11 @@ public interface CategoryService {
 
 	void topCategoryInsert(String categoryName, String division);
 
-	Category selectByIdx(int idx);
-
 	void subCategoryInsert(int rootIdx, String categoryName, String division);
 
 	void categoryDelete(int idx);
+
+	Category selectByIdx(int idx);
 
 	
 }

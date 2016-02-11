@@ -23,16 +23,30 @@
 <th>기능</th>
 </tr>
 
+
 <c:forEach items="${categoryList}" var="dto">
 <tr>
 <td>${dto.idx }</td>
-<td>${dto.categoryName }</td>
+
+<td>
+
+<c:forEach begin = "1" end = "${dto.step }">
+&nbsp;&nbsp;
+</c:forEach>
+
+<c:if test="${dto.step > 0}" >
+└
+</c:if>
+${dto.categoryName }</td>
 <td>${dto.rootNum }</td>
 <td>${dto.step }</td>
 <td>${dto.division }</td>
 <td>${dto.seq }</td>
 <td>${dto.isDel }</td>
-<td><a href="subCategoryInsertForm.do?idx=${dto.idx }">[하위 카테고리 삽입]</a>&nbsp;&nbsp;<a href="categoryDelete.do?idx=${dto.idx }">[삭제]</a></td>
+<td><a href="subCategoryInsertForm.do?idx=${dto.idx }">[하위 카테고리 삽입]</a>&nbsp;&nbsp;
+<a href="categoryUpdateForm.do?idx=${dto.idx }">[수정]</a>&nbsp;&nbsp;
+<a href="categoryDelete.do?idx=${dto.idx }">[삭제]</a>&nbsp;&nbsp;
+</td>
 
 </tr>
 

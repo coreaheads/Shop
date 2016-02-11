@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:include page="head.jsp"/>	
+<jsp:include page="./common/head.jsp"/>	
 <section id="slider"><!--dslider-->
 	<div class="container">
 		<div class="row">
@@ -312,4 +312,4 @@ pageEncoding="UTF-8"%>
 </div>
 </div>
 </section>
-<jsp:include page="footer.jsp"/>
+<jsp:include page="./common/footer.jsp"/>
