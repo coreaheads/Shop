@@ -51,5 +51,32 @@ public class CategoryController {
 	}
 	
 	
+	@RequestMapping("/subCategoryInsert.do")
+	public String subCategoryInsert(@RequestParam int rootIdx, @RequestParam String categoryName, @RequestParam String division){
+		
+		svc.subCategoryInsert(rootIdx, categoryName, division);
+		
+		return "redirect:/categoryList.do";
+	}
+	
+	@RequestMapping("/categoryDelete.do")
+	public String categoryDelete(@RequestParam int idx){
+		
+		svc.categoryDelete(idx);
+		
+		return "redirect:/categoryList.do";
+	}
+	
+	@RequestMapping("/categoryUpdateForm.do")
+	public String categoryUpdate(@RequestParam int idx, Model model){
+		
+		Category category = svc.selectByIdx(idx);
+		
+		model.addAttribute("category", category);
+		
+		System.out.println(category.getIdx());
+		
+		return "category/updateForm";
+	}
 	
 }

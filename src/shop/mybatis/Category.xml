@@ -5,12 +5,25 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="category">
 	<select id="categoryList" resultType="Category">
-		select * from item_category where isDel = 'N'
+		select * from item_category where isDel = 'N' order by rootNum asc , seq asc
+	</select>
+
+	<select id="selectByIdx" parameterType="Integer" resultType="Category">
+		select * from item_category where idx = #{idx}
 	</select>
 	
 	<insert id="topCategoryInsert" parameterType="Category">
 		insert into item_category(idx, categoryName, rootNum, step, division, seq, isDel) 
-		                   values(category_idx.nextval, #{categoryName}, 0,0,#{division},category_seq.nextval ,'N')	
+		                   values(category_idx.nextval, #{categoryName},category_idx.currval ,0,#{division},category_seq.nextval ,'N')	
 	</insert>
 
+	<insert id = "subCategoryInsert" parameterType="Category">
+		insert into item_category(idx, categoryName, rootNum, step, division, seq, isDel) 
+		                   values(category_idx.nextval, #{categoryName}, #{rootNum },#{step },#{division},category_seq.nextval ,'N')
+	</insert>
+	
+	<update id="delete" parameterType="Integer">
+		update item_category set isDel='Y' where idx = #{idx}
+	</update>
+	
 </mapper>

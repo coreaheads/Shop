@@ -6,11 +6,11 @@ public class Category implements Serializable{
 
 	private int idx;
 	private String categoryName;
-	private int rootNum;
-	private int step;
-	private String division;
-	private int seq;
-	private char isDel;
+	private int rootNum; // 상위 카테고리의 idx가 들어감
+	private int step; // step이 1이면 한단계 아래 카테고리, 하위일수록 숫자 증가
+	private String division; // 카테고리 설명
+	private int seq; // 같은 rootNum 안에서의 정렬
+	private char isDel; // 삭제 여부
 	
 public Category() {
 	// TODO Auto-generated constructor stub

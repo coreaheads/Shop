@@ -28,5 +28,28 @@ public class CategoryServiceImpl implements CategoryService{
 		dao.topCategoryInsert(categoryName, division);
 		
 	}
+
+	@Override
+	public void subCategoryInsert(int rootIdx, String categoryName, String division) {
+		// TODO Auto-generated method stub
+		dao.subCategoryInsert(rootIdx,categoryName,division);
+	}
+
+	@Override
+	public void categoryDelete(int idx) {
+		// TODO Auto-generated method stu
+		dao.categoryDelete(idx);
+		
+	}
+
+	@Override
+	public Category selectByIdx(int idx) {
+		// TODO Auto-generated method stub
+		
+		Category category = dao.selectByIdx(idx);
+		
+		return category;
+	}
+	
 	
 }
