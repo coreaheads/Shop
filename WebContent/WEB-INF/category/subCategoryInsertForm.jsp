@@ -16,7 +16,8 @@ division : <input type = "text" name = "division"><br><br>
 <input type ="hidden" name = "rootIdx" value = "${idx }">
 <input type = "submit" value = "전송">&nbsp;&nbsp;
 <input type = "reset" value = "초기화">
-
+<br><br>
+<a href="categoryList.do">취소</a>
 
 </form>
 

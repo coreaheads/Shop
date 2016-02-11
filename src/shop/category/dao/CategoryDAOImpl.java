@@ -36,7 +36,15 @@ public class CategoryDAOImpl implements CategoryDAO {
 		return (ArrayList<Category>) categoryList;
 	}
 
-	
+	@Override
+	public Category selectByIdx(int idx) {
+		// TODO Auto-generated method stub
+		SqlSession session = getSession();
+		Category category = session.selectOne("category.selectByIdx", idx);
+		session.close();
+		
+		return category;
+	}
 
 	@Override
 	public void topCategoryInsert(String categoryName, String division) {
@@ -50,6 +58,54 @@ public class CategoryDAOImpl implements CategoryDAO {
 		
 		session.close();
 	}
+
+	@Override
+	public void subCategoryInsert(int rootIdx, String categoryName, String division) {
+		
+		Category rootCategory = selectByIdx(rootIdx);
+		// 하위 카테고리의 rootNum은 root 카테고리의 rootNum과 같다.
+		// 하위 카테고리의 step은 root 카테고리의 step +1
+		// 하위 카테고리의 seq는 상위 카테고리의 seq+1
+		
+		int rootNum = rootCategory.getRootNum();
+		int step = rootCategory.getStep()+1;
+		int seq = rootCategory.getSeq()+1;
+		
+		SqlSession session = getSession();
+		
+		Category category = new Category(0, categoryName, rootNum, step, division, seq, 'N');
+		
+		// seq가 자신보다 같거나 큰 레코드들의 seq를 1씩 먼저 증가 시킨 후에 삽입한다.
+		session.update("category.subCategorySeqIncrease",category);
+		session.insert("category.subCategoryInsert", category);
+		session.close();
+		
+	}
+
+	@Override
+	public void categoryDelete(int idx) {
+		
+		SqlSession session = getSession();
+		
+		// delete는 복원 가능하도록 isDel을 Y로 update한다.
+		session.update("category.categoryDelete", idx);
+		
+		session.close();
+		
+	}
+
+	@Override
+	public void categoryUpdate(Category category) {
+		
+		SqlSession session = getSession();
+		
+		session.update("category.categoryUpdate", category);
+		
+		session.close();
+		
+	}
+
+	
 
 	
 
