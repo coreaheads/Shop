@@ -14,16 +14,24 @@
 	
 	<insert id="topCategoryInsert" parameterType="Category">
 		insert into item_category(idx, categoryName, rootNum, step, division, seq, isDel) 
-		                   values(category_idx.nextval, #{categoryName},category_idx.currval ,0,#{division},category_seq.nextval ,'N')	
+		                   values(category_idx.nextval, #{categoryName},category_idx.currval,0,#{division},0 ,'N')	
 	</insert>
 
 	<insert id = "subCategoryInsert" parameterType="Category">
 		insert into item_category(idx, categoryName, rootNum, step, division, seq, isDel) 
-		                   values(category_idx.nextval, #{categoryName}, #{rootNum },#{step },#{division},category_seq.nextval ,'N')
+		                   values(category_idx.nextval, #{categoryName}, #{rootNum },#{step },#{division},#{seq } ,'N')
 	</insert>
 	
-	<update id="delete" parameterType="Integer">
+	<update id="subCategorySeqIncrease" parameterType="Category">
+		update item_category set seq = seq+1 where rootNum=#{rootNum} and seq >= #{seq}
+	</update>
+	
+	<update id="categoryDelete" parameterType="Integer">
 		update item_category set isDel='Y' where idx = #{idx}
+	</update>
+	
+	<update id = "categoryUpdate" parameterType="Category">
+		update item_category set categoryName = #{categoryName}, division = #{division } where idx = #{idx}
 	</update>
 	
 </mapper>
