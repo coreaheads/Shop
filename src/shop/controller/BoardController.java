@@ -17,11 +17,41 @@ public class BoardController {
 	@Autowired
 	BoardService svc;
 	
-	@RequestMapping("/boardList.do")
+	@RequestMapping("/BoardList.do")
 	public String boardList(Model model){
 		ArrayList<Board> list = svc.list();
-		System.out.println(list);
-		model.addAttribute("boardList", list);
+		model.addAttribute("BoardList", list);
 		return "board/boardlist";
+	}
+	@RequestMapping("/BoardView.do")
+	public String view(Model model){
+		ArrayList<Board> list = svc.list();
+		model.addAttribute("view", list);
+		return "board/view";
+	}
+	@RequestMapping("/BoardWrite.do")
+	public String write(Model model){
+		ArrayList<Board> list = svc.list();
+		model.addAttribute("view", list);
+		return "board/write";
+	}
+	@RequestMapping("/BoardInsert.do")
+	public String boardInsert(Model model){
+		svc.insert();
+		return "board/write";
+	}
+	@RequestMapping("/BoardInsertForm.do")
+	public String boardInsertForm(Model model){
+		return "board/boardInsertForm";
+	}
+	@RequestMapping("/BoardUpdate.do")
+	public String boardUpdate(Model model){
+		svc.update();
+		return "redirect:/View.do?";
+		
+	}
+	@RequestMapping("/BoardUpdateForm.do")
+	public String boardUpdateForm(Model model){
+		return "board/boardUpdateForm";
 	}
 }
