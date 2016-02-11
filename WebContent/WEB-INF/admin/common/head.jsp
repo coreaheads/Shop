@@ -69,5 +69,6 @@ pageEncoding="UTF-8"%>
           <li><a href="#">상품관리</a></li>
           <li><a href="#">게시판관리</a></li>
           <li><a href="#">매출관리</a></li>
+          <li><a href="categoryList.do">카테고리</a></li>
         </ul>
       </div>
