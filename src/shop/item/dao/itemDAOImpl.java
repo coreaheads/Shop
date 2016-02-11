@@ -16,22 +16,23 @@ public class itemDAOImpl implements ItemDAO {
 	@Autowired
 	SqlSessionFactory factory;
 
-	// public int insert(Item item) {
-	// // ?犿毃??瓴?偓??svc?愳劀
-	// int num = -1; // ?标车 ??毳??滉赴, ?标车??1,?ろ尐??10
-	// SqlSession session = factory.openSession();
-	// session.insert("item.insert", item);
-	//
-	// if (detail(item.getIdx()) == null) {
-	// num = 10;
-	// } else {
-	// num = 1;
-	// }
-	// session.close();
-	// return num;
-	//
-	// }
+	@Override
+	public int insert(Item item) {
+		int num = -1;
+		SqlSession session = factory.openSession();
+		session.insert("item.insert", item);
 
+		if (itemDetail(item.getIdx() + "") == null) {
+			num = 10;
+		} else {
+			num = 1;
+		}
+		session.close();
+		return num;
+
+	}
+
+	@Override
 	public Item itemDetail(String idx) {
 		SqlSession session = factory.openSession();
 		Item item = session.selectOne("item.detail", Integer.parseInt(idx));
@@ -39,6 +40,7 @@ public class itemDAOImpl implements ItemDAO {
 		return item;
 	}
 
+	@Override
 	public ArrayList<Item> itemList() {
 		SqlSession session = factory.openSession();
 		List<Item> list = session.selectList("item.list");
@@ -51,7 +53,7 @@ public class itemDAOImpl implements ItemDAO {
 	public void itemDelete(String idx) {
 		// TODO Auto-generated method stub
 		SqlSession session = factory.openSession();
-		session.update("item.delete",idx);
+		session.update("item.delete", idx);
 		session.close();
 	}
 
