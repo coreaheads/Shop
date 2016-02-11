@@ -12,7 +12,6 @@
 						<a href="index.html"><img src="images/home/logo.png" alt="">
 							로고</a>
 					</div>
-
 				</div>
 				<div class="col-sm-8">
 					<div class="shop-menu pull-right">
@@ -33,8 +32,6 @@
 	</div>
 	<section>
 		<div class="container">
-
-
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="left-sidebar">
@@ -190,9 +187,6 @@
 
 							</div>
 						</div>
-
-
-
 					</div>
 				</div>
 

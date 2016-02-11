@@ -13,14 +13,14 @@
 		<c:forEach items="${BoardList }" var="list">
 			<tr>
 				<td>${list.idx }</td>
-				<td><a href="View.do?num=${list.idx }">${list.title }</a></td>
+				<td><a href="BoardView.do?idx=${list.idx }">${list.title }</a></td>
 				<td>${list.writer }</td>
 				<td>${list.create_time }</td>
 			</tr>
 		</c:forEach>
 	</table>
 	<input type="button" value="글쓰기" class="btn btn-primary"
-		onclick="location.href='Write.do'">
+		onclick="location.href='BoardWriteForm.do'">
 
 
 

@@ -8,16 +8,19 @@
 		select * from board
 	</select>
 	<insert id="insert" parameterType="Board">
-	    insert into board (itemid,itemname,itemprice,itemcontent,url)
-	     values(#{itemId},#{itemName},#{itemPrice},#{itemContent},#{url})
+	    INSERT INTO BOARD ( IDX,BOARD_CODE,CATEGORYS,TITLE,WRITER,PASSWD,
+	    EMAIL,CONTENT,REMOTE_ADDR,IS_NOTICE, MEMBER_SEQ ,URL)
+VALUES ( baord_seq.nextval , #{board_code} , #{categorys}, #{title}, #{writer},
+#{passwd} , #{email}, #{content} , #{remote_addr},  #{is_notice}, #{member_seq}, #{url}  )
 	</insert>
-	<select id="view" resultType="Board" parameterType="String">
-	    select * from board where itemid = #{itemid}
+	<select id="view" resultType="Board" parameterType="Integer">
+	select * from board where idx = #{idx}
 	</select>
 	<update id="update" parameterType="Board">
-	    UPDATE board
-SET  ITEMNAME = #{itemName}, ITEMPRICE = #{itemPrice}, ITEMCONTENT =#{itemContent},  URL = #{url} 
-WHERE itemid = #{itemId}  
+	    UPDATE BOARD
+SET  CATEGORYS = #{categorys}, TITLE = #{title}, WRITER = #{writer}, EMAIL = #{email}, 
+CONTENT = #{content}, REMOTE_ADDR = #{remote_addr}, UPDATE_TIME = sysdate, 
+IS_NOTICE = #{is_notice},  URL = #{url} WHERE idx=#{idx}
 	</update>
 	<delete id="delete" parameterType="String">
 	    delete from board where itemid = #{itemid}

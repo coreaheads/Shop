@@ -20,14 +20,22 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public void insert() {
-		// TODO Auto-generated method stub
+	public void insert(Board board) {
+		dao.insert(board);
 		
 	}
 
+	
+
 	@Override
-	public void update() {
-		// TODO Auto-generated method stub
+	public Board getDto(int idx) {
+		Board dto = dao.getDto(idx);
+		return dto;
+	}
+
+	@Override
+	public void update(Board board) {
+		dao.update(board);
 		
 	}
 }

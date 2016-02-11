@@ -1,5 +1,7 @@
 package shop.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Board {
 
 	private int idx;	
@@ -26,6 +28,24 @@ public class Board {
 	private int hits;   
 	private int member_seq;           
 	private String is_del;
+	private MultipartFile imgFile;
+	private String url;
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public MultipartFile getImgFile() {
+		return imgFile;
+	}
+
+	public void setImgFile(MultipartFile imgFile) {
+		this.imgFile = imgFile;
+	}
 
 	public Board() {
 		// TODO Auto-generated constructor stub

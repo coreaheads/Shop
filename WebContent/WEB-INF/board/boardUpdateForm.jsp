@@ -3,34 +3,41 @@
 <%@include file="/include/header.jsp"%>
 </head>
 <body style="padding: 30px">
-	<form class="" action="upload.do" method="post"
+	<form action="BoardUpdate.do" method="post"
 		enctype="multipart/form-data">
-		<input type="hidden" name="url" class="form-control"
-			value="${item.url}">
+		<input type="hidden" name="idx" value="${BoardDto.idx }"> 
+		<input type="hidden" name="member_seq" value="${mem.idx }1"> <input
+			type="hidden" name="board_code" value="${board_code }2"> <input
+			type="hidden" name="categorys" value="${categorys }3">
+
+${BoardDto}
 		<div class="form-group">
-			<label>아이디</label> <input type="text" name="itemId"
-				class="form-control" readonly="readonly" value="${item.itemId}">
+			<label for="exampleInputEmail1">작성자</label> <input type="text"
+				name="writer" class="form-control" value="${BoardDto.writer }"> <input
+				type="checkbox" name="is_notice" value="Y" <c:if test="${BoardDto.is_notice eq 'Y' }"> checked </c:if>>
+		</div>
+		
+		<div class="form-group">
+			<label for="exampleInputEmail1">이메일</label> <input type="text"
+				name="email" class="form-control" value="${BoardDto.email }">
 		</div>
 		<div class="form-group">
-			<label>상품명</label> <input type="text" name="itemName"
-				class="form-control" value="${item.itemName}">
+			<label for="exampleInputEmail1">제목</label> <input type="text"
+				name="title" class="form-control" value="${BoardDto.title }">
 		</div>
 		<div class="form-group">
-			<label>이미지</label> <input type="file" name="imgFile"
-				class="form-control" value=""> ${item.url}
+			<label for="exampleInputEmail1">파일</label> <input type="file"
+				name="imgFile" class="form-control" multiple="multiple">
+			${BoardDto.url }
 		</div>
 		<div class="form-group">
-			<label>가격</label> <input type="text" name="itemPrice"
-				class="form-control" value="${item.itemPrice}">
+			<textarea name="content" class="form-control"
+				style="width: 100%; height: 200px">v${BoardDto.content }</textarea>
 		</div>
-		<div class="form-group">
-			<label>상품설명</label>
-			<textarea rows="10" name="itemContent" class="form-control" cols="30">${item.itemContent}</textarea>
-		</div>
-		<input type="submit" class="btn btn-primary" value="수정">
+		<input type="submit" class="btn btn-success" value="등록">
 
 	</form>
-	<input type="button" onclick="location.href='itemList.do'"
+	<input type="button" onclick="location.href='BoardList.do'"
 		class="btn btn-primary" value="목록으로">
 
 </body>
