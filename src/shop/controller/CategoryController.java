@@ -24,7 +24,7 @@ public class CategoryController {
 
 		model.addAttribute("categoryList", list);
 
-		return "category/categoryList";
+		return "admin/category/categoryList";
 	}
 
 	
