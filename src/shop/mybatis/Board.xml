@@ -7,5 +7,20 @@
 	<select id="list" resultType="Board">
 		select * from board
 	</select>
+	<insert id="insert" parameterType="Board">
+	    insert into board (itemid,itemname,itemprice,itemcontent,url)
+	     values(#{itemId},#{itemName},#{itemPrice},#{itemContent},#{url})
+	</insert>
+	<select id="view" resultType="Board" parameterType="String">
+	    select * from board where itemid = #{itemid}
+	</select>
+	<update id="update" parameterType="Board">
+	    UPDATE board
+SET  ITEMNAME = #{itemName}, ITEMPRICE = #{itemPrice}, ITEMCONTENT =#{itemContent},  URL = #{url} 
+WHERE itemid = #{itemId}  
+	</update>
+	<delete id="delete" parameterType="String">
+	    delete from board where itemid = #{itemid}
+	</delete>
 
 </mapper>

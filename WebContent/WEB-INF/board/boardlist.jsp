@@ -10,7 +10,7 @@
 			<th>작성자</th>
 			<th>등록일</th>
 		</tr>
-		<c:forEach items="${boardList }" var="list">
+		<c:forEach items="${BoardList }" var="list">
 			<tr>
 				<td>${list.idx }</td>
 				<td><a href="View.do?num=${list.idx }">${list.title }</a></td>
