@@ -42,7 +42,7 @@ pageEncoding="UTF-8"%>
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index.do"><img src="images/home/center.png" alt="" /></a>
+							<a href="index.do"><img src="images/home/logox.png" alt="" /></a>
 						</div>
 					</div>
 					<div class="col-sm-8">
