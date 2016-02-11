@@ -1,5 +1,6 @@
 package shop.member.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -47,6 +48,19 @@ public class MemberDAOImpl implements MemberDAO {
 	public int deleteMember(int Member_no) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public int modifyPw(String oldPassword, String newPassword,int member_no) {
+		SqlSession session = getSession();
+		HashMap<String,String> hashMap = new HashMap<String,String>();
+		hashMap.put("oldPassword", oldPassword);
+		hashMap.put("newPassword", newPassword);	
+		hashMap.put("member_no", String.valueOf(member_no));
+		int result = session.insert("member.modifyPw", hashMap);
+		closeSession(session);
+		return result;
+		
 	}
 
 }

@@ -1,5 +1,6 @@
 package shop.controller;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import shop.dto.Member;
 import shop.member.svc.MemberService;
@@ -36,5 +39,22 @@ public class MemberController {
 		}else{			
 			return FOLDER + "/registForm";			
 		}
+	}
+	
+	@RequestMapping("/modifyPwForm.do")
+	public String modifyPwForm(){
+		return FOLDER + "/modifyPwForm";
+	}
+	
+	@RequestMapping("/modifyPw.do")
+	public String modifyPw(@RequestParam String oldPassword,String newPassword,int member_no,HttpSession session){
+		
+		int result = service.modifyPw(oldPassword, newPassword,member_no,session);
+		if(result>0){
+			return "redirect:/index.do";			
+		}else{
+			return FOLDER + "/modifyPwForm";
+		}
+		
 	}
 }

@@ -2,6 +2,8 @@ package shop.member.svc;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,6 +36,15 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int deleteMember(int Member_no) {
 		return 0;
+	}
+
+	@Override
+	public int modifyPw(String oldPassword, String newPassword,int member_no,HttpSession session) {
+		int result = dao.modifyPw(oldPassword, newPassword,member_no);
+		if(result>0){
+			session.invalidate();
+		}
+		return result;
 	}
 
 }

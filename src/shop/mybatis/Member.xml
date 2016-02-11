@@ -17,4 +17,8 @@
 		from member
 		where member_id = #{member_id} and member_pw = #{member_pw}
 	</select>
+	
+	<update id="modifyPw" parameterType="java.util.HashMap">
+		update member set member_pw = #{newPassword} where member_pw = #{oldPassword} and member_no = #{member_no}
+	</update>
 </mapper>

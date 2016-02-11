@@ -55,7 +55,7 @@ pageEncoding="UTF-8"%>
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown">나의정보<b class="caret"></b></a>
 									<ul class="dropdown-menu">
 										<li>
-											<a href="index.do">비밀번호 변경</a>
+											<a href="modifyPwForm.do">비밀번호 변경</a>
 										</li>
 										<li>
 											<a href="index.do">정보수정</a>
