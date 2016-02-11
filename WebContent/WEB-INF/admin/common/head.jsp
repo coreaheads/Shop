@@ -55,9 +55,7 @@ pageEncoding="UTF-8"%>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">       
-           <li><a href="index.do">메인화면 가기</a></li>         
-           <li><a href="#">Settings</a></li>
-           <li><a href="#">Profile</a></li>
+           <li><a href="index.do">메인화면 가기</a></li>
          </ul>
        </div>
      </div>
@@ -68,17 +66,8 @@ pageEncoding="UTF-8"%>
       <div class="col-sm-3 col-md-2 sidebar">
         <ul class="nav nav-sidebar">
           <li><a href="memberList.do">회원관리</a></li>
-          <li><a href="#">1번관리</a></li>
-          <li><a href="#">2번관리</a></li>
-          <li><a href="#">3번관리</a></li>
-        </ul>
-        <ul class="nav nav-sidebar">
-          <li><a href="#">4번관리</a></li>
-          <li><a href="#">5번관리</a></li>
-        </ul>
-        <ul class="nav nav-sidebar">
-          <li><a href="#">6번관리</a></li>
-          <li><a href="#">7번관리</a></li>
-          <li><a href="#">8번관리</a></li>
+          <li><a href="#">상품관리</a></li>
+          <li><a href="#">게시판관리</a></li>
+          <li><a href="#">매출관리</a></li>
         </ul>
       </div>

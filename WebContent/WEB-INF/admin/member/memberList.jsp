@@ -43,6 +43,18 @@
 		</c:forEach>
 </table> 
 </div>
+<nav class='paging-number text-center'>
+<ul class='pagination'>
+<li class='disabled'><a href='#' aria-label='First'><span aria-hidden='true'>&lsaquo;</span></a></li>
+<li class='disabled'><a href='#' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>
+<c:forEach begin="1" end="10" varStatus="status">
+<li></li>
+<li><a href='#'>${status.count}</a></li>
+</c:forEach>
+<li class='disabled'><a href='#' aria-label='Next'><span aria-hidden='true'>&rsaquo;</span></a></li>
+<li class='disabled'><a href='#' aria-label='End'><span aria-hidden='true'>&raquo;</span></a></li>
+</ul>
+</nav>
 </div>
 </div>
 <jsp:include page="../common/footer.jsp"/>

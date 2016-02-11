@@ -85,7 +85,10 @@ pageEncoding="UTF-8"%>
 											<a href="index.do">묻고답하기</a>
 										</li>
 									</ul>
-								</li>								
+								</li>	
+								<c:if test="${myInfo.member_level_no eq 99}">
+									<li><a href="admin.do">관리자페이지</a></li>
+								</c:if>		
 							</ul>
 						</div>
 					</div>
