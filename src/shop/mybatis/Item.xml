@@ -7,16 +7,12 @@
 <mapper namespace="item">
 
 	<insert id="insert">
-	INSERT INTO ITEM ( IDX,ITEMNAME,ITEMCONTENT,ITEMLEVEL,SALE,ITEMPRICE,ITEMCOUNT,ITEMCATEGORY,URL,ISDEL )
-VALUES ( member_seq.nextval , ${itemName} , ${itemContent} , ${itemLevel} , ${sale} , ${itemPrice} , ${itemCount} , ${itemCategory} , ${url} ,   )
-	ITEMNAME,  ITEMCONTENT,  ITEMLEVEL,  SALE,ITEMPRICE,  
-	ITEMCOUNT,  ITEMCATEGORY,  URL   ,ISDEL
+	INSERT INTO ITEM ( IDX,ITEMNAME,ITEMCONTENT,ITEMLEVEL,SALE,ITEMPRICE,ITEMCOUNT,ITEMCATEGORY,URL )
+VALUES ( member_seq.nextval , #{itemName} , #{itemContent} , #{itemLevel} , #{sale} , #{itemPrice} , #{itemCount} , #{itemCategory} , #{url} )
 	</insert>
 	<select id="list" resultType="Item">
 		select * from item order by idx
 	</select>
-	<insert id="insert">
-	</insert>
 
 	<select id="detail" resultType="Item">
 		select * from item where idx =
@@ -24,6 +20,10 @@ VALUES ( member_seq.nextval , ${itemName} , ${itemContent} , ${itemLevel} , ${sa
 	</select>
 
 	<update id="update" parameterType="Item">
+	UPDATE ITEM
+set ITEMNAME = '#{itemName}', ITEMCONTENT = '#{itemContent}', ITEMLEVEL = '#{itemLevel}', SALE = '#{sale}', 
+ ITEMPRICE = '#{itemPrice}', ITEMCOUNT = '#{itemCount}', ITEMCATEGORY = '#{itemCategory}', URL = '#{url}' 
+WHERE idx= #{idx}
 	</update>
 
 	<delete id="delete">
