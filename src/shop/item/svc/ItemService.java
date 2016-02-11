@@ -12,6 +12,8 @@ public interface ItemService {
 
 	void itemDelete(String idx);
 
+	void insert(Item item);
+
 	
 	
 }
