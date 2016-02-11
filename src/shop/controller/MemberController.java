@@ -18,6 +18,7 @@ import shop.member.svc.MemberService;
 public class MemberController {
 
 	private static final String FOLDER = "member";
+	private static final String ADMINFOLDER = "admin/member";
 	
 	@Autowired
 	private MemberService service;
@@ -55,6 +56,14 @@ public class MemberController {
 		}else{
 			return FOLDER + "/modifyPwForm";
 		}
+		
+	}
+	
+	@RequestMapping("/memberList.do")
+	public ModelAndView memberList(ModelAndView mav){
+		
+		mav.setViewName(ADMINFOLDER+"/memberList");
+		return mav;
 		
 	}
 }
