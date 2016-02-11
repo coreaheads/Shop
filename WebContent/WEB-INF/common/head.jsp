@@ -43,7 +43,7 @@ pageEncoding="UTF-8"%>
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index.do"><img src="images/home/center.png" alt="" /></a>
+							<a href="index.do"><img src="images/home/logox.png" alt="" /></a>
 						</div>
 					</div>
 					<div class="col-sm-8">
@@ -85,7 +85,10 @@ pageEncoding="UTF-8"%>
 											<a href="index.do">묻고답하기</a>
 										</li>
 									</ul>
-								</li>								
+								</li>	
+								<c:if test="${myInfo.member_level_no eq 99}">
+									<li><a href="admin.do">관리자페이지</a></li>
+								</c:if>		
 							</ul>
 						</div>
 					</div>

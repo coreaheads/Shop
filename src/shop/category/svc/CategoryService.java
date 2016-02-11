@@ -8,13 +8,15 @@ public interface CategoryService {
 
 	ArrayList<Category> categoryList();
 
-	void topCategoryInsert(String categoryName, String division);
-
 	Category selectByIdx(int idx);
+	
+	void topCategoryInsert(String categoryName, String division);
 
 	void subCategoryInsert(int rootIdx, String categoryName, String division);
 
 	void categoryDelete(int idx);
+
+	void categoryUpdate(Category category);
 
 	
 }

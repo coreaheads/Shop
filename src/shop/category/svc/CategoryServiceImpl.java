@@ -31,20 +31,31 @@ public class CategoryServiceImpl implements CategoryService{
 
 	@Override
 	public Category selectByIdx(int idx) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Category category = dao.selectByIdx(idx);
+		
+		return category;
 	}
 
 	@Override
 	public void subCategoryInsert(int rootIdx, String categoryName, String division) {
-		// TODO Auto-generated method stub
+		
+		dao.subCategoryInsert(rootIdx, categoryName, division);
+		
 		
 	}
 
 	@Override
 	public void categoryDelete(int idx) {
-		// TODO Auto-generated method stub
+ 
+		dao.categoryDelete(idx);
 		
+	}
+
+	@Override
+	public void categoryUpdate(Category category) {
+		
+		dao.categoryUpdate(category);
 	}
 	
 }

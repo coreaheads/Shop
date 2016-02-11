@@ -7,10 +7,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form>
+<form action = "categoryUpdate.do" method = "post">
+categoryName : <input type = "text" name = "categoryName" value = "${category.categoryName }"><br>
+division : <input type = "text" name = "division" value = "${category.division }"><br><br>
 
+<input type = "hidden" name = "idx" value = "${category.idx }">
+
+<input type = "submit" value = "수정">&nbsp;&nbsp;<input type = "reset" value = "초기화">
+<br>
+<br>
+<a href = "categoryList.do">취소</a>
 
 </form>
+
 
 
 </body>

@@ -31,4 +31,11 @@ public class ItemServiceImpl implements ItemService {
 		dao.itemDelete(idx);
 
 	}
+
+	@Override
+	public void insert(Item item) {
+		// TODO Auto-generated method stub
+		dao.insert(item);
+		
+	}
 }
