@@ -8,4 +8,8 @@ public interface BoardService {
 
 	ArrayList<Board> list();
 
+	void insert();
+
+	void update();
+
 }

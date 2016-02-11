@@ -12,4 +12,6 @@ public interface	 ItemDAO {
 
 	void itemDelete(String idx);
 
+	int insert(Item item);
+
 }
