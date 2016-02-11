@@ -9,7 +9,8 @@
 </head>
 <body>
 	<c:forEach items="${itemList}" var="x">
-	<a href="detail.do?idx=${x.idx }">${x.idx}</a> &nbsp; ${x.itemName} &nbsp; ${x.itemContent} &nbsp; ${x.itemPrice} <br>
+	<c:if test=""></c:if>
+	<a href="itemDetail.do?idx=${x.idx }">${x.idx}</a> &nbsp; ${x.itemName} &nbsp; ${x.itemContent} &nbsp; ${x.itemPrice} <br>
 	</c:forEach>
 	
 	
