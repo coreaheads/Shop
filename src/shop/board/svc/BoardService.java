@@ -1,11 +1,11 @@
-package shop.dao;
+package shop.board.svc;
 
 import java.util.ArrayList;
 
 import shop.dto.Board;
 
-public interface BoardDAO {
+public interface BoardService {
 
 	ArrayList<Board> list();
-	
+
 }

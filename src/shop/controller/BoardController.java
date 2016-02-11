@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sun.xml.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
+import shop.board.svc.BoardService;
 import shop.dto.Board;
-import shop.svc.BoardService;
 
 @Controller
 public class BoardController {

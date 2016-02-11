@@ -19,29 +19,9 @@ public class Item implements Serializable{
 	private int itemCount;
 	private int itemCategory;
 	private String url;
-	private char idDel;
+	private char isDel;
 	private MultipartFile imgFile;
 	
-	public Item() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public Item(int idx, String itemName, String itemContent, int itemLevel, int sale, int itemPrice, int itemCount,
-			int itemCategory, String url, char idDel, MultipartFile imgFile) {
-		super();
-		this.idx = idx;
-		this.itemName = itemName;
-		this.itemContent = itemContent;
-		this.itemLevel = itemLevel;
-		this.sale = sale;
-		this.itemPrice = itemPrice;
-		this.itemCount = itemCount;
-		this.itemCategory = itemCategory;
-		this.url = url;
-		this.idDel = idDel;
-		this.imgFile = imgFile;
-	}
-
 	public int getIdx() {
 		return idx;
 	}
@@ -114,12 +94,12 @@ public class Item implements Serializable{
 		this.url = url;
 	}
 
-	public char getIdDel() {
-		return idDel;
+	public char getIsDel() {
+		return isDel;
 	}
 
-	public void setIdDel(char idDel) {
-		this.idDel = idDel;
+	public void setIsDel(char isDel) {
+		this.isDel = isDel;
 	}
 
 	public MultipartFile getImgFile() {
@@ -128,6 +108,29 @@ public class Item implements Serializable{
 
 	public void setImgFile(MultipartFile imgFile) {
 		this.imgFile = imgFile;
+	}
+
+	public Item(int idx, String itemName, String itemContent, int itemLevel, int sale, int itemPrice, int itemCount,
+			int itemCategory, String url, char isDel, MultipartFile imgFile) {
+		super();
+		this.idx = idx;
+		this.itemName = itemName;
+		this.itemContent = itemContent;
+		this.itemLevel = itemLevel;
+		this.sale = sale;
+		this.itemPrice = itemPrice;
+		this.itemCount = itemCount;
+		this.itemCategory = itemCategory;
+		this.url = url;
+		this.isDel = isDel;
+		this.imgFile = imgFile;
+	}
+
+	@Override
+	public String toString() {
+		return "Item [idx=" + idx + ", itemName=" + itemName + ", itemContent=" + itemContent + ", itemLevel="
+				+ itemLevel + ", sale=" + sale + ", itemPrice=" + itemPrice + ", itemCount=" + itemCount
+				+ ", itemCategory=" + itemCategory + ", url=" + url + ", isDel=" + isDel + ", imgFile=" + imgFile + "]";
 	}
 
 	@Override
@@ -152,13 +155,7 @@ public class Item implements Serializable{
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Item [idx=" + idx + ", itemName=" + itemName + ", itemContent=" + itemContent + ", itemLevel="
-				+ itemLevel + ", sale=" + sale + ", itemPrice=" + itemPrice + ", itemCount=" + itemCount
-				+ ", itemCategory=" + itemCategory + ", url=" + url + ", idDel=" + idDel + ", imgFile=" + imgFile + "]";
+	public Item() {
+		// TODO Auto-generated constructor stub
 	}
-	
-	
-	
 }

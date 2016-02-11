@@ -8,15 +8,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import shop.category.svc.CategoryService;
 import shop.dto.Category;
-import shop.svc.CategoryService;
 
 @Controller
 public class CategoryController {
 
 	
 	@Autowired
-	CategoryService svc;
+	private CategoryService svc;
 	
 	
 	@RequestMapping("/categoryList.do")
