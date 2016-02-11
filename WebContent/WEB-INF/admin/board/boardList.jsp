@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="../common/head.jsp" />
-<h2 class="sub-header">게시판관리</h2>
+<h2 class="sub-header">게시판관리2</h2>
 <body style="padding: 30px">
 
 	<input type="button" onclick="location.href='./BoardConfigWrite.do'"
