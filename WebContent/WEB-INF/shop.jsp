@@ -11,7 +11,7 @@
 	<section>
 		<div class="container">
 			<div class="row">
-			<jsp:include page="side.jsp"/>				
+			<jsp:include page="./common/side.jsp"/>				
 				<div class="col-sm-9 padding-right">
 					<div class="features1_items"><!--features_items-->
 						<h2 class="title text-center">Features Items</h2>
