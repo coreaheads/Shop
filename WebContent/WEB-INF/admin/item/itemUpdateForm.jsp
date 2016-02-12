@@ -7,7 +7,26 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form action="itemUpdate.do" method="post">
+itemName<input type="text" name="itemName">
+itemContent
+<input type="text" name="itemContent">
+itemPrice
+<input type="text" name="itemPrice">
+itemLevel
+<input type="text" name="itemLevel">
+sale
+<input type="text" name="sale">
+itemCategory
+<input type="text" name="itemCategory">
+		
+imgFile: <input type = "file" name = "imgFile"><br>
 
+<input type = "submit" value="수정">
+
+<br><br>
+<a href="itemList.do">돌아가기</a>
+</form>
 ${item.idx} &nbsp; ${item.itemName} &nbsp; ${item.itemContent} &nbsp; ${item.itemPrice} <br>
 ${item.itemLevel } <br>
 ${item.sale} <br>

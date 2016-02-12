@@ -109,7 +109,7 @@
                     <div class="panel-body">
                         <ul class="nav navbar-nav">
                             <li><a href="memberLevelList.do">회원Level관리</a></li>
-                            <li><a href="#">회원상태관리</a></li>
+                            <li><a href="memberStatusList.do">회원상태관리</a></li>
                             <li><a href="memberList.do">회원관리</a></li>
                         </ul>
                     </div>

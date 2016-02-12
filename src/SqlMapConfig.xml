@@ -10,6 +10,7 @@
 		<typeAlias type="shop.dto.Category" alias="Category" />
 		<typeAlias type="shop.dto.Board" alias="Board"/>
 		<typeAlias type="shop.dto.MemberLevel" alias="MemberLevel"/>
+		<typeAlias type="shop.dto.MemberStatus" alias="MemberStatus"/>
 	</typeAliases>
 	<mappers>
 		<!-- <mapper resource="com/mybatis/Member.xml" /> -->
@@ -18,6 +19,7 @@
 		 <mapper resource="shop/mybatis/Category.xml" />
 		<mapper resource="shop/mybatis/Board.xml"/>
 		<mapper resource="shop/mybatis/MemberLevel.xml"/>
+		<mapper resource="shop/mybatis/MemberStatus.xml"/>
 	</mappers>
 
 </configuration>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberStatus">
+
+	<insert id="insert" parameterType="String">
+		insert into
+		member_status(member_status_no,member_status_name)
+		values(member_status_seq.nextval,#{member_status_name})
+	</insert>
+
+	<select id="list" resultType="Memberstatus">
+		select
+		ml.member_status_no,ml.member_status_name,count(m.member_status_no) as
+		member_status_count from member_status ml left join member m on
+		m.member_status_no =
+		ml.member_status_no
+		group by
+		ml.member_status_no,ml.member_status_name 
+		order by member_status_no asc
+	</select>
+
+	<update id="modify" parameterType="java.util.HashMap">
+		update member_status set
+		member_status_name = #{member_status_name}
+		where member_status_no =
+		#{member_status_no}
+	</update>
+
+	<delete id="delete">
+		delete from member_status where member_status_no not in
+		( select
+		member_status_no from member where member_status_no =
+		#{member_status_no})
+		and member_status_no = #{member_status_no}
+	</delete>
+</mapper>
