@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration> 
+	<typeAliases>
+		<!-- <typeAlias type="com.dto.Member" alias="Member" /> -->
+		<typeAlias type="shop.dto.Item" alias="Item" />
+		<typeAlias type="shop.dto.Member" alias="Member" />
+		<typeAlias type="shop.dto.Category" alias="Category" />
+		<typeAlias type="shop.dto.Board" alias="Board"/>
+<<<<<<< HEAD
+		<typeAlias type="shop.dto.Cart" alias="Cart"/>
+=======
+		<typeAlias type="shop.dto.MemberLevel" alias="MemberLevel"/>
+		<typeAlias type="shop.dto.MemberStatus" alias="MemberStatus"/>
+>>>>>>> branch 'master' of https://github.com/coreaheads/Shop.git
+	</typeAliases>
+	<mappers>
+		<!-- <mapper resource="com/mybatis/Member.xml" /> -->
+		<mapper resource="shop/mybatis/Item.xml" />
+		 <mapper resource="shop/mybatis/Member.xml" />
+		 <mapper resource="shop/mybatis/Category.xml" />
+		<mapper resource="shop/mybatis/Board.xml"/>
+<<<<<<< HEAD
+		<mapper resource="shop/mybatis/Cart.xml"/>
+=======
+		<mapper resource="shop/mybatis/MemberLevel.xml"/>
+		<mapper resource="shop/mybatis/MemberStatus.xml"/>
+>>>>>>> branch 'master' of https://github.com/coreaheads/Shop.git
+	</mappers>
+
+</configuration>
