@@ -25,17 +25,7 @@ public class ItemController {
 	@Autowired
 	private ItemService svc;
 
-	@RequestMapping("/itemInsertAjax.do")
 	
-	public @ResponseBody HashMap<String, Object> jsonSample(){
-		
-		HashMap<String, Object> hsm = new HashMap<String, Object>();
-		hsm.put("user_id", "naver");
-		hsm.put("user_nm", "네이버");
-		hsm.put("user_pw", 123);
-		return hsm;
-		
-	}
 	
 	
 	@RequestMapping("/itemUpdateForm.do")
@@ -50,12 +40,7 @@ public class ItemController {
 	}
 	
 	
-	@RequestMapping("/itemList.do")
-	public String ItemList(Model model) {
-		ArrayList<Item> list = svc.itemList();
-		model.addAttribute("itemList", list);
-		return "admin/item/itemList";
-	}
+	
 	
 	@RequestMapping("/itemDetail.do")
 	public ModelAndView ItemDetail(@RequestParam String idx,ModelAndView mav) {

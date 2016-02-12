@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberLevel">
+
+	<insert id="insert" parameterType="String">
+		insert into
+		member_level(member_level_no,member_level_name)
+		values(member_level_seq.nextval,#{member_level_name})
+	</insert>
+
+	<select id="list" resultType="MemberLevel">
+		select
+		ml.member_level_no,ml.member_level_name,count(m.member_level_no) as
+		member_level_count from member_level ml left join member m on
+		m.member_level_no =
+		ml.member_level_no
+		group by
+		ml.member_level_no,ml.member_level_name
+	</select>
+
+	<update id="modify" parameterType="java.util.HashMap">
+		update member_level set
+		member_level_name = #{member_level_name}
+		where member_level_no =
+		#{member_level_no}
+	</update>
+
+	<delete id="delete">
+		delete from member_level where member_level_no not in
+		( select
+		member_level_no from member where member_level_no =
+		#{member_level_no})
+		and member_level_no = #{member_level_no}
+	</delete>
+</mapper>
