@@ -18,7 +18,8 @@
 		m.member_level_no =
 		ml.member_level_no
 		group by
-		ml.member_level_no,ml.member_level_name
+		ml.member_level_no,ml.member_level_name 
+		order by member_level_no asc
 	</select>
 
 	<update id="modify" parameterType="java.util.HashMap">
