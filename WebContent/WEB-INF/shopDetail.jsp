@@ -5,7 +5,7 @@ pageEncoding="UTF-8"%>
 <section>
 	<div class="container">
 		<div class="row">
-			<jsp:include page="side.jsp"/>			
+			<jsp:include page="./common/side.jsp"/>			
 			<div class="col-sm-9 padding-right">
 				<div class="product-details"><!--product-details-->
 					<div class="col-sm-5">

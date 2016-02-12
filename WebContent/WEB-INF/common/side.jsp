@@ -23,7 +23,6 @@ pageEncoding="UTF-8"%>
 					</div>
 				</div>
 			</div>
-			
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4 class="panel-title">
@@ -48,6 +47,7 @@ pageEncoding="UTF-8"%>
 					<h4 class="panel-title"><a href="#">기타</a></h4>
 				</div>
 			</div>
+		
 		</div><!--/category-products-->
 		
 		<div class="brands_products"><!--brands_products-->
