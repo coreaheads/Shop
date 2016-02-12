@@ -1,45 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <div class="col-sm-3">
 	<div class="left-sidebar">
 		<h2>Category</h2>
 		<div class="panel-group category-products" id="accordian"><!--category-productsr-->
-		
-							<c:forEach items="${categoryFirst}" var="x" begin="0">
-							
-							
-	<c:if test="${x.step == 0}">
+
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordian" href="#s_${x.idx }">
+						<a data-toggle="collapse" data-parent="#accordian" href="#mens">
 							<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-							${x.categoryName }<br>
+							남성의류
 						</a>
 					</h4>
 				</div>
-				
-				<div id="s_${x.idx }" class="panel-collapse collapse">
-				
-				<c:forEach items="${categoryFirst }" var="y">
-				<c:if test="${y.step > 0}">
-					<c:if test="${x.rootNum == y.rootNum}">
+				<div id="mens" class="panel-collapse collapse">
 					<div class="panel-body">
 						<ul>
-							<li><a href="#">${y.categoryName}</a></li>
+							<li><a href="#">상의</a></li>
+							<li><a href="#">하의</a></li>
 						</ul>
 					</div>
-					</c:if>
-				</c:if>
-					
-					
-				</c:forEach>
-				
 				</div>
 			</div>
-			</c:if>
-							</c:forEach>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordian" href="#womens">
+							<span class="badge pull-right"><i class="fa fa-plus"></i></span>
+							여성의류
+						</a>
+					</h4>
+				</div>
+				<div id="womens" class="panel-collapse collapse">
+					<div class="panel-body">
+						<ul>
+							<li><a href="#">상의</a></li>
+							<li><a href="#">하의</a></li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title"><a href="#">기타</a></h4>
+				</div>
+			</div>
 		
 		</div><!--/category-products-->
 		

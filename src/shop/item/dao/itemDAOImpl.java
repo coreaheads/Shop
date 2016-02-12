@@ -57,4 +57,12 @@ public class itemDAOImpl implements ItemDAO {
 		session.close();
 	}
 
+	@Override
+	public void update(Item item) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		session.update("item.update",item);
+		session.close();
+	}
+
 }
