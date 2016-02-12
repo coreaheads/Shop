@@ -1,5 +1,5 @@
-<<<<<<< HEAD
-<%-- <%@page import="java.util.ArrayList"%>
+<%-- <<<<<<< HEAD
+<%@page import="java.util.ArrayList"%>
 <%@page import="hjh.member.db.MemberDTO"%>
 <%@page import="hjh.member.db.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
@@ -26,7 +26,7 @@ if(session.getAttribute("mm")==null){
   <frame src="../admin/board_admin.jsp" name="body_frame" frameborder="no" id="mainframe">
  </frameset>
  
-  --%>
+ 
 =======
 <%@page import="java.util.ArrayList"%>
 <%@page import="hjh.member.db.MemberDTO"%>
@@ -57,3 +57,4 @@ if(session.getAttribute("mm")==null){
  
  
 >>>>>>> branch 'master' of https://github.com/coreaheads/Shop.git
+ --%>

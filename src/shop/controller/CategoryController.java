@@ -7,9 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import shop.category.svc.CategoryService;
 import shop.dto.Category;
+import shop.dto.Item;
 
 @Controller
 public class CategoryController {
@@ -17,17 +19,10 @@ public class CategoryController {
 	@Autowired
 	private CategoryService svc;
 
-	@RequestMapping("/categoryList.do")
-	public String categoryList(Model model) {
-
-		ArrayList<Category> list = svc.categoryList();
-
-		model.addAttribute("categoryList", list);
-
-		return "admin/category/categoryList";
-	}
+	
 
 	
+
 	@RequestMapping("/topCategoryInsert.do")
 	public String topCategoryInsert(@RequestParam String categoryName, @RequestParam String division) {
 
@@ -76,10 +71,10 @@ public class CategoryController {
 	}
 
 	@RequestMapping("/categoryUpdate.do")
-	public String categoryUpdate(Category category) {		
-		
+	public String categoryUpdate(Category category) {
+
 		svc.categoryUpdate(category);
-		
+
 		return "redirect:/categoryList.do";
 	}
 
