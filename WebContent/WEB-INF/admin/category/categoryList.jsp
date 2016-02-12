@@ -94,5 +94,5 @@ division : <input type="text" name = "division" ><br><br>
 </ul>
 </nav>
 </div>
-</div>
+
 <jsp:include page="../common/footer.jsp"/>
