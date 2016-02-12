@@ -3,6 +3,7 @@ package shop.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,6 +25,18 @@ public class ItemController {
 	@Autowired
 	private ItemService svc;
 
+	@RequestMapping("/itemInsertAjax.do")
+	
+	public @ResponseBody HashMap<String, Object> jsonSample(){
+		
+		HashMap<String, Object> hsm = new HashMap<String, Object>();
+		hsm.put("user_id", "naver");
+		hsm.put("user_nm", "네이버");
+		hsm.put("user_pw", 123);
+		return hsm;
+		
+	}
+	
 	
 	@RequestMapping("/itemUpdateForm.do")
 	public String itemUpdateForm(){
