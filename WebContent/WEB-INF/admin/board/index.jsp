@@ -1,4 +1,4 @@
-<%@page import="java.util.ArrayList"%>
+<%-- <%@page import="java.util.ArrayList"%>
 <%@page import="hjh.member.db.MemberDTO"%>
 <%@page import="hjh.member.db.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
@@ -25,4 +25,4 @@ if(session.getAttribute("mm")==null){
   <frame src="../admin/board_admin.jsp" name="body_frame" frameborder="no" id="mainframe">
  </frameset>
  
- 
+  --%>

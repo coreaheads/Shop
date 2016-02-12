@@ -1,4 +1,4 @@
-<%@page import="hjh.member.db.MemberDTO"%>
+<%-- <%@page import="hjh.member.db.MemberDTO"%>
 <%@page import="hjh.member.db.MemberDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="hjh.board.db.BoardConfigDTO"%>
@@ -57,4 +57,4 @@
 
 
 </body>
-</html>
+</html> --%>

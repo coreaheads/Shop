@@ -1,4 +1,4 @@
-<%@page import="java.util.ArrayList"%>
+<%-- <%@page import="java.util.ArrayList"%>
 <%@page import="hjh.board.db.BoardConfigDTO"%>
 <%@page import="hjh.board.db.BoardConfigDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
@@ -38,4 +38,4 @@
     </tr>
     </table>
 </body>
-</html>
+</html> --%>
