@@ -1,5 +1,5 @@
-<<<<<<< HEAD
-<%-- <%@page import="java.util.ArrayList"%>
+<%-- <<<<<<< HEAD
+<%@page import="java.util.ArrayList"%>
 <%@page import="hjh.board.db.BoardConfigDTO"%>
 <%@page import="hjh.board.db.BoardConfigDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
@@ -39,7 +39,7 @@
     </tr>
     </table>
 </body>
-</html> --%>
+</html>
 =======
 <%@page import="java.util.ArrayList"%>
 <%@page import="hjh.board.db.BoardConfigDTO"%>
@@ -83,3 +83,4 @@
 </body>
 </html>
 >>>>>>> branch 'master' of https://github.com/coreaheads/Shop.git
+ --%>

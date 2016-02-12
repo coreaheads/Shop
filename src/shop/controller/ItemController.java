@@ -2,7 +2,6 @@ package shop.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 
@@ -24,6 +23,13 @@ public class ItemController {
 	private ItemService svc;
 
 	
+	
+	
+	@RequestMapping("/itemUpdate.do")
+	public String itemUpdate(@RequestParam Item item){
+		svc.itemUpdate(item);
+		return "redirect:/itemList.do";
+	}
 	@RequestMapping("/itemUpdateForm.do")
 	public String itemUpdateForm(){
 		return "itemUpdateForm";
@@ -36,12 +42,7 @@ public class ItemController {
 	}
 	
 	
-	@RequestMapping("/itemList.do")
-	public String ItemList(Model model) {
-		ArrayList<Item> list = svc.itemList();
-		model.addAttribute("itemList", list);
-		return "admin/item/itemList";
-	}
+	
 	
 	@RequestMapping("/itemDetail.do")
 	public ModelAndView ItemDetail(@RequestParam String idx,ModelAndView mav) {
@@ -50,23 +51,24 @@ public class ItemController {
 		mav.setViewName("admin/item/itemDetail");
 		return mav;
 	}
+	@RequestMapping("/itemInsertForm.do")
+	public String itemInsertForm(){
+		return "admin/item/itemInsertForm";
+	}
 	@RequestMapping("/itemInsert.do")
 	public String itemInsert(Model model,Item item,HttpSession session){
 		
-		String upload = "admin//item/img";
+		String upload = "/item_upload_img";
 		String realFolder = session.getServletContext().getRealPath(upload);
 		MultipartFile mf = item.getImgFile();
 		String fileName = mf.getOriginalFilename();
 		File uploadFile = new File(realFolder + File.separator + fileName);
 		try {
 			mf.transferTo(uploadFile);
-		} catch (IllegalStateException e) {
+		} catch (IllegalStateException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} 
 		item.setUrl(fileName);
 		svc.insert(item);
 		model.addAttribute("item", item);

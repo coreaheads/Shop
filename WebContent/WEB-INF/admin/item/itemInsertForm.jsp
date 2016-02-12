@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="itemUpdate.do" enctype="multipart/form-data" method="post">
+<form action="itemInsert.do" enctype="multipart/form-data" method="post">
 <input type="hidden" name="itemId" value="${item.idx }"><br>
 itemName<input type="text" name="itemName">
 itemContent
@@ -28,11 +28,5 @@ imgFile: <input type = "file" name = "imgFile"><br>
 <br><br>
 <a href="itemList.do">돌아가기</a>
 </form>
-${item.idx} &nbsp; ${item.itemName} &nbsp; ${item.itemContent} &nbsp; ${item.itemPrice} <br>
-${item.itemLevel } <br>
-${item.sale} <br>
-${item.itemCategory} <br>
-${item.url} <br>
-${item.isDel} <br>
 </body>
 </html>

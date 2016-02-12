@@ -108,8 +108,8 @@
                 <div id="dropdown-lvl1" class="panel-collapse collapse">
                     <div class="panel-body">
                         <ul class="nav navbar-nav">
-                            <li><a href="#">회원Level관리</a></li>
-                            <li><a href="#">회원상태관리</a></li>
+                            <li><a href="memberLevelList.do">회원Level관리</a></li>
+                            <li><a href="memberStatusList.do">회원상태관리</a></li>
                             <li><a href="memberList.do">회원관리</a></li>
                         </ul>
                     </div>
@@ -126,12 +126,12 @@
                     <div class="panel-body">
                         <ul class="nav navbar-nav">
                             <li><a href="categoryList.do">카테고리관리</a></li>
-                            <li><a href="#">상품관리</a></li>
+                            <li><a href="itemList.do">상품관리</a></li>
                         </ul>
                     </div>
                 </div>
             </li>            
-            <li><a href="#"><span class="glyphicon glyphicon-folder-open"></span>게시판관리</a></li>
+            <li><a href="boardList.do"><span class="glyphicon glyphicon-folder-open"></span>게시판관리</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-euro"></span>매출관리</a></li>
 
         </ul>

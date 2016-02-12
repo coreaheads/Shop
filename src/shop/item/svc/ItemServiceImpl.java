@@ -38,4 +38,11 @@ public class ItemServiceImpl implements ItemService {
 		dao.insert(item);
 		
 	}
+
+	@Override
+	public void itemUpdate(Item item) {
+		// TODO Auto-generated method stub
+		dao.update(item);
+		
+	}
 }
