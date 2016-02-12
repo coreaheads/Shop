@@ -6,6 +6,7 @@
 <h2 class="sub-header">상품관리</h2>
 
 <div class="col-md-12">
+	<input type="button" onclick="location.href='itemInsertForm.do'" value="상품등록">
 	<form class="navbar-form navbar-right" action="free_board_list.do"
 		role="search">
 		<select class="form-control" name="select_free_board" id="sel1">

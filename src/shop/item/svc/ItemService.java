@@ -14,6 +14,8 @@ public interface ItemService {
 
 	void insert(Item item);
 
+	void itemUpdate(Item item);
+
 	
 	
 }

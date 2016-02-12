@@ -2,8 +2,6 @@ package shop.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
@@ -12,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -28,6 +25,11 @@ public class ItemController {
 	
 	
 	
+	@RequestMapping("/itemUpdate.do")
+	public String itemUpdate(@RequestParam Item item){
+		svc.itemUpdate(item);
+		return "redirect:/itemList.do";
+	}
 	@RequestMapping("/itemUpdateForm.do")
 	public String itemUpdateForm(){
 		return "itemUpdateForm";
@@ -49,23 +51,24 @@ public class ItemController {
 		mav.setViewName("admin/item/itemDetail");
 		return mav;
 	}
+	@RequestMapping("/itemInsertForm.do")
+	public String itemInsertForm(){
+		return "admin/item/itemInsertForm";
+	}
 	@RequestMapping("/itemInsert.do")
 	public String itemInsert(Model model,Item item,HttpSession session){
 		
-		String upload = "admin//item/img";
+		String upload = "/item_upload_img";
 		String realFolder = session.getServletContext().getRealPath(upload);
 		MultipartFile mf = item.getImgFile();
 		String fileName = mf.getOriginalFilename();
 		File uploadFile = new File(realFolder + File.separator + fileName);
 		try {
 			mf.transferTo(uploadFile);
-		} catch (IllegalStateException e) {
+		} catch (IllegalStateException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} 
 		item.setUrl(fileName);
 		svc.insert(item);
 		model.addAttribute("item", item);
