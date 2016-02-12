@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import shop.board.svc.BoardService;
 import shop.category.svc.CategoryService;
+import shop.dto.Board;
 import shop.dto.Category;
 import shop.dto.Item;
 import shop.item.svc.ItemService;
@@ -21,7 +23,8 @@ public class AdminHomeController {
 	private CategoryService catesvc;
 	@Autowired
 	private ItemService itemsvc;
-	
+	@Autowired
+	private BoardService bbssvc;
 
 	private static final String FOLDER = "admin";
 	
@@ -50,6 +53,19 @@ public class AdminHomeController {
 
 		return "admin/item/itemList";
 	}
+	
+	
+	@RequestMapping("/boardList.do")
+	public String baordList(Model model) {
+
+		ArrayList<Board> list = bbssvc.list();
+
+		model.addAttribute("baordList", list);
+
+		return "admin/board/boardList";
+	}
+	
+	
 	
 	@RequestMapping("/itemInsertAjax.do")
 
@@ -88,4 +104,7 @@ public class AdminHomeController {
 		return "../NewFile";
 
 	}
+	
+	
+	
 }
