@@ -22,7 +22,7 @@ import shop.dto.Board;
 @Controller
 public class BoardController {
 	@Autowired
-	private BoardService svcf;
+	private BoardService svc;
 
 	@RequestMapping("/BoardList.do")
 	public String boardList(Model model) {
