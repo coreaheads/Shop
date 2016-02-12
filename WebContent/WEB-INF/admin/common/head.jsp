@@ -108,7 +108,7 @@
                 <div id="dropdown-lvl1" class="panel-collapse collapse">
                     <div class="panel-body">
                         <ul class="nav navbar-nav">
-                            <li><a href="#">회원Level관리</a></li>
+                            <li><a href="memberLevelList.do">회원Level관리</a></li>
                             <li><a href="#">회원상태관리</a></li>
                             <li><a href="memberList.do">회원관리</a></li>
                         </ul>
