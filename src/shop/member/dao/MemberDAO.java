@@ -2,8 +2,6 @@ package shop.member.dao;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import shop.dto.Member;
 
 public interface MemberDAO {
