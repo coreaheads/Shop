@@ -31,7 +31,7 @@ CONTENT = #{content}, REMOTE_ADDR = #{remote_addr}, UPDATE_TIME = sysdate,
 IS_NOTICE = #{is_notice},  URL = #{url} WHERE idx=#{idx}
 	</update>
 	<delete id="delete" parameterType="String">
-	    delete from board where itemid = #{itemid}
+	    delete from board where itemid = #{itemid} 
 	</delete>
 	<select id="curidx" resultType="Integer">
 	select MAX(idx) from board 
