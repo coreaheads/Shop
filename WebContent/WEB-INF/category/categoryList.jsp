@@ -69,13 +69,5 @@ division : <input type="text" name = "division" ><br><br>
 </form>
 
 
-
-
-
-
-
-
-
-
 </body>
 </html>
