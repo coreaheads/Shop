@@ -25,17 +25,17 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public List<Member> listMember() {
-		return null;
+		return dao.listMember();
 	}
 
 	@Override
 	public int modifyMember(Member member) {
-		return 0;
+		return dao.modifyMember(member);
 	}
 
 	@Override
-	public int deleteMember(int Member_no) {
-		return 0;
+	public int deleteMember(int member_no) {
+		return dao.deleteMember(member_no);
 	}
 
 	@Override
@@ -45,6 +45,11 @@ public class MemberServiceImpl implements MemberService {
 			session.invalidate();
 		}
 		return result;
+	}
+
+	@Override
+	public Member getMember(int member_no) {
+		return dao.getMember(member_no);
 	}
 
 }

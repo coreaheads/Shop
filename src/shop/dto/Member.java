@@ -25,7 +25,44 @@ public class Member implements Serializable{
 	private int member_level_no;
 	private int member_status_no;
 	private Date member_regist_date;
+	private MemberLevel memberLevel;
+	private MemberStatus memberStatus;
 	
+	
+	public Member(int member_no, String member_id, String member_pw, String member_name, String member_post,
+			String member_addr, String member_number, int member_level_no, int member_status_no,
+			Date member_regist_date, MemberLevel memberLevel, MemberStatus memberStatus) {
+		super();
+		this.member_no = member_no;
+		this.member_id = member_id;
+		this.member_pw = member_pw;
+		this.member_name = member_name;
+		this.member_post = member_post;
+		this.member_addr = member_addr;
+		this.member_number = member_number;
+		this.member_level_no = member_level_no;
+		this.member_status_no = member_status_no;
+		this.member_regist_date = member_regist_date;
+		this.memberLevel = memberLevel;
+		this.memberStatus = memberStatus;
+	}
+
+	public MemberLevel getMemberLevel() {
+		return memberLevel;
+	}
+
+	public void setMemberLevel(MemberLevel memberLevel) {
+		this.memberLevel = memberLevel;
+	}
+
+	public MemberStatus getMemberStatus() {
+		return memberStatus;
+	}
+
+	public void setMemberStatus(MemberStatus memberStatus) {
+		this.memberStatus = memberStatus;
+	}
+
 	public Member() {}
 
 	public Member(int member_no, String member_id, String member_pw, String member_name, String member_post,

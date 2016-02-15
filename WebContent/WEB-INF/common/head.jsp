@@ -59,10 +59,10 @@ pageEncoding="UTF-8"%>
 											<a href="modifyPwForm.do">비밀번호 변경</a>
 										</li>
 										<li>
-											<a href="index.do">정보수정</a>
+											<a href="modifyForm.do?member_no=${myInfo.member_no}">정보수정</a>
 										</li>
 										<li>
-											<a href="index.do">회원탈퇴</a>
+											<a href="delete.do?member_no=${myInfo.member_no }">회원탈퇴</a>
 										</li>
 									</ul>
 								</li>	

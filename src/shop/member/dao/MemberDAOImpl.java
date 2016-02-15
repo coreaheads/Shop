@@ -34,20 +34,26 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public List<Member> listMember() {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession session = getSession();
+		List<Member> list = session.selectList("member.list");
+		closeSession(session);
+		return list;
 	}
 
 	@Override
 	public int modifyMember(Member member) {
-		// TODO Auto-generated method stub
-		return 0;
+		SqlSession session = getSession();
+		int result = session.update("member.modifyMember",member);
+		closeSession(session);
+		return result;
 	}
 
 	@Override
 	public int deleteMember(int Member_no) {
-		// TODO Auto-generated method stub
-		return 0;
+		SqlSession session = getSession();
+		int result = session.update("member.delete",Member_no);
+		closeSession(session);
+		return result;
 	}
 
 	@Override
@@ -61,6 +67,14 @@ public class MemberDAOImpl implements MemberDAO {
 		closeSession(session);
 		return result;
 		
+	}
+
+	@Override
+	public Member getMember(int member_no) {
+		SqlSession session = getSession();
+		Member member = session.selectOne("member.detail",member_no);
+		closeSession(session);
+		return member;
 	}
 
 }

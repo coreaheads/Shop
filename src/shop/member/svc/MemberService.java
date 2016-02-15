@@ -12,9 +12,11 @@ public interface MemberService {
 	
 	public List<Member> listMember();
 	
+	public Member getMember(int member_no);
+	
 	public int modifyMember(Member member);
 	
 	public int modifyPw(String oldPassword,String newPassword,int member_no,HttpSession session);
 	
-	public int deleteMember(int Member_no);
+	public int deleteMember(int member_no);
 }
