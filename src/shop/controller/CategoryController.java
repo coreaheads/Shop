@@ -15,9 +15,6 @@ public class CategoryController {
 	@Autowired
 	private CategoryService svc;
 
-	
-
-	
 
 	@RequestMapping("/topCategoryInsert.do")
 	public String topCategoryInsert(@RequestParam String categoryName, @RequestParam String division) {

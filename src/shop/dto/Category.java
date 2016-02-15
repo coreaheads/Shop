@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 public class Category implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int idx;
 	private String categoryName;
 	private int rootNum; // 상위 카테고리의 idx가 들어감

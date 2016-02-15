@@ -1,19 +1,28 @@
 package shop.dto;
 
-public class Cart {
+import java.io.Serializable;
+
+public class Cart implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int idx;
 	private String memberId;
 	private String ip;
 	private String itemId;
 	private int itemCount;
 	private int itemPrice;
+	private String cartDate;
+	private String url;
 	
 	public Cart() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cart(int idx, String memberId, String ip, String itemId, int itemCount, int itemPrice) {
+	public Cart(int idx, String memberId, String ip, String itemId, int itemCount, int itemPrice, String cartDate,
+			String url) {
 		super();
 		this.idx = idx;
 		this.memberId = memberId;
@@ -21,6 +30,8 @@ public class Cart {
 		this.itemId = itemId;
 		this.itemCount = itemCount;
 		this.itemPrice = itemPrice;
+		this.cartDate = cartDate;
+		this.url = url;
 	}
 
 	public int getIdx() {
@@ -71,6 +82,22 @@ public class Cart {
 		this.itemPrice = itemPrice;
 	}
 
+	public String getCartDate() {
+		return cartDate;
+	}
+
+	public void setCartDate(String cartDate) {
+		this.cartDate = cartDate;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -96,7 +123,7 @@ public class Cart {
 	@Override
 	public String toString() {
 		return "Cart [idx=" + idx + ", memberId=" + memberId + ", ip=" + ip + ", itemId=" + itemId + ", itemCount="
-				+ itemCount + ", itemPrice=" + itemPrice + "]";
+				+ itemCount + ", itemPrice=" + itemPrice + ", cartDate=" + cartDate + ", url=" + url + "]";
 	}
 	
 	
