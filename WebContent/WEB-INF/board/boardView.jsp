@@ -27,7 +27,7 @@
 	<br>
 	<br>
 	<input type="button"
-		onclick="location.href='BoardReplyView.do?idx=${BoardDto.idx}'"
+		onclick="location.href='BoardReplyForm.do?idx=${BoardDto.idx}'"
 		class="btn btn-primary" value="답변">
 	<input type="button"
 		onclick="location.href='BoardUpdateForm.do?idx=${BoardDto.idx}'"

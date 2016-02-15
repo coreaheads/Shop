@@ -49,4 +49,20 @@ public class BoardDAOImpl implements BoardDAO {
 		
 	}
 
+	@Override
+	public void reply(Board board) {
+		SqlSession sqlSession =factory.openSession();
+		sqlSession.insert("board.reply", board);
+		sqlSession.close();
+		
+	}
+
+	@Override
+	public int curidx() {
+		SqlSession sqlSession =factory.openSession();
+		int curidx = sqlSession.selectOne("board.curidx");
+		sqlSession.close();
+		return curidx;
+	}
+
 }

@@ -9,10 +9,18 @@
 	</select>
 	<insert id="insert" parameterType="Board">
 	    INSERT INTO BOARD ( IDX,BOARD_CODE,CATEGORYS,TITLE,WRITER,PASSWD,
-	    EMAIL,CONTENT,REMOTE_ADDR,IS_NOTICE, MEMBER_SEQ ,URL)
+	    EMAIL,CONTENT,REMOTE_ADDR,IS_NOTICE, MEMBER_SEQ ,URL,SEQ)
 VALUES ( baord_seq.nextval , #{board_code} , #{categorys}, #{title}, #{writer},
-#{passwd} , #{email}, #{content} , #{remote_addr},  #{is_notice}, #{member_seq}, #{url}  )
+#{passwd} , #{email}, #{content} , #{remote_addr},  #{is_notice}, #{member_seq}, #{url} ,baord_seq.CURRVAL )
 	</insert>
+	
+	<insert id="reply" parameterType="Board">
+	    INSERT INTO BOARD ( IDX,BOARD_CODE,CATEGORYS,TITLE,WRITER,PASSWD,
+	    EMAIL,CONTENT,REMOTE_ADDR,IS_NOTICE, MEMBER_SEQ ,URL,SEQ,LEVELS,STEP)
+VALUES ( baord_seq.nextval , #{board_code} , #{categorys}, #{title}, #{writer},
+#{passwd} , #{email}, #{content} , #{remote_addr},  #{is_notice}, #{member_seq}, #{url},#{seq},#{levels}+1,#{step}+1 )
+	</insert>
+	
 	<select id="view" resultType="Board" parameterType="Integer">
 	select * from board where idx = #{idx}
 	</select>
@@ -25,5 +33,10 @@ IS_NOTICE = #{is_notice},  URL = #{url} WHERE idx=#{idx}
 	<delete id="delete" parameterType="String">
 	    delete from board where itemid = #{itemid}
 	</delete>
+	<select id="curidx" resultType="Integer">
+	select MAX(idx) from board 
+	</select>
+	
+	
 
 </mapper>

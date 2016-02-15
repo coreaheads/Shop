@@ -32,7 +32,7 @@ public class BoardController {
 	@RequestMapping("/BoardView.do")
 	public String view(Model model, @RequestParam int idx) {
 		Board BaordDto = svc.getDto(idx);
-		System.out.println(BaordDto);
+		
 		model.addAttribute("BoardDto", BaordDto);
 		return "board/boardView";
 	}
@@ -41,6 +41,8 @@ public class BoardController {
 	public String write(Model model) {
 		return "board/boardWriteForm";
 	}
+	
+	
 
 	@RequestMapping("/BoardInsert.do")
 	public String boardInsert(Model model, HttpServletRequest request, Board board, PrintWriter out) {
@@ -117,4 +119,44 @@ public class BoardController {
 		model.addAttribute("BoardDto", BaordDto);
 		return "board/boardUpdateForm";
 	}
+	
+	@RequestMapping("/BoardReplyForm.do")
+	public String boardReplyForm(Model model,@RequestParam int idx) {
+		Board BaordDto = svc.getDto(idx);
+		model.addAttribute("BoardDto", BaordDto);
+		return "board/boardReplyForm";
+	}
+	@RequestMapping("/BoardReply.do")
+	public String boardReply(Model model, HttpServletRequest request, Board board, PrintWriter out) {
+		String upload = "/upload/board";
+		String realFolder = request.getRealPath(upload);
+		MultipartFile mf = board.getImgFile();
+		if (mf != null) {
+			String fileName = mf.getOriginalFilename();
+			File uploadFile = new File(realFolder + File.separator + fileName);
+			try {
+				mf.transferTo(uploadFile);
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			board.setUrl(fileName);
+		}
+		if (board.getIs_notice()==null) {
+			board.setIs_notice("N");
+		}
+		board.setRemote_addr(request.getRemoteAddr());
+		
+		svc.reply(board);
+		model.addAttribute("BoardDto", board);
+		int curidx= svc.curidx();
+		// out.println("<script>window.opener.location.href=BoardList.do';</script>");
+		// out.println("<script>wind00000000000000000000000000000000000000000000000ow.close();</script>");
+		return "redirect:/BoardView.do?idx="+curidx;
+	}
+	
+	
 }

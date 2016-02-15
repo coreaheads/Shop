@@ -38,4 +38,15 @@ public class BoardServiceImpl implements BoardService{
 		dao.update(board);
 		
 	}
+
+	@Override
+	public void reply(Board board) {
+		dao.reply(board);
+		
+	}
+
+	@Override
+	public int curidx() {
+		return dao.curidx();
+	}
 }

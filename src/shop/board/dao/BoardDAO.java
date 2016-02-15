@@ -14,4 +14,8 @@ public interface BoardDAO {
 
 	void update(Board board);
 	
+	void reply(Board board);
+	
+	int curidx();
+	
 }
