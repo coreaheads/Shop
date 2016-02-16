@@ -6,7 +6,7 @@
 
 
 
-<h2 class="sub-header">회원 장바구니</h2>
+<h2 class="sub-header">비회원 장바구니</h2>
 <br>
 <br>
 
@@ -41,9 +41,9 @@
 					<td>${dto.itemPrice } 원</td>
 					
 					<td>
-					<a href="memberCartItemCountUp.do?memberId=${dto.memberId }&itemId=${dto.itemId}">△</a><br>
+					<a href="guestCartItemCountUp.do?itemId=${dto.itemId}">△</a><br>
 					${dto.itemCount } 개<br>
-					<a href="memberCartItemCountDown.do?memberId=${dto.memberId }&itemId=${dto.itemId}">▽</a>
+					<a href="guestCartItemCountDown.do?itemId=${dto.itemId}">▽</a>
 					
 					</td>
 
@@ -51,7 +51,7 @@
 					<td>${dto.itemCount*dto.itemPrice } 원</td>
 					<td>${dto.cartDate }</td>
 					<td>${dto.url }
-					<td><a href="memberCartDelete.do?idx=${dto.idx }&memberId=${dto.memberId}">[삭제]</a>&nbsp;&nbsp;</td>
+					<td><a href="guestCartDelete.do?idx=${dto.idx }">[삭제]</a>&nbsp;&nbsp;</td>
 
 				</tr>
 

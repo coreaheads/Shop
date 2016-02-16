@@ -97,7 +97,7 @@ public class CartDAOImpl implements CartDAO{
 		
 		SqlSession session = getSession();
 		
-		Cart cart = new Cart(0, memberId, null, itemId, 0, 0, null, null);
+		Cart cart = new Cart(0, memberId, null, Integer.parseInt(itemId), 0, 0, null, null, null);
 				
 		Cart afterCart = session.selectOne("cart.cartIsSearch", cart); 
 				

@@ -35,6 +35,7 @@
 				<th>memberId</th>
 				<th>ip</th>
 				<th>itemId</th>
+				<th>itemName</th>
 				<th>itemCount</th>
 				<th>itemPrice</th>
 				<th>cartDate</th>
@@ -48,6 +49,7 @@
 					<td>${dto.memberId }</td>
 					<td>${dto.ip }</td>
 					<td>${dto.itemId }</td>
+					<td>${dto.itemName }</td>
 					<td>${dto.itemCount }</td>
 					<td>${dto.itemPrice }</td>
 					<td>${dto.cartDate }</td>

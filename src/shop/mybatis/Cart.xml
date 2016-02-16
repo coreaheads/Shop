@@ -26,8 +26,8 @@
 	
 	<insert id="memberCartInsert" parameterType="Cart">
 		insert into cart(idx, memberId, ip, itemid, itemCount, itemPrice,
-		cartDate, url) values(cart_seq.nextval, #{memberId}, #{ip}, #{itemId}, 
-		#{itemCount}, #{itemPrice}, to_char(sysdate,'yyyy-mm-dd' ), #{url} )		
+		cartDate, url, itemName) values(cart_seq.nextval, #{memberId}, #{ip}, #{itemId}, 
+		#{itemCount}, #{itemPrice}, to_char(sysdate,'yyyy-mm-dd' ), #{url}, #{itemName} )		
 	</insert>
 	
 	<update id="memberCartCountUpdate" parameterType="Cart">

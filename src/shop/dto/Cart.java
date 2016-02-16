@@ -11,18 +11,19 @@ public class Cart implements Serializable {
 	private int idx;
 	private String memberId;
 	private String ip;
-	private String itemId;
+	private int itemId;
 	private int itemCount;
 	private int itemPrice;
 	private String cartDate;
 	private String url;
+	private String itemName;
 	
 	public Cart() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cart(int idx, String memberId, String ip, String itemId, int itemCount, int itemPrice, String cartDate,
-			String url) {
+	public Cart(int idx, String memberId, String ip, int itemId, int itemCount, int itemPrice, String cartDate,
+			String url, String itemName) {
 		super();
 		this.idx = idx;
 		this.memberId = memberId;
@@ -32,6 +33,7 @@ public class Cart implements Serializable {
 		this.itemPrice = itemPrice;
 		this.cartDate = cartDate;
 		this.url = url;
+		this.itemName = itemName;
 	}
 
 	public int getIdx() {
@@ -58,11 +60,11 @@ public class Cart implements Serializable {
 		this.ip = ip;
 	}
 
-	public String getItemId() {
+	public int getItemId() {
 		return itemId;
 	}
 
-	public void setItemId(String itemId) {
+	public void setItemId(int itemId) {
 		this.itemId = itemId;
 	}
 
@@ -98,6 +100,14 @@ public class Cart implements Serializable {
 		this.url = url;
 	}
 
+	public String getItemName() {
+		return itemName;
+	}
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -123,9 +133,9 @@ public class Cart implements Serializable {
 	@Override
 	public String toString() {
 		return "Cart [idx=" + idx + ", memberId=" + memberId + ", ip=" + ip + ", itemId=" + itemId + ", itemCount="
-				+ itemCount + ", itemPrice=" + itemPrice + ", cartDate=" + cartDate + ", url=" + url + "]";
+				+ itemCount + ", itemPrice=" + itemPrice + ", cartDate=" + cartDate + ", url=" + url + ", itemName="
+				+ itemName + "]";
 	}
-	
 	
 	
 }
