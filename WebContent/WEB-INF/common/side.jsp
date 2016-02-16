@@ -27,7 +27,7 @@ pageEncoding="UTF-8"%>
 					<c:if test="${x.rootNum == y.rootNum}">
 					<div class="panel-body">
 						<ul>
-							<li><a href="#">${y.categoryName}</a></li>
+							<li><a href="itemList.do?itemCategory=${y.idx }">${y.categoryName}</a></li>
 						</ul>
 					</div>
 					</c:if>

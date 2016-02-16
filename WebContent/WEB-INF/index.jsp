@@ -7,7 +7,7 @@
 	<div class="container">
 		<div class="row">
 			<!-- 왼쪽메뉴 -->
-			<jsp:include page="./common/side.jsp" />
+			<jsp:include page="./common/userSide.jsp" />
 			<!-- 왼쪽메뉴 -->
 			
 			<!--  메인바디 -->

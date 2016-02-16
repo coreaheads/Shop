@@ -3,10 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="../common/head.jsp" />
 
-<h2 class="sub-header">상품관리</h2>
+<h2 class="sub-header">상품</h2>
 
 <div class="col-md-12">
-	<input type="button" onclick="location.href='itemInsertForm.do'" value="상품등록">
 	<form class="navbar-form navbar-right" action="free_board_list.do"
 		role="search">
 		<select class="form-control" name="select_free_board" id="sel1">
@@ -38,7 +37,7 @@
 				<th>is_del</th>
 			</tr>
 			<c:forEach items="${itemList }" begin="0" var="x">
-			<c:if test="${x.itemCategory eq itemCategory}">
+			<c:if test="${x.itemCategory == itemCategory}">
 				<tr>
 					<td><a href="itemDetail.do?idx=${x.idx }">${x.idx}</a></td>
 					<td>${x.itemName}</td>
