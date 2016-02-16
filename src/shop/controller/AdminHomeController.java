@@ -14,6 +14,7 @@ import shop.category.svc.CategoryService;
 import shop.dto.Board;
 import shop.dto.Category;
 import shop.dto.Item;
+import shop.dto.ParamVO;
 import shop.item.svc.ItemService;
 
 @Controller
@@ -56,9 +57,9 @@ public class AdminHomeController {
 	
 	
 	@RequestMapping("/boardList.do")
-	public String baordList(Model model) {
+	public String baordList(Model model,ParamVO paramVO) {
 
-		ArrayList<Board> list = bbssvc.list();
+		ArrayList<Board> list = bbssvc.list(paramVO);
 
 		model.addAttribute("baordList", list);
 

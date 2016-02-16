@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import shop.dto.Board;
+import shop.dto.BoardConfig;
+import shop.dto.ParamVO;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
@@ -16,10 +18,9 @@ public class BoardDAOImpl implements BoardDAO {
 	SqlSessionFactory factory;
 
 	@Override
-	public ArrayList<Board> list() {
+	public ArrayList<Board> list(ParamVO paramVO) {
 		SqlSession sqlSession =factory.openSession();
-		
-		List<Board> list =sqlSession.selectList("board.list"); 
+		List<Board> list =sqlSession.selectList("board.list",paramVO); 
 		sqlSession.close();
 		return (ArrayList<Board>) list;
 	}
@@ -63,6 +64,30 @@ public class BoardDAOImpl implements BoardDAO {
 		int curidx = sqlSession.selectOne("board.curidx");
 		sqlSession.close();
 		return curidx;
+	}
+
+	@Override
+	public void stepUp(Board board) {
+		SqlSession sqlSession =factory.openSession();
+		sqlSession.update("board.stepup",board);
+		sqlSession.close();
+		
+	}
+
+	@Override
+	public int totalCnt() {
+		SqlSession sqlSession =factory.openSession();
+		int cnt = sqlSession.selectOne("board.totalcnt");
+		sqlSession.close();
+		return cnt;
+	}
+
+	@Override
+	public BoardConfig getConfig(String board_code) {
+		SqlSession sqlSession =factory.openSession();
+		BoardConfig dto = (BoardConfig) sqlSession.selectOne("board.config",board_code);
+		sqlSession.close();
+		return dto;
 	}
 
 }

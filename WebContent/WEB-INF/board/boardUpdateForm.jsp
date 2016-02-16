@@ -9,8 +9,6 @@
 		<input type="hidden" name="member_seq" value="${mem.idx }1"> <input
 			type="hidden" name="board_code" value="${board_code }2"> <input
 			type="hidden" name="categorys" value="${categorys }3">
-
-${BoardDto}
 		<div class="form-group">
 			<label for="exampleInputEmail1">작성자</label> <input type="text"
 				name="writer" class="form-control" value="${BoardDto.writer }"> <input

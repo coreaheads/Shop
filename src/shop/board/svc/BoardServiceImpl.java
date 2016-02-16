@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import shop.board.dao.BoardDAO;
 import shop.dto.Board;
+import shop.dto.BoardConfig;
+import shop.dto.ParamVO;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -14,8 +16,8 @@ public class BoardServiceImpl implements BoardService{
 	private BoardDAO dao;
 
 	@Override
-	public ArrayList<Board> list() {
-		ArrayList<Board> list =dao.list();
+	public ArrayList<Board> list(ParamVO paramVO) {
+		ArrayList<Board> list =dao.list(paramVO);
 		return list;
 	}
 
@@ -48,5 +50,23 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public int curidx() {
 		return dao.curidx();
+	}
+
+	@Override
+	public void stepUp(Board board) {
+		dao.stepUp(board);
+		
+	}
+
+	@Override
+	public int totalCnt() {
+		int cnt= dao.totalCnt();
+		return cnt;
+	}
+
+	@Override
+	public BoardConfig getConfig(String board_code) {
+		BoardConfig dto = dao.getConfig(board_code);
+		return dto;
 	}
 }

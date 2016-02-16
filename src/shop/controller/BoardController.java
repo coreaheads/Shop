@@ -16,16 +16,38 @@ import org.springframework.web.multipart.MultipartFile;
 
 import shop.board.svc.BoardService;
 import shop.dto.Board;
+import shop.dto.BoardConfig;
+import shop.dto.ParamVO;
 
 @Controller
 public class BoardController {
 	@Autowired
 	private BoardService svc;
-
 	@RequestMapping("/BoardList.do")
-	public String boardList(Model model) {
-		ArrayList<Board> list = svc.list();
+	public String boardList(Model model,ParamVO paramVO,  @RequestParam(required = false, defaultValue = "1" )  int page, @RequestParam(required=false,defaultValue="") String board_code, @RequestParam(required=false, defaultValue="") String search_sel, @RequestParam(required = false, defaultValue ="") String search_txt) {
+		int totalcnt = svc.totalCnt();
+		int limit= paramVO.getLimit();
+		int block = paramVO.getBlock();
+		int startrow = (page*limit) - (limit-1);
+		int endrow = (page*limit);
+		// 16 ~20 block = 10 
+//		int blockLimit=2;
+		// (4-1)/*10
+//		int startNum=(page-1)/blockLimit*blockLimit+1;
+//		int endNum =  startNum+blockLimit-1;
+		int allpage = (int)Math.ceil(totalcnt/(double)paramVO.getLimit());
+		int startpage = ((page-1)/block*block)+1;
+		int endpage = ((page-1)/block*block)+block;
+	
+		if(endpage > allpage) { 
+			endpage = allpage;
+		}
+		int pagenum=0;
+		paramVO = new ParamVO(page, startpage, endpage, block, limit, pagenum, totalcnt, startrow, endrow, board_code, search_txt, search_sel);
+		System.out.println(paramVO);
+		ArrayList<Board> list = svc.list(paramVO);
 		model.addAttribute("BoardList", list);
+		model.addAttribute("paramvo", paramVO);
 		return "board/boardList";
 	}
 
@@ -38,7 +60,9 @@ public class BoardController {
 	}
 
 	@RequestMapping("/BoardWriteForm.do")
-	public String write(Model model) {
+	public String write(Model model,@RequestParam(required=false,defaultValue="free") String board_code) {
+		BoardConfig boardConfig = svc.getConfig(board_code);
+		model.addAttribute("BoardConfig", boardConfig);
 		return "board/boardWriteForm";
 	}
 	
@@ -70,6 +94,7 @@ public class BoardController {
 		board.setRemote_addr(request.getRemoteAddr());
 		System.out.println(board);
 		svc.insert(board);
+		
 		
 		model.addAttribute("board", board);
 		// out.println("<script>window.opener.location.href=BoardList.do';</script>");
@@ -149,8 +174,9 @@ public class BoardController {
 			board.setIs_notice("N");
 		}
 		board.setRemote_addr(request.getRemoteAddr());
-		
+		System.out.println(board);
 		svc.reply(board);
+		svc.stepUp(board);
 		model.addAttribute("BoardDto", board);
 		int curidx= svc.curidx();
 		// out.println("<script>window.opener.location.href=BoardList.do';</script>");

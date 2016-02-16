@@ -3,10 +3,12 @@ package shop.board.dao;
 import java.util.ArrayList;
 
 import shop.dto.Board;
+import shop.dto.BoardConfig;
+import shop.dto.ParamVO;
 
 public interface BoardDAO {
 
-	ArrayList<Board> list();
+	ArrayList<Board> list(ParamVO paramVO);
 
 	Board getDto(int idx);
 
@@ -17,5 +19,13 @@ public interface BoardDAO {
 	void reply(Board board);
 	
 	int curidx();
+	
+	void stepUp(Board board);
+
+	int totalCnt();
+	
+	BoardConfig getConfig(String board_code);
+
+
 	
 }
