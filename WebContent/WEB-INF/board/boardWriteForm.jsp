@@ -7,7 +7,7 @@
 <input type="hidden" name="board_code" value="${board_code }2">
 <input type="hidden" name="categorys" value="${categorys }3">
 
-${BoardConfig }
+${BoardConfig }f
 	<div class="form-group">
    	 	<label for="exampleInputEmail1">작성자</label>
 		<input type="text" name="writer" class="form-control" value="${mem.name }">
