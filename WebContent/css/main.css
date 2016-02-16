@@ -967,7 +967,7 @@ h2.title {
 }
 
 .add-to-cart:hover {
-  background: #FE980F;
+  background: #5858FA;
   color: #FFFFFF;
 }
 
@@ -977,8 +977,7 @@ h2.title {
 
 .choose ul li a {
   color: #B3AFA8;
-  font-family: 'Roboto', sans-serif;
-  font-size: 13px;
+  font-size: 15px;
   padding-left: 0;
   padding-right: 0;
 }
@@ -988,8 +987,8 @@ h2.title {
 }
 
 .choose ul li a:hover{
-	background:none;
-	color:#FE980F;
+	background:#FE642E;
+	  color: #FFFFFF;
 }
 
 .category-tab {

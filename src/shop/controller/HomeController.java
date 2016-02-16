@@ -25,6 +25,12 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping("/shop.do")
+	public String shopssss(Model model){
+		ArrayList<Category> list = svc.categoryList();
+		model.addAttribute("categoryFirst", list);		
+		return "shop";
+	}
 
 	
 	
