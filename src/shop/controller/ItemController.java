@@ -2,6 +2,7 @@ package shop.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,17 +14,34 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import shop.category.svc.CategoryService;
+import shop.dto.Category;
 import shop.dto.Item;
 import shop.item.svc.ItemService;
 
 @Controller
 public class ItemController {
-
+	@Autowired
+	private CategoryService categorySvc;
 	@Autowired
 	private ItemService svc;
 
-	
-	
+	@RequestMapping("/shopDetail.do")
+	public ModelAndView itemUpdate(@RequestParam String idx,ModelAndView mav){
+		Item item= svc.itemDetail(idx);
+		ArrayList<Category> list = categorySvc.categoryList();
+		double sale  =item.getSale();
+		sale=(100-sale)*0.01;
+		sale=item.getItemPrice()*sale;
+		item.setSale((int) sale);
+		if (item.getItemCount()>999) {
+			item.setItemCount(999);
+		}
+		mav.addObject("categoryFirst", list);
+		mav.addObject("item",item);
+		mav.setViewName("shopDetail");
+		return mav;
+	}
 	
 	@RequestMapping("/itemUpdate.do")
 	public String itemUpdate(@RequestParam Item item){
@@ -37,8 +55,9 @@ public class ItemController {
 	
 	@RequestMapping("/itemDelete.do")
 	public String itemDelete(@RequestParam String idx){
+		Item item = svc.itemDetail(idx);
 		svc.itemDelete(idx);
-		return "itemList";
+		return "itemList?itemCategory="+item.getItemCategory();
 	}
 	
 	
@@ -72,7 +91,7 @@ public class ItemController {
 		item.setUrl(fileName);
 		svc.insert(item);
 		model.addAttribute("item", item);
-		return "redirect:/itemList.do";
+		return "redirect:/itemList.do?itemCategory="+item.getItemCategory();
 		
 	}
 }
