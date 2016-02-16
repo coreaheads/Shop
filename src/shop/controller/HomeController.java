@@ -28,7 +28,6 @@ public class HomeController {
 		model.addAttribute("categoryFirst", list);
 		return "index";
 	}
-<<<<<<< HEAD
 	@RequestMapping("/userItemList.do")
 	public String userItemList(Model model,@RequestParam String itemCategory){
 		ArrayList<Category> list = svc.categoryList();
@@ -37,14 +36,12 @@ public class HomeController {
 		model.addAttribute("itemList",itemList);
 		model.addAttribute("itemCategory",itemCategory);
 		return "item/userItemList";
-=======
-	
+	}
 	@RequestMapping("/shop.do")
 	public String shopssss(Model model){
 		ArrayList<Category> list = svc.categoryList();
 		model.addAttribute("categoryFirst", list);		
 		return "shop";
->>>>>>> branch 'master' of https://github.com/coreaheads/Shop.git
 	}
 
 	
