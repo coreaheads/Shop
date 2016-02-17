@@ -59,7 +59,7 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public Item getItemByIdx(String itemId) {
+	public Item getItemByIdx(int itemId) {
 		// TODO Auto-generated method stub
 
 		Item item = dao.getItemByIdx(itemId);
@@ -68,7 +68,7 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public Cart cartIsSearch(String itemId, String memberId) {
+	public Cart cartIsSearch(int itemId, String memberId) {
 		// TODO Auto-generated method stub
 
 		Cart cart = dao.cartIsSearch(itemId, memberId);
@@ -111,7 +111,7 @@ public class CartServiceImpl implements CartService {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void guestCartAdd(String idx, int itemCount, HttpSession session, HttpServletRequest request, HttpServletResponse response ) {
+	public void guestCartAdd(int idx, int itemCount, HttpSession session, HttpServletRequest request, HttpServletResponse response ) {
 		// TODO Auto-generated method stub
 		
 		Cookie[] cookies = request.getCookies(); // 쿠키에서 세션 아이디가 있다면 받아온다.
@@ -211,7 +211,7 @@ public class CartServiceImpl implements CartService {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void guestCartItemCountUp(String itemId, HttpServletRequest request, HttpSession session) {
+	public void guestCartItemCountUp(int itemId, HttpServletRequest request, HttpSession session) {
 		// TODO Auto-generated method stub
 		Cookie[] cookies = request.getCookies(); // 쿠키에서 세션 아이디가 있다면 받아온다.
 		String guestId = getGuestId(cookies);
@@ -219,7 +219,7 @@ public class CartServiceImpl implements CartService {
 		
 		Item item = getItemByIdx(itemId);
 		
-		int id = Integer.parseInt(itemId);
+		int id =itemId;
 		int count = 0;
 		
 		for (int i = 0; i < list.size(); i++) {

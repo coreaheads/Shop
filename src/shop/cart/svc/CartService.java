@@ -19,21 +19,21 @@ public interface CartService {
 
 	ArrayList<Cart> memberCartList(String memberId);
 
-	Item getItemByIdx(String itemId);
+	Item getItemByIdx(int itemId);
 
-	Cart cartIsSearch(String itemId, String memberId);
+	Cart cartIsSearch(int itemId, String memberId);
 
 	void memberCartInsert(Cart cart);
 
 	void memberCartCountUpdate(Cart cart);
 
-	void guestCartAdd(String idx, int itemCount, HttpSession session, HttpServletRequest request, HttpServletResponse response );
+	void guestCartAdd(int idx, int itemCount, HttpSession session, HttpServletRequest request, HttpServletResponse response );
 
 	ArrayList<Cart> guestCartList(HttpServletRequest request, HttpSession session);
 
 	void guestCartDelete(String idx, HttpServletRequest request, HttpSession session);
 
-	void guestCartItemCountUp(String itemId, HttpServletRequest request, HttpSession session);
+	void guestCartItemCountUp(int itemId, HttpServletRequest request, HttpSession session);
 
 	void guestCartItemCountDown(String itemId, HttpServletRequest request, HttpSession session);
 

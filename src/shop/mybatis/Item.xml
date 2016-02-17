@@ -15,7 +15,7 @@ VALUES ( member_seq.nextval , #{itemName} , #{itemContent} , #{itemLevel} , #{sa
 	</select>
 	
 
-	<select id="detail" resultType="Item">
+	<select id="detail" resultType="Item" parameterType="Integer">
 		select * from item where idx =
 		#{idx}
 	</select>

@@ -15,9 +15,9 @@ public interface CartDAO {
 
 	ArrayList<Cart> memberCartList(String memberId);
 
-	Item getItemByIdx(String itemId);
+	Item getItemByIdx(int itemId);
 
-	Cart cartIsSearch(String itemId, String memberId);
+	Cart cartIsSearch(int itemId, String memberId);
 
 	void memberCartInsert(Cart cart);
 
