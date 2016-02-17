@@ -9,7 +9,7 @@
 	</select>
 	
 	<select id="cartMemberIdSearch" parameterType="String" resultType="Cart">
-		select * from cart where memberId = #{word }
+		select * from cart where memberId = #{memberId }
 	</select>
 	
 	<select id="cartItemIdSearch" parameterType="String" resultType="Cart">

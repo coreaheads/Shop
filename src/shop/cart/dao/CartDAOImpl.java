@@ -79,7 +79,7 @@ public class CartDAOImpl implements CartDAO{
 	}
 
 	@Override
-	public Item getItemByIdx(String idx) {
+	public Item getItemByIdx(int idx) {
 		// TODO Auto-generated method stub
 		
 		SqlSession session = getSession();
@@ -92,12 +92,12 @@ public class CartDAOImpl implements CartDAO{
 	}
 
 	@Override
-	public Cart cartIsSearch(String itemId, String memberId) {
+	public Cart cartIsSearch(int itemId, String memberId) {
 		// TODO Auto-generated method stub
 		
 		SqlSession session = getSession();
 		
-		Cart cart = new Cart(0, memberId, null, Integer.parseInt(itemId), 0, 0, null, null, null);
+		Cart cart = new Cart(0, memberId, null, itemId, 0, 0, null, null, null);
 				
 		Cart afterCart = session.selectOne("cart.cartIsSearch", cart); 
 				

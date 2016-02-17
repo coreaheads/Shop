@@ -65,13 +65,17 @@ public class CartController {
 
 	@RequestMapping("/memberCartInsert.do") // itemId, memberId, itemCount(장바구니에
 											// 담을 상품 수량) 넘겨받을것
-	public String memberCartInsert(@RequestParam String itemId, @RequestParam String memberId,
-			@RequestParam int itemCount, HttpServletRequest request) {
-
+	public String memberCartAdd (@RequestParam int itemId, @RequestParam String memberId,
+			@RequestParam String itemCount, HttpServletRequest request) {
+		
+		int itemCountInt = Integer.parseInt(itemCount);
+		System.out.println("여기는:");
 		String ip = request.getRemoteAddr(); // 클라이언트 IP 받기
 
+		
+		
 		Item item = svc.getItemByIdx(itemId); // 아이템 정보 가져옴
-
+		System.out.println("test2L"+item);
 		if (item == null) {
 			System.out.println("상품 정보가 없습니다.");
 			return "redirect:/index.do";
@@ -87,18 +91,18 @@ public class CartController {
 																// 검사
 		// idx, memberId, ip, itemId, itemCount, itemPrice, cartDate, url
 
-		Cart cart = new Cart(0, memberId, ip, Integer.parseInt(itemId), itemCount, item.getItemPrice(), null,
+		Cart cart = new Cart(0, memberId, ip, itemId, itemCountInt, item.getItemPrice(), null,
 				item.getUrl(), item.getItemName());
 
 		if (cartOrigine == null) { // 없으면 Insert
-			if (itemCount > item.getItemCount()) {
+			if (itemCountInt > item.getItemCount()) {
 				System.out.println("담으려는 수량이 상품재고를 초과합니다.");
 				return "redirect:/memberCartList.do?memberId=" + memberId;
 			}
 			svc.memberCartInsert(cart);
 
 		} else { // 이미 있다면 수량 update
-			int count = cartOrigine.getItemCount() + itemCount;
+			int count = cartOrigine.getItemCount() + itemCountInt;
 			cart.setItemCount(count);
 			if (cart.getItemCount() > item.getItemCount()) {
 				System.out.println("담으려는 수량의 총 합이 상품재고를 초과합니다.");
@@ -111,7 +115,7 @@ public class CartController {
 	}
 
 	@RequestMapping("/memberCartItemCountUp.do") // 수량 위쪽 화살표 클릭
-	public String memberCartItemCountUp(@RequestParam String itemId, @RequestParam String memberId) {
+	public String memberCartItemCountUp(@RequestParam int itemId, @RequestParam String memberId) {
 
 		Item item = svc.getItemByIdx(itemId); // 아이템 정보 가져옴
 		Cart cart = svc.cartIsSearch(itemId, memberId); // 카트 정보 가져옴
@@ -131,7 +135,7 @@ public class CartController {
 	}
 
 	@RequestMapping("/memberCartItemCountDown.do") // 수량 아래쪽 화살표 클릭
-	public String memberCartItemCountDown(@RequestParam String itemId, @RequestParam String memberId) {
+	public String memberCartItemCountDown(@RequestParam int itemId, @RequestParam String memberId) {
 
 		Item item = svc.getItemByIdx(itemId); // 아이템 정보 가져옴
 		Cart cart = svc.cartIsSearch(itemId, memberId); // 카트 정보 가져옴
@@ -159,7 +163,7 @@ public class CartController {
 	}
 
 	@RequestMapping("/guestCartAdd.do") // 비회원 카트 추가
-	public String guestCartAdd(@RequestParam String idx, @RequestParam int itemCount, HttpSession session,
+	public String guestCartAdd(@RequestParam int idx, @RequestParam int itemCount, HttpSession session,
 			HttpServletRequest request, HttpServletResponse response) {
 
 		svc.guestCartAdd(idx, itemCount, session, request, response);
@@ -186,7 +190,7 @@ public class CartController {
 	}
 	
 	@RequestMapping("/guestCartItemCountUp.do")
-	public String guestCartItemCountUp(@RequestParam String itemId, HttpServletRequest request, HttpSession session){
+	public String guestCartItemCountUp(@RequestParam int itemId, HttpServletRequest request, HttpSession session){
 	
 		svc.guestCartItemCountUp(itemId,request,session);
 		
