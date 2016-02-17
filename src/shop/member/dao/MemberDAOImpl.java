@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import shop.dto.Member;
+import shop.dto.ParamVO;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO {
@@ -33,9 +34,9 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public List<Member> listMember() {
+	public List<Member> listMember(ParamVO paramVO) {
 		SqlSession session = getSession();
-		List<Member> list = session.selectList("member.list");
+		List<Member> list = session.selectList("member.list",paramVO);
 		closeSession(session);
 		return list;
 	}
@@ -75,6 +76,14 @@ public class MemberDAOImpl implements MemberDAO {
 		Member member = session.selectOne("member.detail",member_no);
 		closeSession(session);
 		return member;
+	}
+
+	@Override
+	public int totalCnt() {
+		SqlSession session = getSession();
+		int result = session.selectOne("member.totalcnt");
+		closeSession(session);
+		return result;
 	}
 
 }

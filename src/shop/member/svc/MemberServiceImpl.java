@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import shop.dto.Member;
+import shop.dto.ParamVO;
 import shop.member.dao.MemberDAO;
 
 @Service
@@ -24,8 +25,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<Member> listMember() {
-		return dao.listMember();
+	public List<Member> listMember(ParamVO paramVO) {
+		return dao.listMember(paramVO);
 	}
 
 	@Override
@@ -50,6 +51,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Member getMember(int member_no) {
 		return dao.getMember(member_no);
+	}
+
+	@Override
+	public int totalCnt() {
+		return dao.totalCnt();
 	}
 
 }
