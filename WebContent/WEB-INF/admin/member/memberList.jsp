@@ -19,14 +19,14 @@
   <h2 class="sub-header">회원관리</h2>
 
        <div class="col-md-12">
-          <form class="navbar-form navbar-right" action="#" role="search">
-              <select class="form-control" name="" id="sel1">
-                <option value="member_id">작성자</option>
-                <option value="free_board_title">제목</option>
+          <form class="navbar-form navbar-right" action="memberList.do" role="search" method="post">
+              <select class="search_sel" name="search_sel" id="sel1">
+                <option value="member_id">아이디</option>
+                <option value="member_name">이름</option>
             </select>
 
             <div class="form-group">
-                <input type="text" name="" class="form-control" placeholder="Search">
+                <input type="text" name="search_txt" class="form-control" placeholder="Search">
             </div>
            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
         </form>   
@@ -72,18 +72,25 @@
 </table> 
 </div>
 <button type="button" class="btn btn-success btn-lg" onclick="registForm();">등록</button>
-<nav class='paging-number text-center'>
-<ul class='pagination'>
-<li class='disabled'><a href='#' aria-label='First'><span aria-hidden='true'>&lsaquo;</span></a></li>
-<li class='disabled'><a href='#' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>
-<c:forEach begin="1" end="10" varStatus="status">
-<li></li>
-<li><a href='#'>${status.count}</a></li>
-</c:forEach>
-<li class='disabled'><a href='#' aria-label='Next'><span aria-hidden='true'>&rsaquo;</span></a></li>
-<li class='disabled'><a href='#' aria-label='End'><span aria-hidden='true'>&raquo;</span></a></li>
-</ul>
-</nav>
+	<nav class='paging-number text-center'>
+		<ul class='pagination'>
+			
+			<li class='<c:if test="${param.page eq 1 }">disabled</c:if>'><a href="memberList.do?page=1" aria-label='Previous'><span
+					aria-hidden='true'>&laquo;</span></a></li>
+					<li class='<c:if test="${param.page eq 1 }">disabled</c:if>'><a href="<c:if test="${param.page ne 1 }">memberList.do?page=${paramvo.page-1 }</c:if>" aria-label='First'><span
+					aria-hidden='true'>&lsaquo;</span></a></li>
+			<c:forEach begin="${paramvo.startpage  }" end="${paramvo.endpage }" step="1"	var="x" varStatus="a">
+				<li></li>
+				<li class='<c:if test="${paramvo.page eq a.index }">active</c:if>'><a href="BoardList.do?page=${a.index }">${a.index}</a></li>
+			</c:forEach>
+			<li class='<c:if test="${paramvo.page eq paramvo.endpage }">disabled</c:if>'>
+			<a href="<c:if test="${paramvo.page ne paramvo.endpage }">BoardList.do?page=${paramvo.page+1 }</c:if>" aria-label='Next'><span
+					aria-hidden='true'>&rsaquo;</span></a></li>
+			<li class='<c:if test="${paramvo.page eq paramvo.endpage }">disabled</c:if>'>
+			<a href="<c:if test="${paramvo.page ne paramvo.endpage }">BoardList.do?page=${paramvo.endpage }</c:if>" aria-label='End'><span
+					aria-hidden='true'>&raquo;</span></a></li>
+		</ul>
+	</nav>
 </div>
 
 <jsp:include page="../common/footer.jsp"/>
