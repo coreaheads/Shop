@@ -124,5 +124,6 @@ pageEncoding="UTF-8"%>
 					</div>
 				</div>
 			</div>
-		</div><!--/header-bottom-->
+		</div>
+		<!--/header-bottom-->
 	</header><!--/header-->

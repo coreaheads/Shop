@@ -103,7 +103,6 @@
                 <a data-toggle="collapse" href="#dropdown-lvl1">
                     <span class="glyphicon glyphicon-user"></span> 회원 <span class="caret"></span>
                 </a>
-
                 <!-- Dropdown level 1 -->
                 <div id="dropdown-lvl1" class="panel-collapse collapse">
                     <div class="panel-body">
@@ -131,7 +130,7 @@
                     </div>
                 </div>
             </li>            
-            <li><a href="boardList.do"><span class="glyphicon glyphicon-folder-open"></span>게시판관리</a></li>
+            <li><a href="BoardConfig.do"><span class="glyphicon glyphicon-folder-open"></span>게시판관리</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-euro"></span>매출관리</a></li>
 
         </ul>

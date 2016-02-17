@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import shop.board.svc.BoardService;
+import shop.boardconfig.svc.BoardConfigService;
 import shop.category.svc.CategoryService;
-import shop.dto.Board;
+import shop.dto.BoardConfig;
 import shop.dto.Category;
 import shop.dto.Item;
 import shop.dto.ParamVO;
@@ -26,6 +27,8 @@ public class AdminHomeController {
 	private ItemService itemsvc;
 	@Autowired
 	private BoardService bbssvc;
+	@Autowired
+	private BoardConfigService bbsconfigsvc;
 
 	private static final String FOLDER = "admin";
 	
@@ -56,12 +59,40 @@ public class AdminHomeController {
 	}
 	
 	
-	@RequestMapping("/boardList.do")
-	public String baordList(Model model,ParamVO paramVO) {
+	@RequestMapping("/BoardConfig.do")
+	public String boardConfig(Model model,ParamVO paramVO,@RequestParam(required = false, defaultValue = "1" )  int page, @RequestParam(required=false, defaultValue="") String search_sel, @RequestParam(required = false, defaultValue ="") String search_txt) {
+		
+		int totalcnt = bbsconfigsvc.totalCnt();
+	
+		int limit= paramVO.getLimit();
+		int block = paramVO.getBlock();
+		int startrow = (page*limit) - (limit-1);
+		int endrow = (page*limit);
+		// 16 ~20 block = 10 
+//		int blockLimit=2;
+		// (4-1)/*10
+//		int startNum=(page-1)/blockLimit*blockLimit+1;
+//		int endNum =  startNum+blockLimit-1;
+		int allpage = (int)Math.ceil(totalcnt/(double)paramVO.getLimit());
+		System.out.println("올페이지"+allpage);
+		int startpage = ((page-1)/block*block)+1;
+		int endpage = ((page-1)/block*block)+block;
+	
+		if(endpage > allpage) { 
+			endpage = allpage;
+		}
+		
+		int pagenum=0;
+		String board_code= "";
+		String url="BoardConfig";
+		paramVO = new ParamVO(page, startpage, endpage, block, limit, pagenum, totalcnt, startrow, endrow, board_code, search_txt, search_sel,url);
+		System.out.println(paramVO);
+		
 
-		ArrayList<Board> list = bbssvc.list(paramVO);
+		ArrayList<BoardConfig> list = bbsconfigsvc.configList(paramVO);
 
-		model.addAttribute("baordList", list);
+		model.addAttribute("List", list);
+		model.addAttribute("paramvo", paramVO);
 
 		return "admin/board/boardList";
 	}

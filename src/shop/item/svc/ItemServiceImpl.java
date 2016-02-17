@@ -45,4 +45,9 @@ public class ItemServiceImpl implements ItemService {
 		dao.update(item);
 		
 	}
+
+	@Override
+	public ArrayList<Item> itemListSel(int itemCategory) {
+		return dao.itemListSel(itemCategory);
+	}
 }

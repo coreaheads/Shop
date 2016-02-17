@@ -16,4 +16,6 @@ public interface	 ItemDAO {
 
 	void update(Item item);
 
+	ArrayList<Item> itemListSel(int itemCategory);
+
 }

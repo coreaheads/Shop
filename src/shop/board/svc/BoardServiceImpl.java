@@ -64,9 +64,5 @@ public class BoardServiceImpl implements BoardService{
 		return cnt;
 	}
 
-	@Override
-	public BoardConfig getConfig(String board_code) {
-		BoardConfig dto = dao.getConfig(board_code);
-		return dto;
-	}
+	
 }

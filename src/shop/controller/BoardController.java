@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import shop.board.svc.BoardService;
+import shop.boardconfig.svc.BoardConfigService;
 import shop.dto.Board;
 import shop.dto.BoardConfig;
 import shop.dto.ParamVO;
@@ -23,6 +24,7 @@ import shop.dto.ParamVO;
 public class BoardController {
 	@Autowired
 	private BoardService svc;
+	private BoardConfigService bbsconfigsvc;
 	@RequestMapping("/BoardList.do")
 	public String boardList(Model model,ParamVO paramVO,  @RequestParam(required = false, defaultValue = "1" )  int page, @RequestParam(required=false,defaultValue="") String board_code, @RequestParam(required=false, defaultValue="") String search_sel, @RequestParam(required = false, defaultValue ="") String search_txt) {
 		int totalcnt = svc.totalCnt();
@@ -43,7 +45,8 @@ public class BoardController {
 			endpage = allpage;
 		}
 		int pagenum=0;
-		paramVO = new ParamVO(page, startpage, endpage, block, limit, pagenum, totalcnt, startrow, endrow, board_code, search_txt, search_sel);
+		String url="";
+		paramVO = new ParamVO(page, startpage, endpage, block, limit, pagenum, totalcnt, startrow, endrow, board_code, search_txt, search_sel,url);
 		System.out.println(paramVO);
 		ArrayList<Board> list = svc.list(paramVO);
 		model.addAttribute("BoardList", list);
@@ -61,7 +64,7 @@ public class BoardController {
 
 	@RequestMapping("/BoardWriteForm.do")
 	public String write(Model model,@RequestParam(required=false,defaultValue="free") String board_code) {
-		BoardConfig boardConfig = svc.getConfig(board_code);
+		BoardConfig boardConfig = bbsconfigsvc.getConfig(board_code);
 		model.addAttribute("BoardConfig", boardConfig);
 		return "board/boardWriteForm";
 	}

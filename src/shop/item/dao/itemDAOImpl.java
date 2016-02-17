@@ -66,4 +66,12 @@ public class itemDAOImpl implements ItemDAO {
 		session.close();
 	}
 
+	@Override
+	public ArrayList<Item> itemListSel(int itemCategory) {
+		SqlSession session = factory.openSession();
+		List<Item> list = session.selectList("item.listsel",itemCategory);
+		session.close();
+		return (ArrayList<Item>) list;
+	}
+
 }

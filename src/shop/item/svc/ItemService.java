@@ -16,6 +16,8 @@ public interface ItemService {
 
 	void itemUpdate(Item item);
 
+	ArrayList<Item> itemListSel(int itemCategory);
+
 	
 	
 }

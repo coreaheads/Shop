@@ -24,8 +24,7 @@ public interface BoardDAO {
 
 	int totalCnt();
 	
-	BoardConfig getConfig(String board_code);
-
+	
 
 	
 }

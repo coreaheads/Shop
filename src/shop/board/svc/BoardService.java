@@ -16,6 +16,6 @@ public interface BoardService {
 	int curidx();
 	void stepUp(Board board);
 	int totalCnt();
-	BoardConfig  getConfig (String board_code);
+	
 
 }

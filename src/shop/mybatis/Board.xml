@@ -36,6 +36,8 @@
                 
 
 	</select>
+	
+	
 	<insert id="insert" parameterType="Board">
 	    INSERT INTO BOARD ( IDX,BOARD_CODE,CATEGORYS,TITLE,WRITER,PASSWD,
 	    EMAIL,CONTENT,REMOTE_ADDR,IS_NOTICE, MEMBER_SEQ ,URL,SEQ)

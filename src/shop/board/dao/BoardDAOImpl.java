@@ -82,12 +82,5 @@ public class BoardDAOImpl implements BoardDAO {
 		return cnt;
 	}
 
-	@Override
-	public BoardConfig getConfig(String board_code) {
-		SqlSession sqlSession =factory.openSession();
-		BoardConfig dto = (BoardConfig) sqlSession.selectOne("board.config",board_code);
-		sqlSession.close();
-		return dto;
-	}
-
+	
 }

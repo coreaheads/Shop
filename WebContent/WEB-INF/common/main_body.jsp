@@ -4,7 +4,7 @@
 
 	<div class="category-tab">
 		<!--category-tab-->
-		<div class="col-sm-12">
+		<!-- <div class="col-sm-12">
 			<ul class="nav nav-tabs">
 				<li class="active"><a href="#top" data-toggle="tab">상의</a></li>
 				<li><a href="#pants" data-toggle="tab">하의</a></li>
@@ -12,7 +12,7 @@
 				<li><a href="#knit" data-toggle="tab">니트</a></li>
 				<li><a href="#theme" data-toggle="tab">테마의류</a></li>
 			</ul>
-		</div>
+		</div> -->
 		<div class="tab-content">
 			<div class="tab-pane fade active in" id="top">
 				<c:forEach begin="1" end="4" varStatus="status">
@@ -247,7 +247,8 @@
 									</div>
 									<div class="choose">
 										<ul class="nav nav-pills nav-justified">
-											<li><a href=""><i class="fa fa-shopping-cart"></i>카트에
+											<li>
+											<a href=""><i class="fa fa-shopping-cart"></i>카트에
 													담기</a></li>
 										</ul>
 									</div>

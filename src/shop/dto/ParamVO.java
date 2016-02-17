@@ -13,13 +13,16 @@ public class ParamVO {
 	private String board_code;
 	private String search_txt;
 	private String search_sel;
+	private String url;
 	
 	public ParamVO() {
 		// TODO Auto-generated constructor stub
 	}
 
+
+
 	public ParamVO(int page, int startpage, int endpage, int block, int limit, int pagenum, int totalcnt, int startrow,
-			int endrow, String board_code, String search_txt, String search_sel) {
+			int endrow, String board_code, String search_txt, String search_sel, String url) {
 		super();
 		this.page = page;
 		this.startpage = startpage;
@@ -33,6 +36,15 @@ public class ParamVO {
 		this.board_code = board_code;
 		this.search_txt = search_txt;
 		this.search_sel = search_sel;
+		this.url = url;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public int getPage() {
@@ -131,14 +143,17 @@ public class ParamVO {
 		this.search_sel = search_sel;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "ParamVO [page=" + page + ", startpage=" + startpage + ", endpage=" + endpage + ", block=" + block
 				+ ", limit=" + limit + ", pagenum=" + pagenum + ", totalcnt=" + totalcnt + ", startrow=" + startrow
 				+ ", endrow=" + endrow + ", board_code=" + board_code + ", search_txt=" + search_txt + ", search_sel="
-				+ search_sel + "]";
+				+ search_sel + ", url=" + url + "]";
 	}
-	
+
+
 	
 	
 

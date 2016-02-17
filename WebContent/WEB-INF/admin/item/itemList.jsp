@@ -37,8 +37,8 @@
 				<th>상품 이미지</th>
 				<th>is_del</th>
 			</tr>
-			<c:forEach items="${itemList }" begin="0" var="x">
-			<c:if test="${x.itemCategory eq itemCategory}">
+			<c:forEach items="${itemList }" var="x">
+		
 				<tr>
 					<td><a href="itemDetail.do?idx=${x.idx }">${x.idx}</a></td>
 					<td>${x.itemName}</td>
@@ -49,7 +49,7 @@
 					<td>${x.url }</td>
 					<td>${x.isDel }</td>
 				</tr>
-			</c:if>
+			
 			</c:forEach>
 		</table>
 	</div>

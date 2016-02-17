@@ -34,7 +34,7 @@
 			<th style="text-align: center">파일</th>
 			<th style="text-align: center">파일갯수</th>
 		</tr>
-		<c:forEach var="list" items="${list }" varStatus="s">
+		<c:forEach var="list" items="${List }" varStatus="s">
 
 			<tr>
 				<td>${list.board_code }</td>
@@ -48,17 +48,20 @@
 	</table>
 	<nav class='paging-number text-center'>
 		<ul class='pagination'>
-			<li class='disabled'><a href='#' aria-label='First'><span
-					aria-hidden='true'>&lsaquo;</span></a></li>
-			<li class='disabled'><a href='#' aria-label='Previous'><span
+			
+			<li class='<c:if test="${paramvo.page eq 1 or empty paramvo.page  }">disabled</c:if>'><a href='<c:if test="${paramvo.page eq 1 or  empty paramvo.page }">${paramvo.url }.do?page=1</c:if>' aria-label='Previous'><span
 					aria-hidden='true'>&laquo;</span></a></li>
-			<c:forEach begin="1" end="10" varStatus="status">
+					<li class='<c:if test="${paramvo.page ne 1 }">disabled</c:if>'><a href="<c:if test="${paramvo.page ne 1}">${paramvo.url }.do?page=${paramvo.page-1 }</c:if>" aria-label='First'><span
+					aria-hidden='true'>&lsaquo;</span></a></li>
+			<c:forEach begin="${paramvo.startpage  }" end="${paramvo.endpage }" step="1"	var="x" varStatus="a">
 				<li></li>
-				<li><a href='#'>${status.count}</a></li>
+				<li class='<c:if test="${paramvo.page eq a.index }">active</c:if>'><a href="${paramvo.url }.do?page=${a.index }">${a.index}</a></li>
 			</c:forEach>
-			<li class='disabled'><a href='#' aria-label='Next'><span
+			<li class='<c:if test="${paramvo.page eq paramvo.endpage }">disabled</c:if>'>
+			<a href="<c:if test="${paramvo.page ne paramvo.endpage }">${paramvo.url }.do?page=${paramvo.page+1 }</c:if>" aria-label='Next'><span
 					aria-hidden='true'>&rsaquo;</span></a></li>
-			<li class='disabled'><a href='#' aria-label='End'><span
+			<li class='<c:if test="${paramvo.page eq paramvo.endpage }">disabled</c:if>'>
+			<a href="<c:if test="${paramvo.page ne paramvo.endpage }">${paramvo.url }.do?page=${paramvo.endpage }</c:if>" aria-label='End'><span
 					aria-hidden='true'>&raquo;</span></a></li>
 		</ul>
 	</nav>

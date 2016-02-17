@@ -29,9 +29,11 @@ public class HomeController {
 		return "index";
 	}
 	@RequestMapping("/userItemList.do")
-	public String userItemList(Model model,@RequestParam String itemCategory){
+	public String userItemList(Model model,@RequestParam(required=false, defaultValue="1") int itemCategory){
 		ArrayList<Category> list = svc.categoryList();
-		ArrayList<Item> itemList = itemSvc.itemList();
+		ArrayList<Item> itemList = itemSvc.itemListSel(itemCategory);
+		
+		System.out.println(itemList);
 		model.addAttribute("categoryFirst", list);
 		model.addAttribute("itemList",itemList);
 		model.addAttribute("itemCategory",itemCategory);
