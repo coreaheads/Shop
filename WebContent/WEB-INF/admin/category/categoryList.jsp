@@ -10,15 +10,14 @@
 
 
 <div class="col-md-12">
-	<form class="navbar-form navbar-right" action="free_board_list.do"
+	<form class="navbar-form navbar-right" action="categorySearch.do"
 		role="search">
-		<select class="form-control" name="select_free_board" id="sel1">
-			<option value="member_id">작성자</option>
-			<option value="free_board_title">제목</option>
+		<select class="form-control" name="searchColumn" id="sel1">
+			<option value="categoryName">제목</option>
 		</select>
 
 		<div class="form-group">
-			<input type="text" name="find_free_board" class="form-control"
+			<input type="text" name="searchWord" class="form-control"
 				placeholder="Search">
 		</div>
 		<button type="submit" class="btn btn-default">Search</button>
@@ -47,17 +46,18 @@
 					<td>${dto.idx }</td>
 
 					<td><c:forEach begin="1" end="${dto.step }">
-&nbsp;&nbsp;
-</c:forEach> <c:if test="${dto.step > 0}">
-└
-</c:if> ${dto.categoryName }</td>
-					<td>${dto.rootNum }</td>
+					&nbsp;&nbsp;
+					</c:forEach> <c:if test="${dto.step > 0}">
+					└
+					</c:if> ${dto.categoryName }</td>
+					
+					<td><a href = "categorySearch.do?searchColumn=rootNum&searchWord=${dto.rootNum }">
+					${dto.rootNum }</a></td>
 					<td>${dto.step }</td>
 					<td>${dto.division }</td>
 					<td>${dto.seq }</td>
 					<td>${dto.isDel }</td>
-					<td><a href="subCategoryInsertForm.do?idx=${dto.idx }">[하위
-							카테고리 삽입]</a>&nbsp;&nbsp; <a
+					<td><a href="subCategoryInsertForm.do?idx=${dto.idx }">[하위 카테고리 삽입]</a>&nbsp;&nbsp; <a
 						href="categoryUpdateForm.do?idx=${dto.idx }">[수정]</a>&nbsp;&nbsp;
 						<a href="categoryDelete.do?idx=${dto.idx }">[삭제]</a>&nbsp;&nbsp;</td>
 
@@ -66,37 +66,19 @@
 			</c:forEach>
 		</table>
 
-		<br>
-		<br>
+		<br> <br>
 		<form action="topCategoryInsert.do" method="post">
-			[최상위 카테고리 추가]<br>
-			<br> categoryName : <input type="text" name="categoryName">
-
-			<br> division : <input type="text" name="division"><br>
-			<br> <input type="submit" value="추가">&nbsp;&nbsp;<input
-				type="reset" value="초기화">
+			[최상위 카테고리 추가]<br> <br> categoryName : <input type="text"
+				name="categoryName"> <br> division : <input type="text"
+				name="division"><br> <br> <input type="submit"
+				value="추가">&nbsp;&nbsp;<input type="reset" value="초기화">
 
 		</form>
 
 
 
 	</div>
-	<nav class='paging-number text-center'>
-		<ul class='pagination'>
-			<li class='disabled'><a href='#' aria-label='First'><span
-					aria-hidden='true'>&lsaquo;</span></a></li>
-			<li class='disabled'><a href='#' aria-label='Previous'><span
-					aria-hidden='true'>&laquo;</span></a></li>
-			<c:forEach begin="1" end="10" varStatus="status">
-				<li></li>
-				<li><a href='#'>${status.count}</a></li>
-			</c:forEach>
-			<li class='disabled'><a href='#' aria-label='Next'><span
-					aria-hidden='true'>&rsaquo;</span></a></li>
-			<li class='disabled'><a href='#' aria-label='End'><span
-					aria-hidden='true'>&raquo;</span></a></li>
-		</ul>
-	</nav>
+
 </div>
 
 <jsp:include page="../common/footer.jsp" />
