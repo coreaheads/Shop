@@ -49,44 +49,51 @@ public class AdminHomeController {
 	}
 	
 	@RequestMapping("/item.do")
-	public String itemList(Model model,@RequestParam(required=false,defaultValue="") String mode , @RequestParam(required=false,defaultValue="a") String idx) {
+	   public String itemList(Model model,@RequestParam String mode , @RequestParam(required=false,defaultValue="a") String idx) {
 
-		
-		switch (mode) {
-		case "insert":
-			model.addAttribute("url", "itemInsertForm.jsp");
-			break;
-		case "update":
-			Item upitem = itemsvc.itemDetail(idx);
-			ArrayList<Category> upcalist = catesvc.categoryList();
-			model.addAttribute("categoryFirst", upcalist);
-			model.addAttribute("item", upitem);
-			model.addAttribute("url", "itemUpdateForm.jsp");
-			break;
-		case "detail":
-			Item item = itemsvc.itemDetail(idx);
-			ArrayList<Category> list = catesvc.categoryList();
-			double sale = item.getSale();
-			sale = (100 - sale) * 0.01;
-			sale = item.getItemPrice() * sale;
-			item.setSale((int) sale);
-			if (item.getItemCount() > 999) {
-				item.setItemCount(999);
-			}
-			model.addAttribute("categoryFirst", list);
-			model.addAttribute("item", item);
-			model.addAttribute("url", "itemDetail.jsp");
-			break;
+	      
+	      switch (mode) {
+	      case "insert":
+	         model.addAttribute("url", "itemInsertForm.jsp");
+	         break;
+	      case "update":
+	         Item upitem = itemsvc.itemDetail(idx);
+	         ArrayList<Category> upcalist = catesvc.categoryList();
+	         ArrayList<Category> firstList = new ArrayList<Category>();
+	         for (Category x : upcalist) {
+	         if (x.getStep()==0) {
+	            firstList.add(x);
+	         }   
+	         }
+	         model.addAttribute("firstList", firstList);
+	         model.addAttribute("categoryFirst", upcalist);
+	         model.addAttribute("item", upitem);
+	         model.addAttribute("url", "itemUpdateForm.jsp");
+	         break;
+	      case "detail":
+	         Item item = itemsvc.itemDetail(idx);
+	         ArrayList<Category> list = catesvc.categoryList();
+	         double sale = item.getSale();
+	         sale = (100 - sale) * 0.01;
+	         sale = item.getItemPrice() * sale;
+	         item.setSale((int) sale);
+	         if (item.getItemCount() > 999) {
+	            item.setItemCount(999);
+	         }
+	         model.addAttribute("categoryFirst", list);
+	         model.addAttribute("item", item);
+	         model.addAttribute("url", "itemDetail.jsp");
+	         break;
 
-		default:
-			ArrayList<Item> itemlist = itemsvc.itemList();
-			model.addAttribute("itemList", itemlist);
-			model.addAttribute("url", "itemList.jsp");
-			break;
-		}
+	      default:
+	         ArrayList<Item> itemlist = itemsvc.itemList();
+	         model.addAttribute("itemList", itemlist);
+	         model.addAttribute("url", "itemList.jsp");
+	         break;
+	      }
 
-		return "admin/item/item_body";
-	}
+	      return "admin/item/item_body";
+	   }
 	
 	
 	@RequestMapping("/BoardConfig.do")
@@ -137,7 +144,7 @@ public class AdminHomeController {
 	
 	@RequestMapping("/itemInsertAjax.do")
 
-	public @ResponseBody ArrayList<?> jsonSample(@RequestParam int idx) {
+	public @ResponseBody ArrayList<?> jsonSample(@RequestParam(required=false,defaultValue="") int idx) {
 	
 		ArrayList<Category> list = catesvc.categoryList();
 		
