@@ -6,25 +6,68 @@
 
 <mapper namespace="item">
 	<insert id="insert">
-	INSERT INTO ITEM ( IDX,ITEMNAME,ITEMCONTENT,ITEMLEVEL,SALE,ITEMPRICE,ITEMCOUNT,ITEMCATEGORY,URL )
-VALUES ( member_seq.nextval , #{itemName} , #{itemContent} , #{itemLevel} , #{sale} , #{itemPrice} , #{itemCount} , #{itemCategory} , #{url}  )
+		INSERT INTO ITEM (
+		IDX,ITEMNAME,ITEMCONTENT,ITEMLEVEL,SALE,ITEMPRICE,ITEMCOUNT,ITEMCATEGORY,URL
+		)
+		VALUES ( member_seq.nextval , #{itemName} , #{itemContent} , #{itemLevel} ,
+		#{sale} , #{itemPrice} , #{itemCount} , #{itemCategory} , #{url} )
 	</insert>
 	<select id="list" resultType="Item">
 		select * from item order by idx
 	</select>
 	<select id="listsel" resultType="Item" parameterType="Integer">
-		select * from item where itemcategory= #{itemcategory} order by idx
+		select *
+		from item where itemcategory= #{itemcategory} order by idx
 	</select>
+	
+	<select id="bestlist" resultType="Item" parameterType="java.util.HashMap">
+	    <![CDATA[select * from (select rownum rnum, 
+	     IDX,
+       ITEMNAME,
+       ITEMCONTENT,
+       ITEMLEVEL,
+       SALE,
+       ITEMPRICE,
+       ITEMCOUNT,
+       ITEMCATEGORY,
+       URL,
+       ISDEL from ( select * from ITEM order by  idx)) 
+               where rnum >= #{f} and rnum <= #{s}
+           ]]>
+	</select>
+	
+	
+	<select id="newlist" resultType="Item" parameterType="java.util.HashMap">
+	    <![CDATA[select * from (select rownum rnum, 
+	     IDX,
+       ITEMNAME,
+       ITEMCONTENT,
+       ITEMLEVEL,
+       SALE,
+       ITEMPRICE,
+       ITEMCOUNT,
+       ITEMCATEGORY,
+       URL,
+       ISDEL from ( select * from ITEM  order by  idx)) 
+               where rnum >= #{f} and rnum <= #{s}
+           ]]>
+	</select>
+	
+	<!-- where ITEMLEVEL =1 -->
+	
 	<select id="detail" resultType="Item" parameterType="Integer">
-		select * from item where idx =
+		select *
+		from item where idx =
 		#{idx}
 	</select>
 
 	<update id="update" parameterType="Item">
-	UPDATE ITEM
-set ITEMNAME = '#{itemName}', ITEMCONTENT = '#{itemContent}', ITEMLEVEL = '#{itemLevel}', SALE = '#{sale}', 
- ITEMPRICE = '#{itemPrice}', ITEMCOUNT = '#{itemCount}', ITEMCATEGORY = '#{itemCategory}', URL = '#{url}' 
-WHERE idx= #{idx}
+		UPDATE ITEM
+		set ITEMNAME = '#{itemName}', ITEMCONTENT = '#{itemContent}', ITEMLEVEL =
+		'#{itemLevel}', SALE = '#{sale}',
+		ITEMPRICE = '#{itemPrice}', ITEMCOUNT = '#{itemCount}', ITEMCATEGORY =
+		'#{itemCategory}', URL = '#{url}'
+		WHERE idx= #{idx}
 	</update>
 
 	<delete id="delete">

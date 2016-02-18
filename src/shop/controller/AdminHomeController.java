@@ -1,6 +1,5 @@
 package shop.controller;
 
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,14 +48,44 @@ public class AdminHomeController {
 		return "admin/category/categoryList";
 	}
 	
-	@RequestMapping("/itemList.do")
-	public String itemList(Model model) {
+	@RequestMapping("/item.do")
+	public String itemList(Model model,@RequestParam String mode , @RequestParam(required=false,defaultValue="a") String idx) {
 
-		ArrayList<Item> list = itemsvc.itemList();
+		
+		switch (mode) {
+		case "insert":
+			model.addAttribute("url", "itemInsertForm.jsp");
+			break;
+		case "update":
+			Item upitem = itemsvc.itemDetail(idx);
+			ArrayList<Category> upcalist = catesvc.categoryList();
+			model.addAttribute("categoryFirst", upcalist);
+			model.addAttribute("item", upitem);
+			model.addAttribute("url", "itemUpdateForm.jsp");
+			break;
+		case "detail":
+			Item item = itemsvc.itemDetail(idx);
+			ArrayList<Category> list = catesvc.categoryList();
+			double sale = item.getSale();
+			sale = (100 - sale) * 0.01;
+			sale = item.getItemPrice() * sale;
+			item.setSale((int) sale);
+			if (item.getItemCount() > 999) {
+				item.setItemCount(999);
+			}
+			model.addAttribute("categoryFirst", list);
+			model.addAttribute("item", item);
+			model.addAttribute("url", "itemDetail.jsp");
+			break;
 
-		model.addAttribute("itemList", list);
+		default:
+			ArrayList<Item> itemlist = itemsvc.itemList();
+			model.addAttribute("itemList", itemlist);
+			model.addAttribute("url", "itemList.jsp");
+			break;
+		}
 
-		return "admin/item/itemList";
+		return "admin/item/item_body";
 	}
 	
 	

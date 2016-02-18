@@ -50,4 +50,14 @@ public class ItemServiceImpl implements ItemService {
 	public ArrayList<Item> itemListSel(int itemCategory) {
 		return dao.itemListSel(itemCategory);
 	}
+
+	@Override
+	public ArrayList<Item> itemBestList(int f , int s) {
+		return dao.itemBestList(f,s);
+	}
+
+	@Override
+	public ArrayList<Item> itemNewList(int f , int s) {
+		return dao.itemNewList(f,s);
+	}
 }

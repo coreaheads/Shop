@@ -25,7 +25,16 @@ public class HomeController {
 	@RequestMapping("/index.do")
 	public String index(Model model){
 		ArrayList<Category> list = svc.categoryList();
+		ArrayList<Item> bestlist = itemSvc.itemBestList(1,3);
+		ArrayList<Item> bestlist2 = itemSvc.itemBestList(4,6);
+		ArrayList<Item> newlist = itemSvc.itemNewList(1,3);
+		ArrayList<Item> newlist2 = itemSvc.itemNewList(4,6);
 		model.addAttribute("categoryFirst", list);
+		model.addAttribute("itemBestList", bestlist);
+		model.addAttribute("itemBestList2", bestlist2);
+		model.addAttribute("itemNewList", newlist);
+		model.addAttribute("itemNewList2", newlist2);
+		
 		return "index";
 	}
 	@RequestMapping("/userItemList.do")

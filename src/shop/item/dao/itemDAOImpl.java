@@ -1,6 +1,7 @@
 package shop.item.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -70,6 +71,28 @@ public class itemDAOImpl implements ItemDAO {
 	public ArrayList<Item> itemListSel(int itemCategory) {
 		SqlSession session = factory.openSession();
 		List<Item> list = session.selectList("item.listsel",itemCategory);
+		session.close();
+		return (ArrayList<Item>) list;
+	}
+
+	@Override
+	public ArrayList<Item> itemBestList(int f, int s) {
+		SqlSession session = factory.openSession();
+		HashMap< String, Integer> map= new HashMap<>();
+		map.put("f", f);
+		map.put("s", s);
+		List<Item> list = session.selectList("item.bestlist", map);
+		session.close();
+		return (ArrayList<Item>) list;
+	}
+
+	@Override
+	public ArrayList<Item> itemNewList(int f, int s) {
+		SqlSession session = factory.openSession();
+		HashMap< String, Integer> map= new HashMap<>();
+		map.put("f", f);
+		map.put("s", s);
+		List<Item> list = session.selectList("item.newlist",map);
 		session.close();
 		return (ArrayList<Item>) list;
 	}

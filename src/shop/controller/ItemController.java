@@ -25,6 +25,18 @@ public class ItemController {
 	private CategoryService categorySvc;
 	@Autowired
 	private ItemService svc;
+	
+	
+//	@RequestMapping("/itemList.do")
+//	public String itemList(Model model) {
+//
+//		ArrayList<Item> list = svc.itemBestList();
+//
+//		model.addAttribute("itemBestList", list);
+//
+//		return "index";
+//	}
+//	
 
 	@RequestMapping("/shopDetail.do")
 	public ModelAndView itemUpdate(@RequestParam String idx, ModelAndView mav) {

@@ -18,4 +18,8 @@ public interface	 ItemDAO {
 
 	ArrayList<Item> itemListSel(int itemCategory);
 
+	ArrayList<Item> itemBestList(int f, int s);
+
+	ArrayList<Item> itemNewList(int f, int s);
+
 }
