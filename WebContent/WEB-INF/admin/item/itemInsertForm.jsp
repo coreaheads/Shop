@@ -1,32 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<form action="itemInsert.do" enctype="multipart/form-data" method="post">
-<input type="hidden" name="itemId" value="${item.idx }"><br>
-itemName<input type="text" name="itemName">
-itemContent
-<input type="text" name="itemContent" >
-itemPrice
-<input type="text" name="itemPrice">
-itemLevel
-<input type="text" name="itemLevel">
-sale
-<input type="text" name="sale">
-itemCategory
-<input type="text" name="itemCategory">
-		
-imgFile: <input type = "file" name = "imgFile"><br>
+	pageEncoding="UTF-8"%>
+<%@include file="/include/header.jsp"%>
+<body style="padding:30px;">
+<form action="itemInsert.do" method="post"  enctype="multipart/form-data">
+	<input type="hidden" name="itemId" value="${item.idx }">
 
-<input type = "submit" value="수정">
+	<div class="form-group">
+   	 	<label for="exampleInputEmail1">itemName</label>
+		<input type="text" name="itemName" class="form-control" value="">
+  	</div>
+  	
+  	<div class="form-group">
+   	 	<label for="exampleInputEmail1">가격</label>
+		<input type="text" name="itemPrice" class="form-control">
+		<input type="checkbox" name="itemLevel" value="best" >
+		<input type="checkbox" name="itemLevel" value="hot" >
+		<input type="checkbox" name="itemLevel" value="sale" >
+  	</div>
+  	
+  	<div class="form-group">
+   	 	<label for="exampleInputEmail1">상품 카테고리</label>
+		<input type="text" name="itemCategory" class="form-control">
+  	</div>
+  	
+  	<div class="form-group">
+   	 	<label for="exampleInputEmail1">파일</label>
+		<input type = "file" name = "imgFile" class="form-control" multiple="multiple">
+  	</div>
+  	
+  	<div class="form-group">
+   	 	<textarea name="itemContent" class="form-control" 
+						style="width: 100%; height: 200px"></textarea>
+  	</div>
 
-<br><br>
-<a href="itemList.do">돌아가기</a>
-</form>
+  <input type="submit" class="btn btn-success" value="등록">
+	<a href="itemList.do">돌아가기</a>
+	</form>
 </body>
 </html>

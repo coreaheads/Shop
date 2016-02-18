@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
-<jsp:include page="../admin/common/head.jsp"/>	
+<jsp:include page="../common/head.jsp"/>	
 <script>
 function myFunction(item){
 	var co = $('#itemCount option:selected').val();
@@ -9,11 +9,14 @@ function myFunction(item){
 	var sale  ="총가격 : ";
 	$("#totalMoney").html(sale+co+"원");
 }
+function addCart(){
+	$("#cartForm").submit();
+}
 </script>  
 <section>
 	<div class="container">
 		<div class="row">
-			<jsp:include page="../common/side.jsp"/>		
+			<jsp:include page="../common/side.jsp"/>			
 			<div class="col-sm-9 padding-right">
 				<div class="product-details"><!--product-details-->
 					<div class="col-sm-5">
@@ -31,7 +34,7 @@ function myFunction(item){
 					        <span>
 								<span style="color:gray; font-size: 20px;"><del><i>가격 : ${item.itemPrice }원</i></del></span>
 							</span>
-								 <form action="memberCartInsert.do" method="post">
+								 <form action="memberCartInsert.do" method="post" id="cartForm">
 							<span>
 								<span style="color:#ce1710;">할인된 가격 : <i>${item.sale }원</i></span>
 <%-- 								<label>수량 : ${item.itemCount }</label> --%>
@@ -52,7 +55,7 @@ function myFunction(item){
 								<a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
 							<hr>						
 							<div class="col-md-12 ">
-								<button type="submit" class="btn btn-danger form-control ">
+								<button type="button" class="btn btn-danger form-control " onclick="addCart();">
 						        <i class="fa fa-shopping-cart "></i> 장바구니
 						        </button>								
 							</div>	
@@ -67,4 +70,4 @@ function myFunction(item){
 		</div>
 	</div>
 </section>
-<jsp:include page="../admin/common/footer.jsp"/>	    
+<jsp:include page="../common/footer.jsp"/>	    
