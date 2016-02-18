@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../common/head.jsp"/>
 <script type="text/javascript">
-//$( document ).ready(function() {
 	function registMemberstatus(){
 		var url = "registMemberStatus.do";
 		var data = "member_status_name="+$("#regist_member_status_name").val();
@@ -57,12 +56,11 @@
 		    }			 
 		});		
 	}
-//});
+
 </script>
   <h2 class="sub-header">회원 상태 관리</h2>
 
-    <div class="col-lg-12">   
-     <hr>                
+    <div class="col-lg-12">                
      <div class="panel panel-info">
       <!-- Table -->
       <table class="table">

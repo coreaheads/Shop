@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../common/head.jsp"/>
 <script type="text/javascript">
-//$( document ).ready(function() {
 	function registMemberLevel(){
 		
 		var url = "registMemberLevel.do";
@@ -58,12 +57,12 @@
 		    }			 
 		});		
 	}
-//});
+
 </script>
   <h2 class="sub-header">회원 Level 관리</h2>
 
     <div class="col-lg-12">   
-     <hr>                
+             
      <div class="panel panel-info">
       <!-- Table -->
       <table class="table">

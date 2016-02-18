@@ -20,7 +20,7 @@
 
        <div class="col-md-12">
           <form class="navbar-form navbar-right" action="memberList.do" role="search" method="post">
-              <select class="search_sel" name="search_sel" id="sel1">
+              <select class="form-control" name="search_sel" id="sel1">
                 <option value="member_id">아이디</option>
                 <option value="member_name">이름</option>
             </select>
@@ -75,9 +75,9 @@
 	<nav class='paging-number text-center'>
 		<ul class='pagination'>
 			
-			<li class='<c:if test="${param.page eq 1 }">disabled</c:if>'><a href="memberList.do?page=1" aria-label='Previous'><span
+			<li class='<c:if test="${paramvo.page eq 1 }">disabled</c:if>'><a href="memberList.do?page=1" aria-label='Previous'><span
 					aria-hidden='true'>&laquo;</span></a></li>
-					<li class='<c:if test="${param.page eq 1 }">disabled</c:if>'><a href="<c:if test="${param.page ne 1 }">memberList.do?page=${paramvo.page-1 }</c:if>" aria-label='First'><span
+					<li class='<c:if test="${paramvo.page eq 1 }">disabled</c:if>'><a href="<c:if test="${paramvo.page ne 1 }">memberList.do?page=${paramvo.page-1 }</c:if>" aria-label='First'><span
 					aria-hidden='true'>&lsaquo;</span></a></li>
 			<c:forEach begin="${paramvo.startpage  }" end="${paramvo.endpage }" step="1"	var="x" varStatus="a">
 				<li></li>
