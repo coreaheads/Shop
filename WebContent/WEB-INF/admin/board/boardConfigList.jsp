@@ -49,7 +49,6 @@
 	</table>
 	<nav class='paging-number text-center'>
 		<ul class='pagination'>
-			
 			<li class='<c:if test="${paramvo.page eq 1 or empty paramvo.page  }">disabled</c:if>'><a href='<c:if test="${paramvo.page eq 1 or  empty paramvo.page }">${paramvo.url }.do?page=1</c:if>' aria-label='Previous'><span
 					aria-hidden='true'>&laquo;</span></a></li>
 					<li class='<c:if test="${paramvo.page ne 1 }">disabled</c:if>'><a href="<c:if test="${paramvo.page ne 1}">${paramvo.url }.do?page=${paramvo.page-1 }</c:if>" aria-label='First'><span
@@ -67,8 +66,7 @@
 		</ul>
 	</nav>
 	<%
-		ParamVO p = new ParamVO();
-		out.print(p.pageView());
+	//	out.print(new ParamVO().pageView());
 	%>
 </div>
 </body>
