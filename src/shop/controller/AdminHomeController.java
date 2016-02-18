@@ -131,14 +131,11 @@ public class AdminHomeController {
 			ArrayList<BoardConfig> list = bbsconfigsvc.configList(paramVO);
 			model.addAttribute("List", list);
 			model.addAttribute("paramvo", paramVO);
+			model.addAttribute("url", "boardConfigList.jsp");
 			break;
 		}
+		return "admin/board/board_body";
 		
-		
-
-		
-
-		return "admin/board/boardList";
 	}
 	
 	
