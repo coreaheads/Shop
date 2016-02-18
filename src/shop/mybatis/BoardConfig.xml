@@ -5,6 +5,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="boardconfig">
 	
+    <sql id="board_where">
+        
+        <if test=""></if>
+    </sql>
+    
 	<select id="list" resultType="BoardConfig" parameterType="shop.dto.ParamVO">
 	     <![CDATA[select * from (select rownum rnum,        IDX,        BOARD_NAME,        
 BOARD_CODE,        BAORD_TYPE,        URL,        IS_DELETE,        CREATE_TIME,  
@@ -12,8 +17,11 @@ BOARD_CODE,        BAORD_TYPE,        URL,        IS_DELETE,        CREATE_TIME,
             IS_FILE,        FILE_CNT,        IS_READONLY,        IS_VIEWCNT,       
              IS_LOCK,  
                   IS_NOTICE,        IS_DEL        
-from (select * from board_config order by idx))  where rnum >= #{startrow} and rnum <= #{endrow}
-           ]]>
+from (select * from board_config]]>
+ <if test="name==search_sel">
+    AND BOARD_NAME like #{search_sel}
+  </if> 
+  <![CDATA[ order by idx))  where rnum >= #{startrow} and rnum <= #{endrow}  ]]>
 	</select>
 	
 	
