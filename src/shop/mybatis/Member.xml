@@ -70,10 +70,10 @@
 		ms.member_status_no
 		<where>
 	     <choose>    		
-	      <when test="search_sel == 'member_id'">
+	      <when test="search_sel == 'member_id' and search_txt != '' ">
   			 member_id like #{search_txt}
 	          </when>          	     
-	      <when test="search_sel == 'member_name'">
+	      <when test="search_sel == 'member_name' and search_txt != ''">
   			 member_name like #{search_txt}
 	          </when>	        
           </choose> 
