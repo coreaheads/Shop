@@ -1,5 +1,12 @@
 package shop.dto;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.PageContext;
+
 public class ParamVO {
 	private int page=1;
 	private int startpage;
@@ -14,6 +21,7 @@ public class ParamVO {
 	private String search_txt;
 	private String search_sel;
 	private String url;
+	PageContext pageContext;
 	
 	public ParamVO() {
 		// TODO Auto-generated constructor stub
@@ -152,9 +160,13 @@ public class ParamVO {
 				+ ", endrow=" + endrow + ", board_code=" + board_code + ", search_txt=" + search_txt + ", search_sel="
 				+ search_sel + ", url=" + url + "]";
 	}
-
-
 	
 	
 
+	@SuppressWarnings("null")
+	public  String pageView() {
+		
+		return "DDD";
+	
+	}
 }

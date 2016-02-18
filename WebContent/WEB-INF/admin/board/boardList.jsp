@@ -1,3 +1,4 @@
+<%@page import="shop.dto.ParamVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -22,7 +23,7 @@
 <div class="col-md-12">
 
 	<input type="button" onclick="location.href='./BoardConfigWrite.do'"
-		class="btn btn-primary" value="게시판 추가">
+		class="btn btn-primary" value="게시판 추가d">
 	<br>
 	<br>
 	<table class="table">
@@ -65,6 +66,10 @@
 					aria-hidden='true'>&raquo;</span></a></li>
 		</ul>
 	</nav>
+	<%
+		ParamVO p = new ParamVO();
+		out.print(p.pageView());
+	%>
 </div>
 </body>
 </html>
