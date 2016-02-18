@@ -18,5 +18,7 @@ public interface CategoryService {
 
 	void categoryUpdate(Category category);
 
+	ArrayList<Category> categoryNameSearch(String searchWord);
+
 	
 }

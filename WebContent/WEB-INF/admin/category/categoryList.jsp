@@ -10,15 +10,14 @@
 
 
 <div class="col-md-12">
-	<form class="navbar-form navbar-right" action="free_board_list.do"
+	<form class="navbar-form navbar-right" action="categorySearch.do"
 		role="search">
-		<select class="form-control" name="select_free_board" id="sel1">
-			<option value="member_id">작성자</option>
-			<option value="free_board_title">제목</option>
+		<select class="form-control" name="searchColumn" id="sel1">
+			<option value="categoryName">제목</option>
 		</select>
 
 		<div class="form-group">
-			<input type="text" name="find_free_board" class="form-control"
+			<input type="text" name="searchWord" class="form-control"
 				placeholder="Search">
 		</div>
 		<button type="submit" class="btn btn-default">Search</button>
@@ -81,22 +80,7 @@
 
 
 	</div>
-	<nav class='paging-number text-center'>
-		<ul class='pagination'>
-			<li class='disabled'><a href='#' aria-label='First'><span
-					aria-hidden='true'>&lsaquo;</span></a></li>
-			<li class='disabled'><a href='#' aria-label='Previous'><span
-					aria-hidden='true'>&laquo;</span></a></li>
-			<c:forEach begin="1" end="10" varStatus="status">
-				<li></li>
-				<li><a href='#'>${status.count}</a></li>
-			</c:forEach>
-			<li class='disabled'><a href='#' aria-label='Next'><span
-					aria-hidden='true'>&rsaquo;</span></a></li>
-			<li class='disabled'><a href='#' aria-label='End'><span
-					aria-hidden='true'>&raquo;</span></a></li>
-		</ul>
-	</nav>
+	
 </div>
 
 <jsp:include page="../common/footer.jsp" />

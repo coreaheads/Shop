@@ -105,6 +105,19 @@ public class CategoryDAOImpl implements CategoryDAO {
 		
 	}
 
+	@Override
+	public ArrayList<Category> categoryNameSearch(String searchWord) {
+		// TODO Auto-generated method stub
+		
+		SqlSession session = getSession();
+		
+		List<Category> list = session.selectList("category.categoryNameSearch", searchWord);
+		
+		session.close();
+		
+		return (ArrayList<Category>) list;
+	}
+
 	
 
 	

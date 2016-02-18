@@ -34,4 +34,8 @@
 		update item_category set categoryName = #{categoryName}, division = #{division } where idx = #{idx}
 	</update>
 	
+	<select id = "categoryNameSearch" parameterType="String" resultType="Category">
+		select * from item_category where categoryName like '%'||#{searchWord}||'%'
+	</select>
+	
 </mapper>

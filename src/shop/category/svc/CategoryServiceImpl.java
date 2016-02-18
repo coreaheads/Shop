@@ -57,5 +57,13 @@ public class CategoryServiceImpl implements CategoryService{
 		
 		dao.categoryUpdate(category);
 	}
+
+	@Override
+	public ArrayList<Category> categoryNameSearch(String searchWord) {
+		// TODO Auto-generated method stub
+		ArrayList<Category> list = 	dao.categoryNameSearch(searchWord);
+		
+		return list;
+	}
 	
 }
