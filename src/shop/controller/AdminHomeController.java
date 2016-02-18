@@ -1,5 +1,6 @@
 package shop.controller;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,6 +97,7 @@ public class AdminHomeController {
 
 		return "admin/board/boardList";
 	}
+	
 	
 	
 	
