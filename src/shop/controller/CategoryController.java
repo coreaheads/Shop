@@ -78,6 +78,9 @@ public class CategoryController {
 		ArrayList<Category> list = null;
 		if (searchColumn.equals("categoryName")) { // 카테고리 이름으로 검색
 			list = svc.categoryNameSearch(searchWord);
+		} else if (searchColumn.equals("rootNum")) {
+			int rootNum = Integer.parseInt(searchWord);
+			list = svc.categoryRootNumSearch(rootNum);
 		}
 		
 		model.addAttribute("categoryList", list);

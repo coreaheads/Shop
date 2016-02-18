@@ -46,17 +46,18 @@
 					<td>${dto.idx }</td>
 
 					<td><c:forEach begin="1" end="${dto.step }">
-&nbsp;&nbsp;
-</c:forEach> <c:if test="${dto.step > 0}">
-└
-</c:if> ${dto.categoryName }</td>
-					<td>${dto.rootNum }</td>
+					&nbsp;&nbsp;
+					</c:forEach> <c:if test="${dto.step > 0}">
+					└
+					</c:if> ${dto.categoryName }</td>
+					
+					<td><a href = "categorySearch.do?searchColumn=rootNum&searchWord=${dto.rootNum }">
+					${dto.rootNum }</a></td>
 					<td>${dto.step }</td>
 					<td>${dto.division }</td>
 					<td>${dto.seq }</td>
 					<td>${dto.isDel }</td>
-					<td><a href="subCategoryInsertForm.do?idx=${dto.idx }">[하위
-							카테고리 삽입]</a>&nbsp;&nbsp; <a
+					<td><a href="subCategoryInsertForm.do?idx=${dto.idx }">[하위 카테고리 삽입]</a>&nbsp;&nbsp; <a
 						href="categoryUpdateForm.do?idx=${dto.idx }">[수정]</a>&nbsp;&nbsp;
 						<a href="categoryDelete.do?idx=${dto.idx }">[삭제]</a>&nbsp;&nbsp;</td>
 
@@ -65,22 +66,19 @@
 			</c:forEach>
 		</table>
 
-		<br>
-		<br>
+		<br> <br>
 		<form action="topCategoryInsert.do" method="post">
-			[최상위 카테고리 추가]<br>
-			<br> categoryName : <input type="text" name="categoryName">
-
-			<br> division : <input type="text" name="division"><br>
-			<br> <input type="submit" value="추가">&nbsp;&nbsp;<input
-				type="reset" value="초기화">
+			[최상위 카테고리 추가]<br> <br> categoryName : <input type="text"
+				name="categoryName"> <br> division : <input type="text"
+				name="division"><br> <br> <input type="submit"
+				value="추가">&nbsp;&nbsp;<input type="reset" value="초기화">
 
 		</form>
 
 
 
 	</div>
-	
+
 </div>
 
 <jsp:include page="../common/footer.jsp" />

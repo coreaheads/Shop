@@ -65,5 +65,13 @@ public class CategoryServiceImpl implements CategoryService{
 		
 		return list;
 	}
+
+	@Override
+	public ArrayList<Category> categoryRootNumSearch(int rootNum) {
+		// TODO Auto-generated method stub
+		ArrayList<Category> list = 	dao.categoryRootNumSearch(rootNum);
+		
+		return list;
+	}
 	
 }

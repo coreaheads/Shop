@@ -20,5 +20,7 @@ public interface CategoryService {
 
 	ArrayList<Category> categoryNameSearch(String searchWord);
 
+	ArrayList<Category> categoryRootNumSearch(int rootNum);
+
 	
 }

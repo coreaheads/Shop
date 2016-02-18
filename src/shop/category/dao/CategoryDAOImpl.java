@@ -118,6 +118,18 @@ public class CategoryDAOImpl implements CategoryDAO {
 		return (ArrayList<Category>) list;
 	}
 
+	@Override
+	public ArrayList<Category> categoryRootNumSearch(int rootNum) {
+		// TODO Auto-generated method stub
+		SqlSession session = getSession();
+		
+		List<Category> list = session.selectList("category.categoryRootNumSearch", rootNum);
+		
+		session.close();
+		
+		return (ArrayList<Category>) list;
+	}
+
 	
 
 	
