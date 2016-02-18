@@ -1,5 +1,7 @@
 package shop.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -69,6 +71,21 @@ public class CategoryController {
 		svc.categoryUpdate(category);
 
 		return "redirect:/categoryList.do";
+	}
+	
+	@RequestMapping("/categorySearch.do")
+	public String categorySearch(@RequestParam String searchColumn, @RequestParam String searchWord, Model model){
+		ArrayList<Category> list = null;
+		if (searchColumn.equals("categoryName")) { // 카테고리 이름으로 검색
+			list = svc.categoryNameSearch(searchWord);
+		} else if (searchColumn.equals("rootNum")) {
+			int rootNum = Integer.parseInt(searchWord);
+			list = svc.categoryRootNumSearch(rootNum);
+		}
+		
+		model.addAttribute("categoryList", list);
+		
+		return "admin/category/categoryList";
 	}
 
 }

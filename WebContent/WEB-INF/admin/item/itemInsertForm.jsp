@@ -1,6 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<script type="text/javascript" src="js/jquery.js"></script>
+<SCRIPT>
+	function categoryChange() {
 
+		$.ajax({
+			url : 'itemInsertAjax.do',
+			dataType : "json",
+			data : "idx=" + $("#first").val(),
+			success : function(data) {
+				console.log(data);
+				var a = '';
+
+				$.each(data, function(i, item) {
+					console.log(item);
+					a += '<option>' + item.categoryName + '</option>';
+				});
+				console.log(data.length);
+				$('#second').html(a);
+			}
+		});
+	}
+</SCRIPT>
 <div class="col-md-12">
 	<form action="itemInsert.do" method="post"
 		enctype="multipart/form-data">
@@ -19,8 +41,13 @@
 				type="checkbox" name="itemLevel" value="sale">
 		</div>
 		<div class="form-group">
-			<label for="exampleInputEmail1">상품 카테고리</label> <input type="text"
-				name="itemCategory" class="form-control">
+				<label for="exampleInputEmail1">상품 카테고리</label> <select id="first"
+            style="width: 70px;" onchange="categoryChange();"><option>선택</option>
+            <c:forEach items="${firstList}" var="x">
+               <option value="${x.idx }">${x.categoryName }</option>
+            </c:forEach></select> <select id="second" style="width: 70px;">
+
+         </select>
 		</div>
 		<div class="form-group">
 			<label for="exampleInputEmail1">파일</label> <input type="file"

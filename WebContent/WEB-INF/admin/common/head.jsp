@@ -116,7 +116,7 @@
 								<div class="panel-body">
 									<ul class="nav navbar-nav">
 										<li><a href="categoryList.do">카테고리관리</a></li>
-										<li><a href="itemList.do">상품관리</a></li>
+										<li><a href="item.do">상품관리</a></li>
 									</ul>
 								</div>
 							</div></li>
