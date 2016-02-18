@@ -45,7 +45,14 @@
 						${dto.itemCount } 개<br> <a
 						href="guestCartItemCountDown.do?itemId=${dto.itemId}">▽</a></td>
 
-					<td>${dto.item_itemCount }</td>
+					<td>
+					
+					<c:choose>
+					<c:when test="${dto.item_itemCount == 0 }"><font color="red"><b>품절</b></font></c:when>
+					<c:otherwise>${dto.item_itemCount }</c:otherwise>
+					</c:choose> 
+					
+					</td>
 					<td>${dto.itemCount*dto.itemPrice }원</td>
 					<td>${dto.cartDate }</td>
 					<td>${dto.url }
@@ -56,11 +63,13 @@
 			</c:forEach>
 		</table>
 		<br><br>
-		총 금액 : ${totalCount } 원
+		총 금액 : ${totalPrice } 원
 		<br> <br> 
 		
-		<form action = "payForm.do" method="post">
-		<input type = "hidden" name = "cartList" value = "dto">
+		<form action = "payForm.do" method="post">		
+		<input type = "hidden" name = "isMember" value = "N">
+		<input type = "hidden" name = "cartList" value = "${cartList }">
+		<input type = "hidden" name = "totalPrice" value = "${totalPrice }">	
 		<input type = "submit" value = "결제하기">
 		</form>
 		

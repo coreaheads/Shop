@@ -264,15 +264,15 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public int cartTotalCount(ArrayList<Cart> cartList) {
+	public int cartTotalPrice(ArrayList<Cart> cartList) {
 		// TODO Auto-generated method stub
 		
-		int totalCount = 0;
+		int totalPrice = 0;
 		for (int i = 0; i < cartList.size(); i++) {
-			totalCount += cartList.get(i).getItemPrice()*cartList.get(i).getItemCount();
+			totalPrice += cartList.get(i).getItemPrice()*cartList.get(i).getItemCount();
 		}
 		
-		return totalCount;
+		return totalPrice;
 	}
 
 	@Override

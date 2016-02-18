@@ -60,11 +60,13 @@
 		</table>
 
 		<br><br>
-		총 금액 : ${totalCount } 원
+		총 금액 : ${totalPrice } 원
 		<br> <br> 
 		
 		<form action = "payForm.do" method="post">
-		<input type = "hidden" name = "cartList" value = "dto">
+		<input type = "hidden" name = "isMember" value = "Y">
+		<input type = "hidden" name = "cartList" value = "${cartList }">
+		<input type = "hidden" name = "totalPrice" value = "${totalPrice }">	
 		<input type = "submit" value = "결제하기">
 		</form>
 		

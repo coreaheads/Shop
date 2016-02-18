@@ -57,10 +57,10 @@ public class CartController {
 
 		ArrayList<Cart> cartList = new ArrayList<Cart>();
 		cartList = svc.memberCartList(memberId);
-		int totalCount = svc.cartTotalCount(cartList);
+		int totalPrice = svc.cartTotalPrice(cartList); // 총 금액
 
 		model.addAttribute("cartList", cartList);
-		model.addAttribute("totalCount", totalCount);
+		model.addAttribute("totalPrice", totalPrice);
 
 		return "cart/memberCartList";
 	}
@@ -160,10 +160,10 @@ public class CartController {
 
 		ArrayList<Cart> cartList = svc.guestCartList(request, session);
 		
-		int totalCount = svc.cartTotalCount(cartList);
+		int totalPrice = svc.cartTotalPrice(cartList);
 
 		model.addAttribute("cartList", cartList);
-		model.addAttribute("totalCount", totalCount);
+		model.addAttribute("totalPrice", totalPrice);
 		
 		return "cart/guestCartList";
 	}
