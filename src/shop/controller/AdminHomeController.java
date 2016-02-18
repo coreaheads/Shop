@@ -49,7 +49,7 @@ public class AdminHomeController {
 	}
 	
 	@RequestMapping("/item.do")
-	public String itemList(Model model,@RequestParam String mode , @RequestParam(required=false,defaultValue="a") String idx) {
+	public String itemList(Model model,@RequestParam(required=false,defaultValue="") String mode , @RequestParam(required=false,defaultValue="a") String idx) {
 
 		
 		switch (mode) {
@@ -90,7 +90,7 @@ public class AdminHomeController {
 	
 	
 	@RequestMapping("/BoardConfig.do")
-	public String boardConfig(Model model,ParamVO paramVO,@RequestParam(required = false, defaultValue = "1" )  int page, @RequestParam(required=false, defaultValue="") String search_sel, @RequestParam(required = false, defaultValue ="") String search_txt) {
+	public String boardConfig(Model model,@RequestParam(required=false,defaultValue="") String mode ,ParamVO paramVO,@RequestParam(required = false, defaultValue = "1" )  int page, @RequestParam(required=false, defaultValue="") String search_sel, @RequestParam(required = false, defaultValue ="") String search_txt) {
 		
 		int totalcnt = bbsconfigsvc.totalCnt();
 	
@@ -118,16 +118,21 @@ public class AdminHomeController {
 		paramVO = new ParamVO(page, startpage, endpage, block, limit, pagenum, totalcnt, startrow, endrow, board_code, search_txt, search_sel,url);
 		System.out.println(paramVO);
 		
+		switch (mode) {
 
-		ArrayList<BoardConfig> list = bbsconfigsvc.configList(paramVO);
+		default:
+			ArrayList<BoardConfig> list = bbsconfigsvc.configList(paramVO);
+			model.addAttribute("List", list);
+			model.addAttribute("paramvo", paramVO);
+			break;
+		}
+		
+		
 
-		model.addAttribute("List", list);
-		model.addAttribute("paramvo", paramVO);
+		
 
 		return "admin/board/boardList";
 	}
-	
-	
 	
 	
 	@RequestMapping("/itemInsertAjax.do")
