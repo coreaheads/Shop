@@ -24,6 +24,7 @@
 				<th>itemName</th>
 				<th>itemPrice</th>
 				<th>itemCount</th>
+				<th>남은 수량</th>
 				<th>총 가격</th>
 				<th>cartDate</th>
 				<th>상품 이미지</th>
@@ -38,17 +39,14 @@
 					<td>${dto.ip }</td>
 					<td>${dto.itemId }</td>
 					<td>${dto.itemName }</td>
-					<td>${dto.itemPrice } 원</td>
-					
-					<td>
-					<a href="guestCartItemCountUp.do?itemId=${dto.itemId}">△</a><br>
-					${dto.itemCount } 개<br>
-					<a href="guestCartItemCountDown.do?itemId=${dto.itemId}">▽</a>
-					
-					</td>
+					<td>${dto.itemPrice }원</td>
 
-					
-					<td>${dto.itemCount*dto.itemPrice } 원</td>
+					<td><a href="guestCartItemCountUp.do?itemId=${dto.itemId}">△</a><br>
+						${dto.itemCount } 개<br> <a
+						href="guestCartItemCountDown.do?itemId=${dto.itemId}">▽</a></td>
+
+					<td>${dto.item_itemCount }</td>
+					<td>${dto.itemCount*dto.itemPrice }원</td>
 					<td>${dto.cartDate }</td>
 					<td>${dto.url }
 					<td><a href="guestCartDelete.do?idx=${dto.idx }">[삭제]</a>&nbsp;&nbsp;</td>
@@ -57,10 +55,16 @@
 
 			</c:forEach>
 		</table>
-
-		<br>
-		<br>
+		<br><br>
+		총 금액 : ${totalCount } 원
+		<br> <br> 
 		
+		<form action = "payForm.do" method="post">
+		<input type = "hidden" name = "cartList" value = "dto">
+		<input type = "submit" value = "결제하기">
+		</form>
+		
+		<br> <br>
 
 	</div>
 	<nav class='paging-number text-center'>

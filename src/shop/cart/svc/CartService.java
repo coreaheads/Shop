@@ -37,6 +37,12 @@ public interface CartService {
 
 	void guestCartItemCountDown(String itemId, HttpServletRequest request, HttpSession session);
 
+	int cartTotalCount(ArrayList<Cart> cartList);
+
+	void memberCartItemCountUp(int itemId, String memberId);
+
+	void memberCartItemCountDown(int itemId, String memberId);
+
 
 
 	

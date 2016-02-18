@@ -9,8 +9,15 @@
 	</select>
 	
 	<select id="cartMemberIdSearch" parameterType="String" resultType="Cart">
-		select * from cart where memberId = #{memberId }
+	
+		select c.idx, c.memberId, c.ip, c.itemId, c.itemCount, c.itemPrice, 
+		c.cartDate, c.url, c.itemName, i.itemCount as item_itemCount
+		from cart c, item i 
+		where c.itemId = i.idx and c.memberId = #{memberId}
+	
 	</select>
+	
+	
 	
 	<select id="cartItemIdSearch" parameterType="String" resultType="Cart">
 		select * from cart where itemId = #{word }
@@ -33,5 +40,9 @@
 	<update id="memberCartCountUpdate" parameterType="Cart">
 		update cart set itemCount = #{itemCount} where itemId = #{itemId} and memberId = #{memberId}
 	</update>
+	
+	<select id="getRemainItemCount" parameterType="Integer" resultType = "Integer">
+		select itemCount from item where idx = #{itemId }
+	</select>
 	
 </mapper>

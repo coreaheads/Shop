@@ -97,7 +97,7 @@ public class CartDAOImpl implements CartDAO{
 		
 		SqlSession session = getSession();
 		
-		Cart cart = new Cart(0, memberId, null, itemId, 0, 0, null, null, null);
+		Cart cart = new Cart(0, memberId, null, itemId, 0, 0, null, null, null, 0);
 				
 		Cart afterCart = session.selectOne("cart.cartIsSearch", cart); 
 				
@@ -126,6 +126,18 @@ public class CartDAOImpl implements CartDAO{
 		
 		session.close();
 		
+	}
+
+	@Override
+	public int getRemainItemCount(int itemId) {
+		// TODO Auto-generated method stub
+		SqlSession session = getSession();
+		
+		int remain = session.selectOne("cart.getRemainItemCount",itemId);
+		
+		session.close();
+		
+		return remain;
 	}
 	
 	

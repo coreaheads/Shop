@@ -137,7 +137,7 @@ public class CartServiceImpl implements CartService {
 		Date currentTime = new Date();
 		String date = formatter.format(currentTime);
 
-		Cart cart = new Cart(0, guestId, ip, item.getIdx(), itemCount, item.getItemPrice(), date, item.getUrl(), item.getItemName());
+		Cart cart = new Cart(0, guestId, ip, item.getIdx(), itemCount, item.getItemPrice(), date, item.getUrl(), item.getItemName(), 0);
 		
 		
 		ArrayList<Cart> list = (ArrayList<Cart>) session.getAttribute(guestId);
@@ -185,6 +185,12 @@ public class CartServiceImpl implements CartService {
 			cartList = (ArrayList<Cart>) session.getAttribute(guestId);	
 		}
 		
+		for (int i = 0; i < cartList.size(); i++) {
+			int itemId = cartList.get(i).getItemId();
+			int remain = dao.getRemainItemCount(itemId);
+			cartList.get(i).setItem_itemCount(remain);
+		}
+		
 		return cartList;
 	}
 
@@ -227,7 +233,8 @@ public class CartServiceImpl implements CartService {
 				count =list.get(i).getItemCount()+1;
 				if (count > item.getItemCount()) {
 					count = item.getItemCount();
-				}
+				} 
+				
 				list.get(i).setItemCount(count);
 			}
 		}
@@ -248,12 +255,62 @@ public class CartServiceImpl implements CartService {
 		for (int i = 0; i < list.size(); i++) {
 			if (list.get(i).getItemId() == id) {
 				count =list.get(i).getItemCount()-1;
-				if (count <1 ) {
-					count = 1;
+				if (count <0 ) {
+					count = 0;
 				}
 				list.get(i).setItemCount(count);
 			}
 		}
+	}
+
+	@Override
+	public int cartTotalCount(ArrayList<Cart> cartList) {
+		// TODO Auto-generated method stub
+		
+		int totalCount = 0;
+		for (int i = 0; i < cartList.size(); i++) {
+			totalCount += cartList.get(i).getItemPrice()*cartList.get(i).getItemCount();
+		}
+		
+		return totalCount;
+	}
+
+	@Override
+	public void memberCartItemCountUp(int itemId, String memberId) {
+		// TODO Auto-generated method stub
+		Item item = getItemByIdx(itemId); // 아이템 정보 가져옴
+		Cart cart = cartIsSearch(itemId, memberId); // 카트 정보 가져옴
+
+		int count = 0;
+
+		if (cart.getItemCount() >= item.getItemCount()) {
+			count = item.getItemCount();
+		} else {
+			count = cart.getItemCount() + 1;
+		}
+		cart.setItemCount(count);
+
+		memberCartCountUpdate(cart);
+	}
+
+	@Override
+	public void memberCartItemCountDown(int itemId, String memberId) {
+		// TODO Auto-generated method stub
+		
+		Cart cart = cartIsSearch(itemId, memberId); // 카트 정보 가져옴
+
+		int count = 0;
+
+		if (cart.getItemCount() <= 0) {
+			count = 0;
+		} else {
+			count = cart.getItemCount() - 1;
+		}
+		cart.setItemCount(count);
+
+		memberCartCountUpdate(cart);
+
+		
 	}
 
 }
