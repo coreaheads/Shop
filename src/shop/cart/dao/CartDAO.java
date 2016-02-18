@@ -23,4 +23,6 @@ public interface CartDAO {
 
 	void memberCartCountUpdate(Cart cart);
 
+	int getRemainItemCount(int itemId);
+
 }
