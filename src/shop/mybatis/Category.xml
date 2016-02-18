@@ -34,4 +34,11 @@
 		update item_category set categoryName = #{categoryName}, division = #{division } where idx = #{idx}
 	</update>
 	
+	<select id = "categoryNameSearch" parameterType="String" resultType="Category">
+		select * from item_category where categoryName like '%'||#{searchWord}||'%' and isDel = 'N'
+	</select>
+	
+	<select id = "categoryRootNumSearch" parameterType="Integer" resultType="Category">
+		select * from item_category where rootNum = #{rootNum } and isDel = 'N' order by rootNum asc , seq asc
+	</select>
 </mapper>

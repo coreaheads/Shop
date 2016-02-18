@@ -18,6 +18,10 @@ public interface CategoryDAO {
 
 	void categoryUpdate(Category category);
 
+	ArrayList<Category> categoryNameSearch(String searchWord);
+
+	ArrayList<Category> categoryRootNumSearch(int rootNum);
+
 	
 	
 }
