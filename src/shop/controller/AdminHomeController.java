@@ -1,6 +1,9 @@
 package shop.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -102,15 +105,21 @@ public class AdminHomeController {
 	}
 
 	@RequestMapping("/BoardConfig.do")
-	public String boardConfig(Model model, @RequestParam(required = false, defaultValue = "") String mode,
-			ParamVO paramVO, @RequestParam(required = false, defaultValue = "1") int page,
-			@RequestParam(required = false, defaultValue = "") String search_sel,
-			@RequestParam(required = false, defaultValue = "") String search_txt) {
-
+	public String boardConfig(Model model, @RequestParam Map<String, Object> map, ParamVO paramVO) {
 		int totalcnt = bbsconfigsvc.totalCnt();
-
 		int limit = paramVO.getLimit();
 		int block = paramVO.getBlock();
+		String search_txt = (String) map.get("search_txt");
+		String search_sel = (String) map.get("search_sel");
+		String mode = paramVO.getMode();
+		if (map.get("mode") == null) {
+			mode = "list";
+		} else {
+			mode = (String) map.get("mode");
+		}
+		//String mode = (String) map.get("mode");
+
+		int page = Integer.parseInt((String) map.get("page"));
 		int startrow = (page * limit) - (limit - 1);
 		int endrow = (page * limit);
 		// 16 ~20 block = 10
@@ -131,11 +140,15 @@ public class AdminHomeController {
 		String board_code = "";
 		String url = "BoardConfig";
 		paramVO = new ParamVO(page, startpage, endpage, block, limit, pagenum, totalcnt, startrow, endrow, board_code,
-				search_txt, search_sel, url);
+				search_txt, search_sel, url, mode);
 		System.out.println(paramVO);
 
 		switch (mode) {
-
+		case "insert":
+			model.addAttribute("paramvo", paramVO);
+			model.addAttribute("url", "BoardConfigInsertForm.jsp");
+		break;
+		
 		default:
 			ArrayList<BoardConfig> list = bbsconfigsvc.configList(paramVO);
 			model.addAttribute("List", list);

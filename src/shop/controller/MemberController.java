@@ -89,8 +89,9 @@ public class MemberController {
 		}
 		int pagenum = 0;
 		String url="";
+		String mode="";
 		paramVO = new ParamVO(page, startpage, endpage, block, limit, pagenum, totalcnt, startrow, endrow, board_code,
-				search_txt, search_sel,url);
+				search_txt, search_sel,url,mode);
 		System.out.println(paramVO);
 		List<Member> memberList = service.listMember(paramVO);
 		mav.addObject("memberList", memberList);
