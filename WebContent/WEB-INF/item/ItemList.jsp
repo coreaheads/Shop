@@ -12,7 +12,7 @@
 								<img src="item_upload_img/${item.url}" alt="" />
 								<h2>${item.itemPrice}원</h2>
 								<p>${item.itemName}</p>
-								<a href="ItemMain.do?mode=detail&idx=${iteme.idx }" class="btn btn-default add-to-cart"><i
+								<a href="ItemMain.do?mode=detail&idx=${item.idx }" class="btn btn-default add-to-cart"><i
 									class="fa fa-search"></i>상품 상세보기</a>
 							</div>
 							<div class="choose">

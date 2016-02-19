@@ -15,7 +15,7 @@
 
 				$.each(data, function(i, item) {
 					console.log(item);
-					a += '<option>' + item.categoryName + '</option>';
+					a += '<option value='+item.idx+'>' + item.categoryName + '</option>';
 				});
 				console.log(data.length);
 				$('#second').html(a);
@@ -35,16 +35,23 @@
 		<div class="form-group">
 			<label for="exampleInputEmail1">가격</label> <input type="text"
 				name="itemPrice" class="form-control"> <input
-				type="checkbox" name="itemLevel" value="best"> <input
-				type="checkbox" name="itemLevel" value="hot"> <input
-				type="checkbox" name="itemLevel" value="sale">
+				type="radio" name="itemLevel" value=1> 
+				<input type="radio" name="itemLevel" value=2> <input
+				type="radio" name="itemLevel" value=3>
 		</div>
+		
+		<div class="form-group">
+			<label for="exampleInputEmail1">수량</label> <input type="text"
+				name="itemCount" class="form-control"> 
+				
+		</div>
+		
 		<div class="form-group">
 				<label for="exampleInputEmail1">상품 카테고리</label> <select id="first"
             style="width: 70px;" onchange="categoryChange();"><option>선택</option>
             <c:forEach items="${firstList}" var="x">
                <option value="${x.idx }">${x.categoryName }</option>
-            </c:forEach></select> <select id="second" style="width: 70px;">
+            </c:forEach></select> <select id="second"  name ="itemCategory" style="width: 70px;">
 
          </select>
 		</div>
