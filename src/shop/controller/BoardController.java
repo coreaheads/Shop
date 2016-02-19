@@ -24,6 +24,7 @@ import shop.dto.ParamVO;
 public class BoardController {
 	@Autowired
 	private BoardService svc;
+	@Autowired
 	private BoardConfigService bbsconfigsvc;
 	@RequestMapping("/BoardList.do")
 	public String boardList(Model model,ParamVO paramVO,  @RequestParam(required = false, defaultValue = "1" )  int page, @RequestParam(required=false,defaultValue="") String board_code, @RequestParam(required=false, defaultValue="") String search_sel, @RequestParam(required = false, defaultValue ="") String search_txt) {

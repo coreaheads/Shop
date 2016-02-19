@@ -65,10 +65,10 @@
 
 	<update id="update" parameterType="Item">
 		UPDATE ITEM
-		set ITEMNAME = '#{itemName}', ITEMCONTENT = '#{itemContent}', ITEMLEVEL =
-		'#{itemLevel}', SALE = '#{sale}',
-		ITEMPRICE = '#{itemPrice}', ITEMCOUNT = '#{itemCount}', ITEMCATEGORY =
-		'#{itemCategory}', URL = '#{url}'
+		set ITEMNAME = #{itemName}, ITEMCONTENT = #{itemContent}, ITEMLEVEL =
+		#{itemLevel}, SALE = #{sale},
+		ITEMPRICE = #{itemPrice}, ITEMCOUNT = #{itemCount}, ITEMCATEGORY =
+		#{itemCategory}, URL = #{url}
 		WHERE idx= #{idx}
 	</update>
 

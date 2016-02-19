@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,21 +26,20 @@ public class ItemController {
 	private CategoryService categorySvc;
 	@Autowired
 	private ItemService svc;
-	
-	
-//	@RequestMapping("/itemList.do")
-//	public String itemList(Model model) {
-//
-//		ArrayList<Item> list = svc.itemBestList();
-//
-//		model.addAttribute("itemBestList", list);
-//
-//		return "index";
-//	}
-//	
+
+	// @RequestMapping("/itemList.do")
+	// public String itemList(Model model) {
+	//
+	// ArrayList<Item> list = svc.itemBestList();
+	//
+	// model.addAttribute("itemBestList", list);
+	//
+	// return "index";
+	// }
+	//
 
 	@RequestMapping("/shopDetail.do")
-	public ModelAndView itemUpdate(@RequestParam int idx, ModelAndView mav) {
+	public ModelAndView shopDetail(@RequestParam int idx, ModelAndView mav) {
 		Item item = svc.itemDetail(idx);
 		ArrayList<Category> list = categorySvc.categoryList();
 		double sale = item.getSale();
@@ -56,14 +56,49 @@ public class ItemController {
 	}
 
 	@RequestMapping("/itemUpdate.do")
-	public String itemUpdate(@RequestParam Item item) {
+	public String itemUpdate(Model model, Item item, HttpServletRequest request, HttpSession session) {
+		String upload = "/item_upload_img";
+		String realFolder = session.getServletContext().getRealPath(upload);
+		MultipartFile mf = item.getImgFile();
+		if (mf != null) {
+			String fileName = mf.getOriginalFilename();
+			File uploadFile = new File(realFolder + File.separator + fileName);
+			try {
+				mf.transferTo(uploadFile);
+			} catch (IllegalStateException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			item.setUrl(fileName);
+		}
 		svc.itemUpdate(item);
-		return "redirect:/itemList.do";
+		return "item.do";
 	}
 
-	@RequestMapping("/itemUpdateForm.do")
-	public String itemUpdateForm() {
-		return "itemUpdateForm";
+	@RequestMapping("/itemInsert.do")
+	public String itemInsert(Model model, Item item, HttpSession session) {
+
+		String upload = "/item_upload_img";
+		String realFolder = session.getServletContext().getRealPath(upload);
+		MultipartFile mf = item.getImgFile();
+		if (mf != null) {
+			String fileName = mf.getOriginalFilename();
+			File uploadFile = new File(realFolder + File.separator + fileName);
+			try {
+				mf.transferTo(uploadFile);
+			} catch (IllegalStateException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			item.setUrl(fileName);
+		}
+		svc.insert(item);
+		model.addAttribute("item", item);
+		// return "/item.do";
+		return "redirect:/item.do";
+		// return "redirect:/itemList.do?itemCategory=" +
+		// item.getItemCategory();
+
 	}
 
 	@RequestMapping("/itemDelete.do")
@@ -86,24 +121,4 @@ public class ItemController {
 		return "admin/item/itemInsertForm";
 	}
 
-	@RequestMapping("/itemInsert.do")
-	public String itemInsert(Model model, Item item, HttpSession session) {
-
-		String upload = "/item_upload_img";
-		String realFolder = session.getServletContext().getRealPath(upload);
-		MultipartFile mf = item.getImgFile();
-		String fileName = mf.getOriginalFilename();
-		File uploadFile = new File(realFolder + File.separator + fileName);
-		try {
-			mf.transferTo(uploadFile);
-		} catch (IllegalStateException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		item.setUrl(fileName);
-		svc.insert(item);
-		model.addAttribute("item", item);
-		return "redirect:/itemList.do?itemCategory=" + item.getItemCategory();
-
-	}
 }
