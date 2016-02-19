@@ -155,7 +155,7 @@ public class CartController {
 	@RequestMapping("/guestCartAdd.do") // 비회원 카트 추가
 	public String guestCartAdd(@RequestParam int idx, @RequestParam int itemCount, HttpSession session,
 			HttpServletRequest request, HttpServletResponse response) {
-		
+	
 		svc.guestCartAdd(idx, itemCount, session, request, response);
 
 		return "redirect:/guestCartList.do";

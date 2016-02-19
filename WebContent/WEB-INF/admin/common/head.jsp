@@ -120,9 +120,9 @@
 									</ul>
 								</div>
 							</div></li>
-						<li><a href="BoardConfig.do?mode=list&page=1"><span
-						
-								class="glyphicon glyphicon-folder-open"></span>게시판관리</a></li>
+						<li>
+						<a href="BoardConfig.do?mode=list&page=1">
+						<span	class="glyphicon glyphicon-folder-open"></span>게시판관리</a></li>
 						<li><a href="#"><span class="glyphicon glyphicon-euro"></span>매출관리</a></li>
 
 					</ul>
