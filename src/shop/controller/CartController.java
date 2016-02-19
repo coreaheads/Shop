@@ -54,6 +54,10 @@ public class CartController {
 
 	@RequestMapping("/memberCartList.do")
 	public String cartList(@RequestParam String memberId, Model model) {
+		
+		if (memberId == "") {
+			return "redirect:/guestCartList.do";
+		}
 
 		ArrayList<Cart> cartList = new ArrayList<Cart>();
 		cartList = svc.memberCartList(memberId);

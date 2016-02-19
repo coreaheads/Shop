@@ -59,7 +59,20 @@
 					<td>${dto.isDel }</td>
 					<td><a href="subCategoryInsertForm.do?idx=${dto.idx }">[하위 카테고리 삽입]</a>&nbsp;&nbsp; <a
 						href="categoryUpdateForm.do?idx=${dto.idx }">[수정]</a>&nbsp;&nbsp;
-						<a href="categoryDelete.do?idx=${dto.idx }">[삭제]</a>&nbsp;&nbsp;</td>
+						<a href="categoryDelete.do?idx=${dto.idx }">[삭제]</a>&nbsp;&nbsp;
+						
+						<c:choose>
+						<c:when test="${dto.step == 0 }">
+						<a href="topCategoryUp.do?rootNum=${dto.rootNum }">[▲위로]</a>&nbsp;
+						<a href="topCategoryDown.do?rootNum=${dto.rootNum }">[▼아래로]</a>						
+						</c:when>
+						<c:when test="${dto.step > 0 }">
+						<a href="subCategoryUp.do?idx=${dto.idx }">[△위로]</a>&nbsp;
+						<a href="subCategoryDown.do?idx=${dto.idx }">[▽아래로]</a>	
+						</c:when>
+						</c:choose>
+						
+						</td>
 
 				</tr>
 

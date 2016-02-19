@@ -22,6 +22,22 @@ public interface CategoryDAO {
 
 	ArrayList<Category> categoryRootNumSearch(int rootNum);
 
+	boolean topCategoryUpCheck(int rootNum);
+
+	ArrayList<Category> topCategoryRootNumSearch();
+
+	void setTemp(int rootNum);
+
+	void setChangeToRootNum(int rootNum, int changeRootNum);
+
+	void setRootNumToChange(int changeRootNum);
+
+	ArrayList<Category> getEqualClass(int rootNum, int step);
+
+
+
+	
+
 	
 	
 }

@@ -73,5 +73,94 @@ public class CategoryServiceImpl implements CategoryService{
 		
 		return list;
 	}
+
+
+	@Override
+	public void topCategoryUp(int rootNum) {
+		// TODO Auto-generated method stub
+		
+		ArrayList<Category> list = dao.topCategoryRootNumSearch();
+		
+		if (list.get(0).getRootNum() == rootNum) {
+			System.out.println("최상위 카테고리 입니다.");
+			return;
+		} else {
+			int indexNum = 0;
+			for (int i = 0; i < list.size(); i++) {
+				
+				if (list.get(i).getRootNum() == rootNum) {			
+					indexNum = i; // 현재 카테고리의 인덱스 넘버 받기
+					break;
+				}
+			}
+			int changeRootNum = list.get(indexNum-1).getRootNum();
+			// 한단계 위의 카테고리의 루트 넘버
+			dao.setTemp(rootNum); // rootNum인 카테고리들을 전부 -1로 변환
+			dao.setChangeToRootNum(rootNum, changeRootNum); // 상위카테고리를 현재카테고리로
+			dao.setRootNumToChange(changeRootNum); // 현재 카테고리를 상위 카테고리로 (현재 -1)
+			
+		}
+		
+	}
+
+	@Override
+	public void topCategoryDown(int rootNum) {
+		// TODO Auto-generated method stub
+		
+		ArrayList<Category> list = dao.topCategoryRootNumSearch();
+		
+		if (list.get(list.size()-1).getRootNum() == rootNum) {
+			System.out.println("최하위 카테고리 입니다.");
+			return;
+		} else {
+			int indexNum = 0;
+			for (int i = 0; i < list.size(); i++) {
+				
+				if (list.get(i).getRootNum() == rootNum) {			
+					indexNum = i; // 현재 카테고리의 인덱스 넘버 받기
+					break;
+				}
+			}
+			int changeRootNum = list.get(indexNum+1).getRootNum();
+			// 한단계 위의 카테고리의 루트 넘버
+			dao.setTemp(rootNum); // rootNum인 카테고리들을 전부 -1로 변환
+			dao.setChangeToRootNum(rootNum, changeRootNum); // 하위카테고리를 현재카테고리로
+			dao.setRootNumToChange(changeRootNum); // 현재 카테고리를 상위 카테고리로 (현재 -1)
+			
+		}
+
+		
+	}
+
+	@Override
+	public void subCategoryUp(int idx) {
+		// TODO Auto-generated method stub
+		Category category = dao.selectByIdx(idx);
+		int rootNum = category.getRootNum();
+		int step = category.getStep();
+		ArrayList<Category> list = dao.getEqualClass(rootNum, step);
+		
+		if (list.get(0).getIdx() == idx) {
+			System.out.println("최상위 카테고리 입니다.");
+			return;
+		} else {
+			int indexNum = 0;
+			for (int i = 0; i < list.size(); i++) {
+				
+				if (list.get(i).getIdx() == idx) {			
+					indexNum = i; // 현재 카테고리의 인덱스 넘버 받기
+					break;
+				}
+			}
+			int changeRootNum = list.get(indexNum-1).getRootNum();
+			// 한단계 위의 카테고리의 루트 넘버
+			dao.setTemp(rootNum); // rootNum인 카테고리들을 전부 -1로 변환
+			dao.setChangeToRootNum(rootNum, changeRootNum); // 상위카테고리를 현재카테고리로
+			dao.setRootNumToChange(changeRootNum); // 현재 카테고리를 상위 카테고리로 (현재 -1)
+			
+		}
+
+		
+	}
 	
 }

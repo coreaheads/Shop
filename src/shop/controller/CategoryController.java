@@ -17,7 +17,6 @@ public class CategoryController {
 	@Autowired
 	private CategoryService svc;
 
-
 	@RequestMapping("/topCategoryInsert.do")
 	public String topCategoryInsert(@RequestParam String categoryName, @RequestParam String division) {
 
@@ -72,9 +71,9 @@ public class CategoryController {
 
 		return "redirect:/categoryList.do";
 	}
-	
+
 	@RequestMapping("/categorySearch.do")
-	public String categorySearch(@RequestParam String searchColumn, @RequestParam String searchWord, Model model){
+	public String categorySearch(@RequestParam String searchColumn, @RequestParam String searchWord, Model model) {
 		ArrayList<Category> list = null;
 		if (searchColumn.equals("categoryName")) { // 카테고리 이름으로 검색
 			list = svc.categoryNameSearch(searchWord);
@@ -82,10 +81,33 @@ public class CategoryController {
 			int rootNum = Integer.parseInt(searchWord);
 			list = svc.categoryRootNumSearch(rootNum);
 		}
-		
+
 		model.addAttribute("categoryList", list);
-		
+
 		return "admin/category/categoryList";
 	}
 
+	@RequestMapping("/topCategoryUp.do")
+	public String topCategoryUp(@RequestParam int rootNum) {
+
+		svc.topCategoryUp(rootNum);
+
+		return "redirect:/categoryList.do";
+	}
+
+	@RequestMapping("/topCategoryDown.do")
+	public String topCategoryDown(@RequestParam int rootNum) {
+
+		svc.topCategoryDown(rootNum);
+
+		return "redirect:/categoryList.do";
+	}
+	
+	@RequestMapping("/subCategoryUp.do")
+	public String subCategoryUp(@RequestParam int idx) {
+
+		svc.subCategoryUp(idx);
+		
+		return "redirect:/categoryList.do";
+	}
 }

@@ -22,5 +22,11 @@ public interface CategoryService {
 
 	ArrayList<Category> categoryRootNumSearch(int rootNum);
 
+	void topCategoryUp(int rootNum);
+
+	void topCategoryDown(int rootNum);
+
+	void subCategoryUp(int idx);
+
 	
 }

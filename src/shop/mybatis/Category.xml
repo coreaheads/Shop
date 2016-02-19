@@ -41,4 +41,25 @@
 	<select id = "categoryRootNumSearch" parameterType="Integer" resultType="Category">
 		select * from item_category where rootNum = #{rootNum } and isDel = 'N' order by rootNum asc , seq asc
 	</select>
+	
+	<select id ="topCategoryRootNumSearch" resultType="Category">
+		select * from item_category where step = 0 and isDel = 'N' order by rootNum asc
+	</select>
+	
+	<update id = "setTemp" parameterType="Integer">
+		update item_category set rootNum = -1 where rootNum = #{rootNum}
+	</update>
+	
+	<update id= "setChangeToRootNum" parameterType="java.util.HashMap">
+		update item_category set rootNum = #{rootNum } where rootNum = #{changeRootNum } 
+	</update>
+	
+	<update id="setRootNumToChange" parameterType="Integer">
+		update item_category set rootNum = #{changeRootNum } where rootNum = -1
+	</update>
+	
+	<select id = "getEqualClass" parameterType="java.util.HashMap" resultType = "Category">
+		select * from item_category where rootNum = #{rootNum} and step = #{step} and isDel = 'N' order by seq asc
+	</select>
+	
 </mapper>

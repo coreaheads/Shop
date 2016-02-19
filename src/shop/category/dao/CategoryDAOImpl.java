@@ -1,6 +1,7 @@
 package shop.category.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -129,6 +130,94 @@ public class CategoryDAOImpl implements CategoryDAO {
 		
 		return (ArrayList<Category>) list;
 	}
+
+	@Override
+	public boolean topCategoryUpCheck(int rootNum) {
+		// TODO Auto-generated method stub
+		
+		boolean isHigh = false;
+		SqlSession session = getSession();
+		
+		int count = session.selectOne("category.topCategoryUpCheck",rootNum);
+		
+		if (count == 0) {
+			isHigh = true;
+		}
+		
+		session.close();
+		
+		return isHigh;
+	}
+
+	@Override
+	public ArrayList<Category> topCategoryRootNumSearch() {
+		// TODO Auto-generated method stub
+		
+		SqlSession session = getSession();
+		
+		List<Category> list = session.selectList("category.topCategoryRootNumSearch");
+		
+		session.close();
+		
+		return (ArrayList<Category>)list;
+	}
+
+	@Override
+	public void setTemp(int rootNum) { // rootNum에 해당되는 데이터들의 rootNum을 -1로 변환
+		// TODO Auto-generated method stub
+		SqlSession session = getSession();
+		
+		session.update("category.setTemp",rootNum);
+		
+		session.close();
+		
+	}
+
+	@Override
+	public void setChangeToRootNum(int rootNum, int changeRootNum) {
+		// TODO Auto-generated method stub
+		SqlSession session = getSession();
+		
+		HashMap<String, Integer> map = new HashMap<>();
+		map.put("rootNum", rootNum );
+		map.put("changeRootNum", changeRootNum );
+		
+		session.update("category.setChangeToRootNum", map);
+		
+		session.close();
+	}
+
+	@Override
+	public void setRootNumToChange(int changeRootNum) {
+		// TODO Auto-generated method stub
+		SqlSession session = getSession();
+	
+		session.update("category.setRootNumToChange", changeRootNum);
+		
+		session.close();
+	
+	}
+
+	@Override
+	public ArrayList<Category> getEqualClass(int rootNum, int step) {
+		// TODO Auto-generated method stub
+		SqlSession session = getSession();
+		
+		HashMap<String, Integer> map = new HashMap<>();
+		
+		map.put("rootNum", rootNum);
+		map.put("step", step);
+		
+		List<Category> list = session.selectList("category.getEqualClass", map);
+		
+		session.close();
+		
+		return (ArrayList<Category>) list;
+	}
+
+	
+
+	
 
 	
 

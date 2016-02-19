@@ -70,7 +70,7 @@ pageEncoding="UTF-8"%>
 								<li><a href="loginForm.do">로그인</a></li>
 								<li><a href="registForm.do">회원가입</a></li>
 								</c:if>
-								<li><a href="cart.do">장바구니</a></li>
+								<li><a href="memberCartList.do?memberId=${myInfo.member_id }">장바구니</a></li>
 								
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown">게시판<b class="caret"></b></a>
