@@ -15,7 +15,7 @@
 
                $.each(data, function(i, item) {
                   console.log(item);
-                  a+='<option>'+item.categoryName+'</option>';
+                  a += '<option value='+item.idx+'>' + item.categoryName + '</option>';
                });
                console.log(data.length);
                $('#second').html(a);

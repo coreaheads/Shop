@@ -132,7 +132,7 @@ public class CartDAOImpl implements CartDAO{
 	public int getRemainItemCount(int itemId) {
 		// TODO Auto-generated method stub
 		SqlSession session = getSession();
-		
+		System.out.println(itemId);
 		int remain = session.selectOne("cart.getRemainItemCount",itemId);
 		
 		session.close();

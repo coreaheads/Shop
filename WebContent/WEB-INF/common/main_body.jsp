@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="col-sm-9 padding-right">
-	<jsp:include page="../common/slider.jsp" />
+<%-- 	<jsp:include page="../common/slider.jsp" /> --%>
 	<div class="recommended_items">
 		<!--Best 상품-->
 		<h2 class="title text-center">Best 상품</h2>

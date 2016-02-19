@@ -75,21 +75,21 @@ public class CartController {
 											// 담을 상품 수량) 넘겨받을것
 	public String memberCartAdd (@RequestParam int itemId, @RequestParam String memberId,
 			@RequestParam String itemCount, HttpServletRequest request) {
-
 		if (itemCount == "") {
 			itemCount = "1";
 		}
 		
 		int itemCountInt = Integer.parseInt(itemCount);
-		
+		System.out.println("선태11111111111111111111111111111111111");
 		if (memberId == "") { // 비회원 물품 추가시 비회원 장바구니로 이동
 			return "redirect:/guestCartAdd.do?idx="+itemId+"&itemCount="+itemCountInt;
 		}
 		
-		
+		System.out.println("서냍222222222222222222222222222222222");
 		String ip = request.getRemoteAddr(); // 클라이언트 IP 받기
-
+		System.out.println("1111111111111111111111111111");
 		Item item = svc.getItemByIdx(itemId); // 아이템 정보 가져옴
+		System.out.println("2222222222222222222222");
 		if (item == null) {
 			System.out.println("상품 정보가 없습니다.");
 			return "redirect:/index.do";
@@ -99,7 +99,7 @@ public class CartController {
 			System.out.println("상품 수량이 0입니다.");
 			return "redirect:/index.do";
 		}
-
+		System.out.println("333333333333333333333333333333333333333");
 		Cart cartOrigine = svc.cartIsSearch(itemId, memberId); // 해당 멤버의 장바구니에
 																// 해당 아이템이 있는지
 																// 검사
@@ -155,7 +155,7 @@ public class CartController {
 	@RequestMapping("/guestCartAdd.do") // 비회원 카트 추가
 	public String guestCartAdd(@RequestParam int idx, @RequestParam int itemCount, HttpSession session,
 			HttpServletRequest request, HttpServletResponse response) {
-		
+	
 		svc.guestCartAdd(idx, itemCount, session, request, response);
 
 		return "redirect:/guestCartList.do";

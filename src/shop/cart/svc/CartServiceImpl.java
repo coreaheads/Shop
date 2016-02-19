@@ -114,6 +114,7 @@ public class CartServiceImpl implements CartService {
 	public void guestCartAdd(int idx, int itemCount, HttpSession session, HttpServletRequest request, HttpServletResponse response ) {
 		// TODO Auto-generated method stub
 		
+		
 		Cookie[] cookies = request.getCookies(); // 쿠키에서 세션 아이디가 있다면 받아온다.
 		String guestId = getGuestId(cookies);
 
@@ -130,13 +131,14 @@ public class CartServiceImpl implements CartService {
 		}
 
 		Item item = getItemByIdx(idx);
-
+		
 		String ip = request.getRemoteAddr();
 
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd hh:mm.ss", Locale.KOREA);
 		Date currentTime = new Date();
 		String date = formatter.format(currentTime);
 
+		
 		Cart cart = new Cart(0, guestId, ip, item.getIdx(), itemCount, item.getItemPrice(), date, item.getUrl(), item.getItemName(), 0);
 		
 		
@@ -169,6 +171,7 @@ public class CartServiceImpl implements CartService {
 		for (int i = 0; i < list.size(); i++) {
 			list.get(i).setIdx(i); // idx에 고유값을 넣어준다
 		}
+		
 	}
 
 	@SuppressWarnings("unchecked")
@@ -184,7 +187,9 @@ public class CartServiceImpl implements CartService {
 		if (guestId != null) {
 			cartList = (ArrayList<Cart>) session.getAttribute(guestId);	
 		}
-		
+		System.out.println();
+		System.out.println(cartList);
+		System.out.println();
 		for (int i = 0; i < cartList.size(); i++) {
 			int itemId = cartList.get(i).getItemId();
 			int remain = dao.getRemainItemCount(itemId);
