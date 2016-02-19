@@ -72,20 +72,7 @@ pageEncoding="UTF-8"%>
 								</c:if>
 								<li><a href="memberCartList.do?memberId=${myInfo.member_id }">장바구니</a></li>
 								
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown">게시판<b class="caret"></b></a>
-									<ul class="dropdown-menu">
-										<li>
-											<a href="index.do">QA</a>
-										</li>
-										<li>
-											<a href="index.do">자유게시판</a>
-										</li>
-										<li>
-											<a href="index.do">묻고답하기</a>
-										</li>
-									</ul>
-								</li>	
+								
 								<c:if test="${myInfo.member_level_no eq 99}">
 									<li><a href="admin.do">관리자페이지</a></li>
 								</c:if>		
