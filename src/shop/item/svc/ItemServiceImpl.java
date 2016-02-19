@@ -20,13 +20,13 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public Item itemDetail(String idx) {
+	public Item itemDetail(int idx) {
 
 		return dao.itemDetail(idx);
 	}
 
 	@Override
-	public void itemDelete(String idx) {
+	public void itemDelete(int idx) {
 		// TODO Auto-generated method stub
 		dao.itemDelete(idx);
 
@@ -59,5 +59,10 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public ArrayList<Item> itemNewList(int f , int s) {
 		return dao.itemNewList(f,s);
+	}
+
+	@Override
+	public int totalCnt() {
+		return dao.totalCnt();
 	}
 }

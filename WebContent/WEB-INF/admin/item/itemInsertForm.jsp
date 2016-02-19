@@ -27,7 +27,6 @@
 	<form action="itemInsert.do" method="post"
 		enctype="multipart/form-data">
 		<input type="hidden" name="itemId" value="${item.idx }">
-
 		<div class="form-group">
 			<label for="exampleInputEmail1">itemName</label> <input type="text"
 				name="itemName" class="form-control" value="">

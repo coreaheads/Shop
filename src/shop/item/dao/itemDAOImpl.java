@@ -22,21 +22,15 @@ public class itemDAOImpl implements ItemDAO {
 		int num = -1;
 		SqlSession session = factory.openSession();
 		session.insert("item.insert", item);
-
-		if (itemDetail(item.getIdx() + "") == null) {
-			num = 10;
-		} else {
-			num = 1;
-		}
 		session.close();
 		return num;
 
 	}
 
 	@Override
-	public Item itemDetail(String idx) {
+	public Item itemDetail(int idx) {
 		SqlSession session = factory.openSession();
-		Item item = session.selectOne("item.detail", Integer.parseInt(idx));
+		Item item = session.selectOne("item.detail", idx);
 		session.close();
 		return item;
 	}
@@ -52,7 +46,7 @@ public class itemDAOImpl implements ItemDAO {
 	}
 
 	@Override
-	public void itemDelete(String idx) {
+	public void itemDelete(int idx) {
 		// TODO Auto-generated method stub
 		SqlSession session = factory.openSession();
 		session.update("item.delete", idx);
@@ -95,6 +89,14 @@ public class itemDAOImpl implements ItemDAO {
 		List<Item> list = session.selectList("item.newlist",map);
 		session.close();
 		return (ArrayList<Item>) list;
+	}
+
+	@Override
+	public int totalCnt() {
+		SqlSession session = factory.openSession();
+		int totalCnt = session.selectOne("item.total");
+		session.close();
+		return totalCnt;
 	}
 
 }

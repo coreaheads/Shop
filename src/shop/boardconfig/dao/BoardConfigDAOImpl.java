@@ -31,6 +31,7 @@ public class BoardConfigDAOImpl implements BoardConfigDAO {
 		SqlSession sqlSession =factory.openSession();
 		BoardConfig dto = (BoardConfig) sqlSession.selectOne("boardconfig.config",board_code);
 		sqlSession.close();
+		System.out.println(dto);
 		return dto;
 	}
 

@@ -4,7 +4,12 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="boardconfig">
-	
+
+	<sql id="board_where">
+
+		<if test=""></if>
+	</sql>
+
 	<select id="list" resultType="BoardConfig" parameterType="shop.dto.ParamVO">
 	     <![CDATA[select * from (select rownum rnum,        IDX,        BOARD_NAME,        
 BOARD_CODE,        BAORD_TYPE,        URL,        IS_DELETE,        CREATE_TIME,  
@@ -12,50 +17,61 @@ BOARD_CODE,        BAORD_TYPE,        URL,        IS_DELETE,        CREATE_TIME,
             IS_FILE,        FILE_CNT,        IS_READONLY,        IS_VIEWCNT,       
              IS_LOCK,  
                   IS_NOTICE,        IS_DEL        
-from (select * from board_config order by idx))  where rnum >= #{startrow} and rnum <= #{endrow}
-           ]]>
+from (select * from board_config]]>
+		<if test="search_sel !=null and search_sel.equals('name')">
+			where BOARD_NAME like '%'||#{search_txt}||'%'
+		</if> 
+		<if test="search_sel !=null and search_sel.equals('title')">
+			where Board_code like '%'||#{search_txt}||'%'
+		</if> 
+  <![CDATA[ order by idx))  where rnum >= #{startrow} and rnum <= #{endrow}  ]]>
 	</select>
-	
-	
+
+
 	<insert id="insert" parameterType="BoardConfig">
-	    INSERT INTO board_config ( IDX,BOARD_CODE,CATEGORYS,TITLE,WRITER,PASSWD,
-	    EMAIL,CONTENT,REMOTE_ADDR,IS_NOTICE, MEMBER_SEQ ,URL,SEQ)
-VALUES ( baord_seq.nextval , #{board_code} , #{categorys}, #{title}, #{writer},
-#{passwd} , #{email}, #{content} , #{remote_addr},  #{is_notice}, #{member_seq}, #{url} ,baord_seq.CURRVAL )
+		INSERT INTO board_config ( IDX,BOARD_CODE,CATEGORYS,TITLE,WRITER,PASSWD,
+		EMAIL,CONTENT,REMOTE_ADDR,IS_NOTICE, MEMBER_SEQ ,URL,SEQ)
+		VALUES ( baord_seq.nextval , #{board_code} , #{categorys}, #{title},
+		#{writer},
+		#{passwd} , #{email}, #{content} , #{remote_addr}, #{is_notice}, #{member_seq},
+		#{url} ,baord_seq.CURRVAL )
 	</insert>
-	
+
 	<insert id="reply" parameterType="BoardConfig">
-	    INSERT INTO board_config ( IDX,BOARD_CODE,CATEGORYS,TITLE,WRITER,PASSWD,
-	    EMAIL,CONTENT,REMOTE_ADDR,IS_NOTICE, MEMBER_SEQ ,URL,SEQ,LEVELS,STEP)
-VALUES ( baord_seq.nextval , #{board_code} , #{categorys}, #{title}, #{writer},
-#{passwd} , #{email}, #{content} , #{remote_addr},  #{is_notice}, #{member_seq}, #{url},#{seq},#{levels}+1,#{step}+1 )
+		INSERT INTO board_config ( IDX,BOARD_CODE,CATEGORYS,TITLE,WRITER,PASSWD,
+		EMAIL,CONTENT,REMOTE_ADDR,IS_NOTICE, MEMBER_SEQ ,URL,SEQ,LEVELS,STEP)
+		VALUES ( baord_seq.nextval , #{board_code} , #{categorys}, #{title},
+		#{writer},
+		#{passwd} , #{email}, #{content} , #{remote_addr}, #{is_notice}, #{member_seq},
+		#{url},#{seq},#{levels}+1,#{step}+1 )
 	</insert>
-	
+
 	<select id="view" resultType="BoardConfig" parameterType="Integer">
-	select * from board_config where idx = #{idx}
+		select * from board_config where idx = #{idx}
 	</select>
 	<update id="update" parameterType="BoardConfig">
-	    UPDATE board_config
-SET  CATEGORYS = #{categorys}, TITLE = #{title}, WRITER = #{writer}, EMAIL = #{email}, 
-CONTENT = #{content}, REMOTE_ADDR = #{remote_addr}, UPDATE_TIME = sysdate, 
-IS_NOTICE = #{is_notice},  URL = #{url} WHERE idx=#{idx}
+		UPDATE board_config
+		SET CATEGORYS = #{categorys}, TITLE = #{title}, WRITER = #{writer}, EMAIL
+		= #{email},
+		CONTENT = #{content}, REMOTE_ADDR = #{remote_addr}, UPDATE_TIME = sysdate,
+		IS_NOTICE = #{is_notice}, URL = #{url} WHERE idx=#{idx}
 	</update>
 	<delete id="delete" parameterType="String">
-	    delete from board_config where itemid = #{itemid} 
+		delete from board_config where itemid = #{itemid}
 	</delete>
 	<select id="curidx" resultType="Integer">
-	select MAX(idx) from board_config 
+		select MAX(idx) from board_config
 	</select>
-	
+
 	<select id="config" resultType="shop.dto.BoardConfig">
-	select * from board_config where  board_code = #{board_code}
+		select * from board_config where board_code = #{board_code}
 	</select>
-	
+
 	<select id="totalcnt" resultType="Integer">
-	select count(idx) from board_config 
+		select count(idx) from board_config
 	</select>
 	<update id="stepup" parameterType="Board">
-	update board_config set step=#{step} +1 where seq=#{seq} and step > #{step}
+		update board_config set step=#{step} +1 where seq=#{seq} and step > #{step}
 	</update>
 
 

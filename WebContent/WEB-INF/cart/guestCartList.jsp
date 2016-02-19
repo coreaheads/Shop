@@ -1,17 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:include page="../common/head.jsp" />
-
-
-
-
-<h2 class="sub-header">비회원 장바구니</h2>
-<br>
-<br>
-
-
 <div class="col-md-12">
+<h2 class="sub-header">비회원 장바구니</h2>
 	<hr>
 	<div class="panel panel-info">
 		<!-- Table -->
@@ -45,14 +36,12 @@
 						${dto.itemCount } 개<br> <a
 						href="guestCartItemCountDown.do?itemId=${dto.itemId}">▽</a></td>
 
-					<td>
-					
-					<c:choose>
-					<c:when test="${dto.item_itemCount == 0 }"><font color="red"><b>품절</b></font></c:when>
-					<c:otherwise>${dto.item_itemCount }</c:otherwise>
-					</c:choose> 
-					
-					</td>
+					<td><c:choose>
+							<c:when test="${dto.item_itemCount == 0 }">
+								<font color="red"><b>품절</b></font>
+							</c:when>
+							<c:otherwise>${dto.item_itemCount }</c:otherwise>
+						</c:choose></td>
 					<td>${dto.itemCount*dto.itemPrice }원</td>
 					<td>${dto.cartDate }</td>
 					<td>${dto.url }
@@ -62,19 +51,17 @@
 
 			</c:forEach>
 		</table>
-		<br><br>
-		총 금액 : ${totalPrice } 원
-		<br> <br> 
-		
-		<form action = "payForm.do" method="post">		
-		<input type = "hidden" name = "isMember" value = "N">
-		<input type = "hidden" name = "cartList" value = "${cartList }">
-		<input type = "hidden" name = "totalPrice" value = "${totalPrice }">	
-		<input type = "submit" value = "결제하기">
-		</form>
-		
-		<br> <br>
+		<br>
+		<br> 총 금액 : ${totalPrice } 원 <br> <br>
 
+		<form action="payForm.do" method="post">
+			<input type="hidden" name="isMember" value="N"> <input
+				type="hidden" name="cartList" value="${cartList }"> <input
+				type="hidden" name="totalPrice" value="${totalPrice }"> <input
+				type="submit" value="결제하기">
+		</form>
+
+		<br> <br>
 	</div>
 	<nav class='paging-number text-center'>
 		<ul class='pagination'>

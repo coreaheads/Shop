@@ -28,7 +28,7 @@
 									<c:if test="${x.rootNum == y.rootNum}">
 										<div class="panel-body">
 											<ul>
-												<li><a href="userItemList.do?itemCategory=${y.idx }">${y.categoryName}</a></li>
+												<li><a href="ItemMain.do?mode?list&itemCategory=${y.idx }">${y.categoryName}</a></li>
 											</ul>
 										</div>
 									</c:if>
@@ -43,8 +43,8 @@
 		</div>
 		<!--/category-products-->
 
-		<div class="brands_products">
-			<!--brands_products-->
+		<!-- <div class="brands_products">
+			brands_products
 			<h2>Brands</h2>
 			<div class="brands-name">
 				<ul class="nav nav-pills nav-stacked">
@@ -60,7 +60,7 @@
 					</a></li>
 				</ul>
 			</div>
-		</div>
+		</div> -->
 		<!--/brands_products-->
 
 		<div class="shipping text-center">

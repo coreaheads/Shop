@@ -56,21 +56,23 @@
 	<!-- where ITEMLEVEL =1 -->
 	
 	<select id="detail" resultType="Item" parameterType="Integer">
-		select *
-		from item where idx =
-		#{idx}
+		select * from item where idx =#{idx}
+	</select>
+	
+	<select id="total" resultType="Integer" parameterType="Integer">
+		select count(idx) from item
 	</select>
 
 	<update id="update" parameterType="Item">
 		UPDATE ITEM
-		set ITEMNAME = '#{itemName}', ITEMCONTENT = '#{itemContent}', ITEMLEVEL =
-		'#{itemLevel}', SALE = '#{sale}',
-		ITEMPRICE = '#{itemPrice}', ITEMCOUNT = '#{itemCount}', ITEMCATEGORY =
-		'#{itemCategory}', URL = '#{url}'
+		set ITEMNAME = #{itemName}, ITEMCONTENT = #{itemContent}, ITEMLEVEL =
+		#{itemLevel}, SALE = #{sale},
+		ITEMPRICE = #{itemPrice}, ITEMCOUNT = #{itemCount}, ITEMCATEGORY =
+		#{itemCategory}, URL = #{url}
 		WHERE idx= #{idx}
 	</update>
 
-	<delete id="delete">
+	<delete id="delete" parameterType="Integer">
 		UPDATE ITEM
 		SET ISDEL = 'y'
 		WHERE idx = #{idx}

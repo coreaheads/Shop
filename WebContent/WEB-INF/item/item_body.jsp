@@ -9,11 +9,9 @@
 			<!-- 왼쪽메뉴 -->
 			<!--  메인바디 -->
 			<div class="col-sm-9 padding-right">
-			${paramvo.url }
-				<jsp:include page="item/${paramvo.url }" />
+				<jsp:include page="${paramvo.url }" />
 			</div>
 			<!--  메인바디 -->
-
 		</div>
 	</div>
 </section>

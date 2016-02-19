@@ -3,8 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="col-sm-9 padding-right">
 	<jsp:include page="../common/slider.jsp" />
-
-
 	<div class="recommended_items">
 		<!--Best 상품-->
 		<h2 class="title text-center">Best 상품</h2>
@@ -22,7 +20,7 @@
 										<img src="item_upload_img/${bestitem.url}" alt="" />
 										<h2>${bestitem.itemPrice}원</h2>
 										<p>${bestitem.itemName}</p>
-										<a href="#" class="btn btn-default add-to-cart"><i
+										<a href="ItemMain.do?mode=detail&idx=${bestitem.idx }" class="btn btn-default add-to-cart"><i
 											class="fa fa-search"></i>상품 상세보기</a>
 									</div>
 									<div class="choose">
@@ -49,7 +47,7 @@
 										<img src="item_upload_img/${bestitem2.url}" alt="" />
 										<h2>${bestitem2.itemPrice}원</h2>
 										<p>${bestitem2.itemName}</p>
-										<a href="#" class="btn btn-default add-to-cart"><i
+										<a href="ItemMain.do?mode=detail&idx=${bestitem2.idx }" class="btn btn-default add-to-cart"><i
 											class="fa fa-search"></i>상품 상세보기</a>
 									</div>
 									<div class="choose">
@@ -92,7 +90,7 @@
 										<img src="item_upload_img/${neweitem.url}" alt="" />
 										<h2>${neweitem.itemPrice}원</h2>
 										<p>${neweitem.itemName}</p>
-										<a href="#" class="btn btn-default add-to-cart"><i
+										<a href="ItemMain.do?mode=detail&idx=${neweitem.idx }" class="btn btn-default add-to-cart"><i
 											class="fa fa-search"></i>상품 상세보기</a>
 									</div>
 									<div class="choose">
@@ -117,7 +115,7 @@
 										<img src="item_upload_img/${neweitem2.url}" alt="" />
 										<h2>${neweitem2.itemPrice}원</h2>
 										<p>${neweitem2.itemName}</p>
-										<a href="#" class="btn btn-default add-to-cart"><i
+										<a href="ItemMain.do?mode=detail&idx=${neweitem2.idx }" class="btn btn-default add-to-cart"><i
 											class="fa fa-search"></i>상품 상세보기</a>
 									</div>
 									<div class="choose">
