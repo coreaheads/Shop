@@ -44,9 +44,10 @@ public class BoardController {
 		if(endpage > allpage) { 
 			endpage = allpage;
 		}
+		String mode="";
 		int pagenum=0;
 		String url="";
-		paramVO = new ParamVO(page, startpage, endpage, block, limit, pagenum, totalcnt, startrow, endrow, board_code, search_txt, search_sel,url);
+		paramVO = new ParamVO(page, startpage, endpage, block, limit, pagenum, totalcnt, startrow, endrow, board_code, search_txt, search_sel,url,mode);
 		System.out.println(paramVO);
 		ArrayList<Board> list = svc.list(paramVO);
 		model.addAttribute("BoardList", list);

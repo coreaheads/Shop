@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:include page="../common/head.jsp" />
-<h2 class="sub-header">게시판관리</h2>
-<body style="padding: 30px;">
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<div class="col-md-12">
 	<form action="../BoardConfigInsert.do" method="post">
 		<div class="form-group">
 			<label>테이블명</label> <input type="text" name="board_name"
@@ -53,7 +52,4 @@
 		<input type="submit" class="btn btn-success" value="등록">
 
 	</form>
-</body>
-
-</body>
-</html>
+</div>
