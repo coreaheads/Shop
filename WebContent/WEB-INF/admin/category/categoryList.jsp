@@ -66,10 +66,7 @@
 						<a href="topCategoryUp.do?rootNum=${dto.rootNum }">[▲위로]</a>&nbsp;
 						<a href="topCategoryDown.do?rootNum=${dto.rootNum }">[▼아래로]</a>						
 						</c:when>
-						<c:when test="${dto.step > 0 }">
-						<a href="subCategoryUp.do?idx=${dto.idx }">[△위로]</a>&nbsp;
-						<a href="subCategoryDown.do?idx=${dto.idx }">[▽아래로]</a>	
-						</c:when>
+						
 						</c:choose>
 						
 						</td>
