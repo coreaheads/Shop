@@ -39,7 +39,7 @@ public class ItemController {
 //	
 
 	@RequestMapping("/shopDetail.do")
-	public ModelAndView itemUpdate(@RequestParam String idx, ModelAndView mav) {
+	public ModelAndView itemUpdate(@RequestParam int idx, ModelAndView mav) {
 		Item item = svc.itemDetail(idx);
 		ArrayList<Category> list = categorySvc.categoryList();
 		double sale = item.getSale();
@@ -67,14 +67,14 @@ public class ItemController {
 	}
 
 	@RequestMapping("/itemDelete.do")
-	public String itemDelete(@RequestParam String idx) {
+	public String itemDelete(@RequestParam int idx) {
 		Item item = svc.itemDetail(idx);
 		svc.itemDelete(idx);
 		return "itemList?itemCategory=" + item.getItemCategory();
 	}
 
 	@RequestMapping("/itemDetail.do")
-	public ModelAndView ItemDetail(@RequestParam String idx, ModelAndView mav) {
+	public ModelAndView ItemDetail(@RequestParam int idx, ModelAndView mav) {
 		Item item = svc.itemDetail(idx);
 		mav.addObject("item", item);
 		mav.setViewName("admin/item/itemDetail");

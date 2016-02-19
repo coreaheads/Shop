@@ -8,9 +8,9 @@ public interface	 ItemDAO {
 
 	ArrayList<Item> itemList();
 
-	Item itemDetail(String idx);
+	Item itemDetail(int idx);
 
-	void itemDelete(String idx);
+	void itemDelete(int idx);
 
 	int insert(Item item);
 
@@ -21,5 +21,7 @@ public interface	 ItemDAO {
 	ArrayList<Item> itemBestList(int f, int s);
 
 	ArrayList<Item> itemNewList(int f, int s);
+
+	int totalCnt();
 
 }

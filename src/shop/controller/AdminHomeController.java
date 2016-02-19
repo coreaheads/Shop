@@ -1,8 +1,6 @@
 package shop.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +51,7 @@ public class AdminHomeController {
 
 	@RequestMapping("/item.do")
 	public String itemList(Model model, @RequestParam(required = false, defaultValue = "list") String mode,
-			@RequestParam(required = false, defaultValue = "a") String idx) {
+			@RequestParam(required = false, defaultValue = "1") int idx) {
 		ArrayList<Category> upcalist = catesvc.categoryList();
 		ArrayList<Category> firstList = new ArrayList<Category>();
 

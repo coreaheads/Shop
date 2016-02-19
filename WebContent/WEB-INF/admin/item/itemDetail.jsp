@@ -19,7 +19,7 @@ function myFunction(item){
 						<!--product-details-->
 						<div class="col-sm-5">
 							<div class="view-product">
-								<img src="images/product-details/1.jpg" alt="" />
+								<img src="item_upload_img/${item.url }" width="100%" alt="" />
 							</div>
 
 
