@@ -82,5 +82,13 @@ public class BoardDAOImpl implements BoardDAO {
 		return cnt;
 	}
 
+	@Override
+	public void delete(int idx) {
+		SqlSession sqlSession =factory.openSession();
+		sqlSession.delete("board.delete",idx);
+		sqlSession.close();
+		
+	}
+
 	
 }

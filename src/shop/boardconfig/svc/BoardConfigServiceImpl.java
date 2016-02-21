@@ -22,7 +22,7 @@ public class BoardConfigServiceImpl implements BoardConfigService{
 	}
 
 	@Override
-	public BoardConfig getConfig(String board_code) {
+	public BoardConfig getConfig(int board_code) {
 		BoardConfig dto = dao.getConfig(board_code);
 		return dto;
 	}

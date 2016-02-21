@@ -11,14 +11,44 @@
 <script src="js/bootstrap.js"></script>
 <link type="text/css" rel="stylesheet" href="css/bootstrap.css"
 	charset="utf-8">
+<script>
+	function fontResizeBSKR(layer, type) {
+		var l =$("#vContent");
+		var nSize = getCookie('myFontSize');
+		nSize = nSize ? nSize : '12px';
+		var iSize = parseInt(nSize.replace('px', ''));
+
+		if (type == '+') {
+			if (iSize < 20)
+				l.style.fontSize = (iSize + 1) + 'px';
+		} else {
+			if (iSize > 8)
+				l.style.fontSize = (iSize - 1) + 'px';
+		}
+		setCookie('myFontSize', l.style.fontSize, 1);
+	}
+</script>
 <title>게시판</title>
 </head>
 <body style="padding: 30px">
+	<div class="viewbox">
+		<div class="header">
 
-	${BoardDto.title }
-	<br> ${BoardDto.content }
-	<br> ${BoardDto.idx }
-	<br>
+			<div class="subject">
+				<h1 class="bskr-font-lg">${BoardDto.title }</h1>
+			</div>
+			<div class="info">
+				<div class="xleft">
+					<span class="han"> ${BoardDto.writer }</span> <span class="split">|</span>
+					${BoardDto.create_time } <span class="split">|</span> <span
+						class="han">조회</span> <span class="num">2779</span>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="vContent" class="content" style="font-size: 18px;">
+			${BoardDto.content }</div>
+	</div>
 	<c:forEach items="${Filelist }" var="f">
 		<a href="FileDown.do?filename=${f.filename }">${f.filename }</a>
 		<br>
@@ -27,18 +57,18 @@
 	<br>
 	<br>
 	<input type="button"
-		onclick="location.href='BoardReplyForm.do?idx=${BoardDto.idx}'"
+		onclick="location.href='Board.do?mode=reply&idx=${BoardDto.idx}'"
 		class="btn btn-primary" value="답변">
 	<input type="button"
-		onclick="location.href='BoardUpdateForm.do?idx=${BoardDto.idx}'"
+		onclick="location.href='Board.do?mode=update&idx=${BoardDto.idx}'"
 		class="btn btn-primary" value="수정">
 	<input type="button"
-		onclick="location.href='BoardDelete.do?idx=${BoardDto.idx}'"
+		onclick="location.href='BoardDelete.do?idx=${BoardDto.idx}&board_code=${paramvo.board_code}'"
 		class="btn btn-primary" value="삭제">
-	<input type="button" onclick="location.href='BoardList.do'"
+	<input type="button" onclick="location.href='Board.do?mode=list&board_code=${paramvo.board_code}'"
 		class="btn btn-primary" value="리스트">
-
+	<c:if test="${BoardConfig.is_comment eq 'Y'}">
 	<%@include file="comment.jsp"%>
-	
+</c:if>
 </body>
 </html>

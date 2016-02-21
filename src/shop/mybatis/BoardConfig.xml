@@ -64,7 +64,7 @@ from (select * from board_config]]>
 	</select>
 
 	<select id="config" resultType="shop.dto.BoardConfig">
-		select * from board_config where board_code = #{board_code}
+		select * from board_config where idx = #{board_code}
 	</select>
 
 	<select id="totalcnt" resultType="Integer">

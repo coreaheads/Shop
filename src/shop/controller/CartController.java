@@ -14,15 +14,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import shop.cart.svc.CartService;
+import shop.category.svc.CategoryService;
 import shop.dto.Cart;
+import shop.dto.Category;
 import shop.dto.Item;
+import shop.dto.ParamVO;
 
 @Controller
 public class CartController {
 
 	@Autowired
 	private CartService svc;
-	
+	@Autowired
+	private CategoryService catesvc;
 	
 
 	@RequestMapping("/adminCartList.do") // 관리자용 카트 리스트
@@ -162,16 +166,20 @@ public class CartController {
 	}
 
 	@RequestMapping("/guestCartList.do")
-	public String guestCartList(Model model, HttpServletRequest request, HttpSession session) {
+	public String guestCartList(Model model, HttpServletRequest request, HttpSession session,ParamVO paramVO) {
 
 		ArrayList<Cart> cartList = svc.guestCartList(request, session);
-		
+		ArrayList<Category> categoryFirst = catesvc.categoryList();
+		model.addAttribute("categoryFirst", categoryFirst);
 		int totalPrice = svc.cartTotalPrice(cartList);
-
+		paramVO.setUrl("guestCartList.jsp");
 		model.addAttribute("cartList", cartList);
 		model.addAttribute("totalPrice", totalPrice);
-		
-		return "cart/guestCartList";
+		model.addAttribute("paramvo", paramVO);
+	
+		System.out.println(paramVO);
+		return "cart/cart_body";
+		//return "cart/guestCartList";
 	}
 
 	@RequestMapping("/guestCartDelete.do")

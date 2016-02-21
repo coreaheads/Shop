@@ -136,7 +136,7 @@ public class AdminHomeController {
 		}
 
 		int pagenum = 0;
-		String board_code = "";
+		int board_code = 0;
 		String url = "BoardConfig";
 		paramVO = new ParamVO(page, startpage, endpage, block, limit, pagenum, totalcnt, startrow, endrow, board_code,
 				search_txt, search_sel, url, mode);

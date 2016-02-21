@@ -8,10 +8,10 @@
 		<!-- Table -->
 		<table class="table">
 			<tr class="warning">
-				<th>idx</th>
-				<th>memberId</th>
-				<th>ip</th>
-				<th>itemId</th>
+				
+				
+				
+				
 				<th>itemName</th>
 				<th>itemPrice</th>
 				<th>itemCount</th>
@@ -25,17 +25,11 @@
 
 			<c:forEach items="${cartList}" var="dto">
 				<tr>
-					<td>${dto.idx }</td>
-					<td>${dto.memberId }</td>
-					<td>${dto.ip }</td>
-					<td>${dto.itemId }</td>
 					<td>${dto.itemName }</td>
 					<td>${dto.itemPrice }원</td>
-
 					<td><a href="guestCartItemCountUp.do?itemId=${dto.itemId}">△</a><br>
 						${dto.itemCount } 개<br> <a
 						href="guestCartItemCountDown.do?itemId=${dto.itemId}">▽</a></td>
-
 					<td><c:choose>
 							<c:when test="${dto.item_itemCount == 0 }">
 								<font color="red"><b>품절</b></font>
@@ -58,12 +52,12 @@
 			<input type="hidden" name="isMember" value="N"> <input
 				type="hidden" name="cartList" value="${cartList }"> <input
 				type="hidden" name="totalPrice" value="${totalPrice }"> <input
-				type="submit" value="결제하기">
+				type="submit" class="btn btn-primary"  value="결제하기">
 		</form>
 
 		<br> <br>
 	</div>
-	<nav class='paging-number text-center'>
+<%-- 	<nav class='paging-number text-center'>
 		<ul class='pagination'>
 			<li class='disabled'><a href='#' aria-label='First'><span
 					aria-hidden='true'>&lsaquo;</span></a></li>
@@ -78,6 +72,6 @@
 			<li class='disabled'><a href='#' aria-label='End'><span
 					aria-hidden='true'>&raquo;</span></a></li>
 		</ul>
-	</nav>
+	</nav> --%>
 </div>
 

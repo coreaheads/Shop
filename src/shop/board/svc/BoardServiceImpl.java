@@ -64,5 +64,12 @@ public class BoardServiceImpl implements BoardService{
 		return cnt;
 	}
 
+	@Override
+	public void delete(int idx) {
+		dao.delete(idx);
+		
+		
+	}
+
 	
 }

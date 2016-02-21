@@ -19,18 +19,13 @@ public class OrderListController {
 	
 	@RequestMapping("/payForm.do")
 	public String payForm(@RequestParam char isMember, @RequestParam ArrayList<Cart> cartList, @RequestParam int totalPrice, Model model){
-		
-		
 		String returnPath = "order/guestPayForm"; 
-		
 		if (isMember == 'Y') {
 			System.out.println("회원입니다.");
 			returnPath = "order/memberPayForm";
 		}
-		
 		model.addAttribute("cartList", cartList);
 		model.addAttribute("totalPrice", totalPrice);
-		
 		return returnPath;
 	}
 	

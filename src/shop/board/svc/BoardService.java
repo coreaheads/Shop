@@ -12,6 +12,7 @@ public interface BoardService {
 	void insert(Board board);
 	void reply(Board board);
 	void update(Board board);
+	void delete(int idx);
 	Board getDto(int idx);
 	int curidx();
 	void stepUp(Board board);

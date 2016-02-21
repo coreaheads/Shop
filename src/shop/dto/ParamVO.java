@@ -12,7 +12,7 @@ public class ParamVO {
 	private int totalcnt=0;
 	private int startrow;
 	private int endrow;
-	private String board_code="";
+	private int board_code=0;
 	private String search_txt="";
 	private String search_sel="";
 	private String url;
@@ -27,7 +27,7 @@ public class ParamVO {
 	
 
 	public ParamVO(int page, int startpage, int endpage, int block, int limit, int pagenum, int totalcnt, int startrow,
-			int endrow, String board_code, String search_txt, String search_sel, String url, String mode
+			int endrow, int board_code, String search_txt, String search_sel, String url, String mode
 			) {
 		super();
 		this.page = page;
@@ -186,14 +186,14 @@ public class ParamVO {
 
 
 
-	public String getBoard_code() {
+	public int getBoard_code() {
 		return board_code;
 	}
 
 
 
 
-	public void setBoard_code(String board_code) {
+	public void setBoard_code(int board_code) {
 		this.board_code = board_code;
 	}
 

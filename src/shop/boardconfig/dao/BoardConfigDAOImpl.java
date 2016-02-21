@@ -27,7 +27,7 @@ public class BoardConfigDAOImpl implements BoardConfigDAO {
 	}
 
 	@Override
-	public BoardConfig getConfig(String board_code) {
+	public BoardConfig getConfig(int board_code) {
 		SqlSession sqlSession =factory.openSession();
 		BoardConfig dto = (BoardConfig) sqlSession.selectOne("boardconfig.config",board_code);
 		sqlSession.close();

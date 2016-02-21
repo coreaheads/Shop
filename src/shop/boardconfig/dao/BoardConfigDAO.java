@@ -9,7 +9,7 @@ public interface BoardConfigDAO {
 	
 	int totalCnt();
 	
-	BoardConfig getConfig(String board_code);
+	BoardConfig getConfig(int board_code);
 
 	ArrayList<BoardConfig> configList(ParamVO paramVO);
 

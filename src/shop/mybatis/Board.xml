@@ -31,7 +31,7 @@
        MEMBER_SEQ,
        IS_DEL,
        URL from ( select * from board order by  seq desc, step asc)) 
-               where rnum >= #{startrow} and rnum <= #{endrow} order by is_notice
+               where rnum >= #{startrow} and rnum <= #{endrow} 
            ]]>
                 
 
@@ -61,9 +61,7 @@ SET  CATEGORYS = #{categorys}, TITLE = #{title}, WRITER = #{writer}, EMAIL = #{e
 CONTENT = #{content}, REMOTE_ADDR = #{remote_addr}, UPDATE_TIME = sysdate, 
 IS_NOTICE = #{is_notice},  URL = #{url} WHERE idx=#{idx}
 	</update>
-	<delete id="delete" parameterType="String">
-	    delete from board where itemid = #{itemid} 
-	</delete>
+	
 	<select id="curidx" resultType="Integer">
 	select MAX(idx) from board 
 	</select>
@@ -78,6 +76,14 @@ IS_NOTICE = #{is_notice},  URL = #{url} WHERE idx=#{idx}
 	<update id="stepup" parameterType="Board">
 	update board set step=#{step} +1 where seq=#{seq} and step > #{step}
 	</update>
+	
+	<update id="delete2" parameterType="Integer">
+	update board set is_del = 'Y'  where idx=#{idx}
+	</update>
+	
+	<delete  id="delete" parameterType="Integer">
+	    delete from board where idx=#{idx}
+	</delete>
 
 
 </mapper>

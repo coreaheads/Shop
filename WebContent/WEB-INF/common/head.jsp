@@ -107,10 +107,11 @@
 								<li class="dropdown"><a href="#">Shop<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="shop.do">최신상품보기</a></li>
-										<li><a href="index.do">인기상품보기</a></li>
+										<li><a href="Shop.do?mode=new">최신상품보기</a></li>
+										<li><a href="Shop.do?mode=best">인기상품보기</a></li>
 									</ul></li>
 								<li><a href="index.do">Contact</a></li>
+								<li><a href="Board.do?mode=list&board_code=1" class="active">자유게시판</a></li>
 							</ul>
 						</div>
 					</div>

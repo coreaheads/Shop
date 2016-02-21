@@ -23,6 +23,8 @@ public interface BoardDAO {
 	void stepUp(Board board);
 
 	int totalCnt();
+
+	void delete(int idx);
 	
 	
 

@@ -70,7 +70,7 @@ public class MemberController {
 	@RequestMapping("/memberList.do")
 	public ModelAndView memberList(ModelAndView mav, ParamVO paramVO,
 			@RequestParam(required = false, defaultValue = "1") int page,
-			@RequestParam(required = false, defaultValue = "") String board_code,
+			@RequestParam(required = false, defaultValue = "") int board_code,
 			@RequestParam(required = false, defaultValue = "") String search_sel,
 			@RequestParam(required = false, defaultValue = "") String search_txt) {
 
