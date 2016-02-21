@@ -40,10 +40,10 @@ pageEncoding="UTF-8"%>
 								<label for="login_submit"></label>
 								<input type="submit" name="login_submit" id="login_submit" class="form-control btn btn-info" value="로그인">         
 							</div>
-							<div class="col-md-12">
+							<!-- <div class="col-md-12">
 								<label for="login_reset"></label>
 								<input type="reset" name="login_reset" id="login_reset" class="form-control btn btn-danger" value="취소">         
-							</div>      
+							</div>       -->
 						</div>
 					</fieldset>				
 				</form>

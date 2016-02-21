@@ -36,7 +36,7 @@
 					</c:forEach>
 				</div>
 
-				
+				<c:if test="${not empty itemBestList2}">
 				<div class="item">
 					<c:forEach items="${itemBestList2}" var="bestitem2"
 						varStatus="status">
@@ -62,6 +62,7 @@
 						</div>
 					</c:forEach>
 				</div>
+				</c:if>
 			</div>
 			<a class="left recommended-item-control"
 				href="#recommended-item-carousel" data-slide="prev"> <i
@@ -105,6 +106,7 @@
 						</div>
 					</c:forEach>
 				</div>
+				<c:if test="${not empty itemNewList2}">
 				<div class="item">
 					<c:forEach items="${itemNewList2}" var="neweitem2"
 						varStatus="status">
@@ -130,6 +132,7 @@
 						</div>
 					</c:forEach>
 				</div>
+				</c:if>
 			</div>
 			<a class="left recommended-item-control" href="#new-item-carousel"
 				data-slide="prev"> <i class="fa fa-angle-left"></i>

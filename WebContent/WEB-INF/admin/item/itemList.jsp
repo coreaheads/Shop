@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="col-md-12">
-	<input type="button" onclick="location.href='item.do?mode=insert'"
+	<input type="button" class="btn  btn-primary" onclick="location.href='item.do?mode=insert'"
 		value="상품등록">
 	<form class="navbar-form navbar-right" action="free_board_list.do"
 		role="search">

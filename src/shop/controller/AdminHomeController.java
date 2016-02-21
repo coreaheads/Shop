@@ -57,6 +57,7 @@ public class AdminHomeController {
 
 		switch (mode) {
 		case "insert":
+			System.out.println(upcalist);
 			for (Category x : upcalist) {
 				if (x.getStep() == 0) {
 					firstList.add(x);

@@ -76,19 +76,29 @@
 			</c:forEach>
 		</table>
 
-		<br> <br>
-		<form action="topCategoryInsert.do" method="post">
-			[최상위 카테고리 추가]<br> <br> categoryName : <input type="text"
-				name="categoryName"> <br> division : <input type="text"
-				name="division"><br> <br> <input type="submit"
-				value="추가">&nbsp;&nbsp;<input type="reset" value="초기화">
+		<br> <br>	<br> <br>
+		
 
-		</form>
 
 
 
 	</div>
-
+		[최상위 카테고리 추가]<br> <br>
+		<form action="topCategoryInsert.do" method="post">
+		
+		<div class="form-group">
+			<label for="exampleInputEmail1">categoryName</label> 
+			<input type="text" class="form-control"
+				name="categoryName">
+		</div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">division</label> 
+			<input type="text" class="form-control"
+				name="division">
+		</div>
+<input class="btn  btn-primary" type="reset" value="초기화">
+<input class="btn  btn-primary" type="submit" value="등록">
+		</form>
 </div>
 
 <jsp:include page="../common/footer.jsp" />

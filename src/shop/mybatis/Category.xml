@@ -12,6 +12,8 @@
 		select * from item_category where idx = #{idx}
 	</select>
 	
+	
+	
 	<insert id="topCategoryInsert" parameterType="Category">
 		insert into item_category(idx, categoryName, rootNum, step, division, seq, isDel) 
 		                   values(category_idx.nextval, #{categoryName},category_idx.currval,0,#{division},0 ,'N')	

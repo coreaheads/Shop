@@ -9,7 +9,7 @@
 		INSERT INTO ITEM (
 		IDX,ITEMNAME,ITEMCONTENT,ITEMLEVEL,SALE,ITEMPRICE,ITEMCOUNT,ITEMCATEGORY,URL
 		)
-		VALUES ( member_seq.nextval , #{itemName} , #{itemContent} , #{itemLevel} ,
+		VALUES ( ITEM_seq.nextval , #{itemName} , #{itemContent} , #{itemLevel} ,
 		#{sale} , #{itemPrice} , #{itemCount} , #{itemCategory} , #{url} )
 	</insert>
 	<select id="list" resultType="Item">

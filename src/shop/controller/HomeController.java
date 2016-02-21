@@ -121,17 +121,29 @@ public class HomeController {
 			model.addAttribute("url", "itemDetail.jsp");
 		break;
 		case "list":
-			url="ItemList.jsp";
+			
 			itemlist = itemSvc.itemListSel(itemCategory);
 			System.out.println(itemlist);
+			if (itemlist.isEmpty()) {
+				url="../common/error.jsp";
+			}else{
+				url="ItemList.jsp";
+			}
+			System.out.println(url);
 			
 			paramVO = new ParamVO(page, startpage, endpage, block, limit, pagenum, totalcnt, startrow, endrow, board_code,
 					search_txt, search_sel, url, mode);
 			System.out.println(paramVO);
 			
 			//model.addAttribute("categoryFirst", list);
+			Category category =catesvc.selectByIdx(itemCategory);
+			model.addAttribute("category", category);
 			model.addAttribute("itemList",itemlist);
+			
+			ArrayList<Category> categoryFirst = catesvc.categoryList();
+			model.addAttribute("categoryFirst", categoryFirst);
 			model.addAttribute("itemCategory",itemCategory);
+			System.out.println(itemCategory);
 			model.addAttribute("paramvo", paramVO);			
 		break;
 		default:

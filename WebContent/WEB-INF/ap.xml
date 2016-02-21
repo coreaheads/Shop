@@ -19,7 +19,7 @@
 			type="annotation" />
 	</context:component-scan>
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		p:driverClassName="oracle.jdbc.driver.OracleDriver" p:url="jdbc:oracle:thin:@211.183.8.61:1521:orcl"
+		p:driverClassName="oracle.jdbc.driver.OracleDriver" p:url="jdbc:oracle:thin:@localhost:1521:orcl"
 		p:username="shop" p:password="1234">
 	</bean>
 	<tx:annotation-driven />

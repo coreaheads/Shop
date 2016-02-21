@@ -28,7 +28,7 @@
 									<c:if test="${x.rootNum == y.rootNum}">
 										<div class="panel-body">
 											<ul>
-												<li><a href="ItemMain.do?mode?list&itemCategory=${y.idx }">${y.categoryName}</a></li>
+												<li><a href="ItemMain.do?mode=list&itemCategory=${y.idx }">${y.categoryName}</a></li>
 											</ul>
 										</div>
 									</c:if>

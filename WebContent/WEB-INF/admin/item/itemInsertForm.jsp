@@ -33,11 +33,12 @@
 		</div>
 
 		<div class="form-group">
-			<label for="exampleInputEmail1">가격</label> <input type="text"
-				name="itemPrice" class="form-control"> <input
-				type="radio" name="itemLevel" value=1> 
-				<input type="radio" name="itemLevel" value=2> <input
-				type="radio" name="itemLevel" value=3>
+			<label for="exampleInputEmail1">가격</label> 
+			<input type="text"
+				name="itemPrice" class="form-control">
+				 <input type="radio" name="itemLevel" value=1> 최신
+				<input type="radio" name="itemLevel" value=2> 베스트
+				 <input type="radio" name="itemLevel" value=3>
 		</div>
 		
 		<div class="form-group">

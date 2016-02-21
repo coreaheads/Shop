@@ -31,7 +31,7 @@ from (select * from board_config]]>
 	<insert id="insert" parameterType="BoardConfig">
 		INSERT INTO board_config ( IDX,BOARD_CODE,CATEGORYS,TITLE,WRITER,PASSWD,
 		EMAIL,CONTENT,REMOTE_ADDR,IS_NOTICE, MEMBER_SEQ ,URL,SEQ)
-		VALUES ( baord_seq.nextval , #{board_code} , #{categorys}, #{title},
+		VALUES ( baord_config_seq.nextval , #{board_code} , #{categorys}, #{title},
 		#{writer},
 		#{passwd} , #{email}, #{content} , #{remote_addr}, #{is_notice}, #{member_seq},
 		#{url} ,baord_seq.CURRVAL )
@@ -40,7 +40,7 @@ from (select * from board_config]]>
 	<insert id="reply" parameterType="BoardConfig">
 		INSERT INTO board_config ( IDX,BOARD_CODE,CATEGORYS,TITLE,WRITER,PASSWD,
 		EMAIL,CONTENT,REMOTE_ADDR,IS_NOTICE, MEMBER_SEQ ,URL,SEQ,LEVELS,STEP)
-		VALUES ( baord_seq.nextval , #{board_code} , #{categorys}, #{title},
+		VALUES ( baord_config_seq.nextval , #{board_code} , #{categorys}, #{title},
 		#{writer},
 		#{passwd} , #{email}, #{content} , #{remote_addr}, #{is_notice}, #{member_seq},
 		#{url},#{seq},#{levels}+1,#{step}+1 )
