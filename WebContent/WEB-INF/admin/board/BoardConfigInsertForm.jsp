@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script>
 
+</script>
 <div class="col-md-12">
-	<form action="../BoardConfigInsert.do" method="post">
+	<form action="BoardConfigInsert.do" method="post">
 		<div class="form-group">
 			<label>테이블명</label> <input type="text" name="board_name"
 				class="form-control" value="">
@@ -24,7 +26,7 @@
 		<div class="form-group">
 			<label>파일갯수</label> <select name="file_cnt">
 				<c:forEach var="x" begin="1" end="10" varStatus="s">
-					<option value="${s.index-1 }">1</option>
+					<option value="${s.index }">${s.index}</option>
 				</c:forEach>
 			</select>
 		</div>
@@ -43,11 +45,11 @@
 				checked="checked"> Y <input type="radio" name="is_lock"
 				value="N"> N
 		</div>
-		<div class="form-group">
+		<!-- <div class="form-group">
 			<label>공지사용</label> <input type="radio" name="is_notice" value="Y"
 				checked="checked"> Y <input type="radio" name="is_notice"
 				value="N"> N
-		</div>
+		</div> -->
 
 		<input type="submit" class="btn btn-success" value="등록">
 

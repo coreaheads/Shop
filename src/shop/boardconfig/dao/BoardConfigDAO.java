@@ -13,6 +13,8 @@ public interface BoardConfigDAO {
 
 	ArrayList<BoardConfig> configList(ParamVO paramVO);
 
+	void insert(BoardConfig boardConfig);
+
 
 	
 }

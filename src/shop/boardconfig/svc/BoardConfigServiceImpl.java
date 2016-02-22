@@ -32,4 +32,10 @@ public class BoardConfigServiceImpl implements BoardConfigService{
 		ArrayList<BoardConfig> list =dao.configList(paramVO);
 		return list;
 	}
+
+	@Override
+	public void insert(BoardConfig boardConfig) {
+		dao.insert(boardConfig);
+		
+	}
 }

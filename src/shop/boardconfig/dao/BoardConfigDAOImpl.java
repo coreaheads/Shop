@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import shop.boardconfig.svc.BoardConfigService;
 import shop.dto.BoardConfig;
 import shop.dto.ParamVO;
 
@@ -16,7 +17,6 @@ public class BoardConfigDAOImpl implements BoardConfigDAO {
 
 	@Autowired
 	SqlSessionFactory factory;
-
 	
 	@Override
 	public int totalCnt() {
@@ -41,6 +41,13 @@ public class BoardConfigDAOImpl implements BoardConfigDAO {
 		List<BoardConfig> list =sqlSession.selectList("boardconfig.list",paramVO); 
 		sqlSession.close();
 		return (ArrayList<BoardConfig>) list;
+	}
+
+	@Override
+	public void insert(BoardConfig boardConfig) {
+		SqlSession sqlSession =factory.openSession();
+		sqlSession.insert("boardconfig.insert",boardConfig); 
+		sqlSession.close();
 	}
 
 }
