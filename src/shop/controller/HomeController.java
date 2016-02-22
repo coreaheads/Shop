@@ -266,6 +266,7 @@ public class HomeController {
 		ArrayList<Category> categoryFirst = catesvc.categoryList();
 		model.addAttribute("categoryFirst", categoryFirst);
 		BoardConfig boardConfig = bbsconfigsvc.getConfig(board_code);
+		System.out.println(boardConfig);
 		model.addAttribute("BoardConfig", boardConfig);
 
 		switch (mode) {
