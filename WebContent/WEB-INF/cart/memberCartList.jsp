@@ -3,14 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="../common/head.jsp" />
 
-
-
-
 <h2 class="sub-header">회원 장바구니</h2>
 <br>
 <br>
-
-
 <div class="col-md-12">
 	<hr>
 	<div class="panel panel-info">

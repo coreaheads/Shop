@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import shop.dto.Item;
+import shop.dto.ParamVO;
 
 @Repository
 public class itemDAOImpl implements ItemDAO {
@@ -37,9 +38,9 @@ public class itemDAOImpl implements ItemDAO {
 	
 
 	@Override
-	public ArrayList<Item> itemList() {
+	public ArrayList<Item> itemList(ParamVO paramVO) {
 		SqlSession session = factory.openSession();
-		List<Item> list = session.selectList("item.list");
+		List<Item> list = session.selectList("item.list",paramVO);
 		session.close();
 		return (ArrayList<Item>) list;
 

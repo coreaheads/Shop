@@ -51,9 +51,53 @@ public class AdminHomeController {
 
 	@RequestMapping("/item.do")
 	public String itemList(Model model, @RequestParam(required = false, defaultValue = "list") String mode,
-			@RequestParam(required = false, defaultValue = "1") int idx) {
+			@RequestParam(required = false, defaultValue = "1") int idx,ParamVO paramVO,@RequestParam Map<String, Object> map) {
 		ArrayList<Category> upcalist = catesvc.categoryList();
 		ArrayList<Category> firstList = new ArrayList<Category>();
+		
+		
+		int totalcnt = itemsvc.totalCnt();
+		int limit = paramVO.getLimit();
+		int block = paramVO.getBlock();
+		String search_txt = (String) map.get("search_txt");
+		String search_sel = (String) map.get("search_sel");
+		int page;
+		if (map.get("mode") == null) {
+			mode = "list";
+		} else {
+			mode = (String) map.get("mode");
+		}
+		//String mode = (String) map.get("mode");
+		if (map.get("page") == null) {
+			page =1;
+		} else {
+			page = Integer.parseInt((String) map.get("page"));
+			
+		}
+		
+		int startrow = (page * limit) - (limit - 1);
+		int endrow = (page * limit);
+		// 16 ~20 block = 10
+		// int blockLimit=2;
+		// (4-1)/*10
+		// int startNum=(page-1)/blockLimit*blockLimit+1;
+		// int endNum = startNum+blockLimit-1;
+		int allpage = (int) Math.ceil(totalcnt / (double) paramVO.getLimit());
+		System.out.println("올페이지" + allpage);
+		int startpage = ((page - 1) / block * block) + 1;
+		int endpage = ((page - 1) / block * block) + block;
+
+		if (endpage > allpage) {
+			endpage = allpage;
+		}
+
+		int pagenum = 0;
+		int board_code = 0;
+		String url = "item";
+		paramVO = new ParamVO(page, startpage, endpage, block, limit, pagenum, totalcnt, startrow, endrow, board_code,
+				search_txt, search_sel, url, mode);
+		System.out.println(paramVO);
+		
 
 		switch (mode) {
 		case "insert":
@@ -65,6 +109,8 @@ public class AdminHomeController {
 			}
 			model.addAttribute("firstList", firstList);
 			model.addAttribute("url", "itemInsertForm.jsp");
+			paramVO.setUrl("itemInsertForm.jsp");
+			model.addAttribute("paramvo",paramVO);
 			break;
 		case "update":
 			Item upitem = itemsvc.itemDetail(idx);
@@ -77,6 +123,8 @@ public class AdminHomeController {
 			model.addAttribute("categoryFirst", upcalist);
 			model.addAttribute("item", upitem);
 			model.addAttribute("url", "itemUpdateForm.jsp");
+			paramVO.setUrl("itemUpdateForm.jsp");
+			model.addAttribute("paramvo",paramVO);
 			break;
 		case "detail":
 			Item item = itemsvc.itemDetail(idx);
@@ -90,13 +138,18 @@ public class AdminHomeController {
 			}
 			model.addAttribute("categoryFirst", list);
 			model.addAttribute("item", item);
+			paramVO.setUrl("itemDetail.jsp");
+			model.addAttribute("paramvo",paramVO);
 			model.addAttribute("url", "itemDetail.jsp");
 			break;
 
 		default:
-			ArrayList<Item> itemlist = itemsvc.itemList();
+			ArrayList<Item> itemlist = itemsvc.itemList(paramVO);
 			model.addAttribute("itemList", itemlist);
+			
 			model.addAttribute("url", "itemList.jsp");
+			paramVO.setUrl("itemList.jsp");
+			model.addAttribute("paramvo",paramVO);
 			break;
 		}
 
@@ -151,6 +204,8 @@ public class AdminHomeController {
 		default:
 			ArrayList<BoardConfig> list = bbsconfigsvc.configList(paramVO);
 			model.addAttribute("List", list);
+			System.out.println(paramVO);
+			paramVO.setUrl("boardConfigList.jsp");
 			model.addAttribute("paramvo", paramVO);
 			model.addAttribute("url", "boardConfigList.jsp");
 			break;

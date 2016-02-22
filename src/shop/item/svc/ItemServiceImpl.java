@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import shop.dto.Item;
+import shop.dto.ParamVO;
 import shop.item.dao.ItemDAO;
 
 @Service
@@ -15,8 +16,8 @@ public class ItemServiceImpl implements ItemService {
 	private ItemDAO dao;
 
 	@Override
-	public ArrayList<Item> itemList() {
-		return dao.itemList();
+	public ArrayList<Item> itemList(ParamVO paramVO) {
+		return dao.itemList(paramVO);
 	}
 
 	@Override

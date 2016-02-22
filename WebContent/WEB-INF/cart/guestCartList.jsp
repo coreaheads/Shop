@@ -3,15 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="col-md-12">
 <h2 class="sub-header">비회원 장바구니</h2>
-	<hr>
+	<hr> 
 	<div class="panel panel-info">
 		<!-- Table -->
 		<table class="table">
 			<tr class="warning">
-				
-				
-				
-				
 				<th>itemName</th>
 				<th>itemPrice</th>
 				<th>itemCount</th>

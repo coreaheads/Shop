@@ -3,10 +3,11 @@ package shop.item.svc;
 import java.util.ArrayList;
 
 import shop.dto.Item;
+import shop.dto.ParamVO;
 
 public interface ItemService {
 
-	ArrayList<Item> itemList();
+	ArrayList<Item> itemList(ParamVO paramVO);
 
 	Item itemDetail(int idx);
 

@@ -12,8 +12,20 @@
 		VALUES ( ITEM_seq.nextval , #{itemName} , #{itemContent} , #{itemLevel} ,
 		#{sale} , #{itemPrice} , #{itemCount} , #{itemCategory} , #{url} )
 	</insert>
-	<select id="list" resultType="Item">
-		select * from item order by idx
+	<select id="list" resultType="Item" parameterType="shop.dto.ParamVO">
+		 <![CDATA[select * from (select rownum rnum, 
+	     IDX,
+       ITEMNAME,
+       ITEMCONTENT,
+       ITEMLEVEL,
+       SALE,
+       ITEMPRICE,
+       ITEMCOUNT,
+       ITEMCATEGORY,
+       URL,
+       ISDEL from ( select * from ITEM  where itemlevel = 2 order by  idx)) 
+               where rnum >= #{startrow} and rnum <= #{endrow}
+           ]]>
 	</select>
 	<select id="listsel" resultType="Item" parameterType="Integer">
 		select *

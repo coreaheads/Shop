@@ -169,9 +169,6 @@ public class CartController {
 	@RequestMapping("/guestCartList.do")
 	public String guestCartList(Model model, HttpServletRequest request, HttpSession session,ParamVO paramVO,PrintWriter out) {
 		ArrayList<Cart> cartList = svc.guestCartList(request, session);
-		if (cartList==null) {
-			System.out.println("DDD");
-		}
 		ArrayList<Category> categoryFirst = catesvc.categoryList();
 		model.addAttribute("categoryFirst", categoryFirst);
 		int totalPrice = svc.cartTotalPrice(cartList);
