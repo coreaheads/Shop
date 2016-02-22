@@ -321,7 +321,7 @@ public class HomeController {
 			paramVO = new ParamVO(page, startpage, endpage, block, limit, pagenum, totalcnt, startrow, endrow, board_code, search_txt, search_sel,url,mode);
 			paramVO.setUrl("boardList.jsp");
 			System.out.println(paramVO);
-			 bbslist = bbsSvc.list(paramVO);
+			bbslist = bbsSvc.list(paramVO);
 			model.addAttribute("BoardList", bbslist);
 			model.addAttribute("paramvo", paramVO);
 		}

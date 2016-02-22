@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="/include/header.jsp"%>
 <body style="padding:30px;">
 <form action="BoardInsert.do" method="post"  enctype="multipart/form-data">
@@ -11,10 +12,10 @@
 <input type="hidden" name="mode" value="${paramvo.mode }">
 <input type="hidden" name="categorys" value="${categorys }3">
 
-
+	
 	<div class="form-group">
    	 	<label for="exampleInputEmail1">작성자</label>
-		<input type="text" name="writer" class="form-control" value="${myinfo.member_name }">
+		<input type="text" name="writer" class="form-control" value="${myInfo.member_name }" ${not empty myInfo.member_name ? 'readonly' : ''  }>
 		
 		
   	</div>
