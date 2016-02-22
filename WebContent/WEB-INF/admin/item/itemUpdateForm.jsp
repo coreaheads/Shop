@@ -35,11 +35,13 @@
       </div>
 
       <div class="form-group">
-         <label for="exampleInputEmail1">가격</label> <input type="text"
+         <label for="exampleInputEmail1">가격</label> 
+         <input type="text"
             name="itemPrice" class="form-control" value="${item.itemPrice}">
-         <input type="radio" name="itemLevel" value=3> <input
-            type="radio" name="itemLevel" value=1> <input
-            type="radio" name="itemLevel" checked="checked" value=2>
+       
+        <input type="radio"
+        			name="itemLevel" value=1  <c:if test="${item.itemLevel eq 1 }">checked="checked"</c:if>> 최신 
+				<input type="radio"	name="itemLevel" value=2  <c:if test="${item.itemLevel eq 2 }">checked="checked"</c:if>> 베스트
       </div>
       <div class="form-group">
          <label for="exampleInputEmail1">sale</label> <input type="text"
@@ -50,10 +52,12 @@
       </div>
       <div class="form-group">
          <label for="exampleInputEmail1">상품 카테고리</label> <select id="first"
-            style="width: 70px;" onchange="categoryChange();"><option>선택</option>
-            <c:forEach items="${firstList}" var="x">
-               <option value="${x.idx }">${x.categoryName }</option>
-            </c:forEach></select> <select name="itemCategory" id="second" style="width: 70px;">
+            style="width: 70px;" onchange="categoryChange();">
+            <option>선택</option>
+            <c:forEach items="${firstList}" var="x" >
+               <option value="${x.idx }" <c:if test="${x.idx eq item.itemCategory}">selected="selected"</c:if>>${x.categoryName }</option>
+            </c:forEach></select> 
+            <select name="itemCategory" id="second" style="width: 70px;">
          </select>
       </div>
       <div class="form-group">

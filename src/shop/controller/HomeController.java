@@ -186,6 +186,7 @@ public class HomeController {
 			System.out.println(itemlist);
 			paramVO = new ParamVO(page, startpage, endpage, block, limit, pagenum, totalcnt, startrow, endrow,
 					board_code, search_txt, search_sel, url, mode);
+				
 			System.out.println(paramVO);
 			// model.addAttribute("categoryFirst", list);
 			model.addAttribute("itemList", itemlist);
@@ -283,6 +284,7 @@ public class HomeController {
 			
 			paramVO = new ParamVO(page, startpage, endpage, block, limit, pagenum, totalcnt, startrow, endrow, board_code, search_txt, search_sel,url,mode);
 			paramVO.setUrl("boardList.jsp");
+
 			
 			bbslist = bbsSvc.list(paramVO);
 			model.addAttribute("BoardList", bbslist);
@@ -292,6 +294,7 @@ public class HomeController {
 			paramVO = new ParamVO(page, startpage, endpage, block, limit, pagenum, totalcnt, startrow, endrow, board_code, search_txt, search_sel,url,mode);
 			paramVO.setUrl("boardWriteForm.jsp");
 			System.out.println(paramVO);
+			
 			model.addAttribute("paramvo", paramVO);
 			break;
 		case "update":

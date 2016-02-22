@@ -26,22 +26,22 @@
 <div class="col-md-12 text-center">
 	<ul class="pagination">
 
-		<li class=''><a href="Board.do?page=1" >&laquo;</a></li>
-		<li ><a href="<c:if test="${param.page ne 1 }">BoardList.do?page=${paramvo.page-1 }</c:if>"
+		<li class=''><a href="Board.do?page=1&board_code=${paramvo.board_code }" >&laquo;</a></li>
+		<li ><a href="<c:if test="${param.page ne 1 }">Board.do?page=${paramvo.page-1 }&board_code=${paramvo.board_code }</c:if>"
 			>&lsaquo;</a></li>
 		<c:forEach begin="${paramvo.startpage  }" end="${paramvo.endpage }"
 			step="1" var="x" varStatus="a">
 			<li></li>
 			<li class='<c:if test="${paramvo.page eq a.index }">active</c:if>'><a
-				href="BoardList.do?page=${a.index }">${a.index}</a></li>
+				href="Board.do?page=${a.index }&board_code=${paramvo.board_code }">${a.index}</a></li>
 		</c:forEach>
 		<li><a
-			href="<c:if test="${paramvo.page ne paramvo.endpage }">Board.do?page=${paramvo.page+1 }</c:if>"
+			href="<c:if test="${paramvo.page ne paramvo.endpage }">Board.do?page=${paramvo.page+1 }&board_code=${paramvo.board_code }</c:if>"
 		>&rsaquo;</a>
 		</li>
 		<li>
 			<a
-			href="<c:if test="${paramvo.page ne paramvo.endpage }">Board.do?page=${paramvo.endpage }</c:if>"
+			href="<c:if test="${paramvo.page ne paramvo.endpage }">Board.do?page=${paramvo.endpage }&board_code=${paramvo.board_code }</c:if>"
 			>&raquo;</a>
 		</li>
 	</ul>
