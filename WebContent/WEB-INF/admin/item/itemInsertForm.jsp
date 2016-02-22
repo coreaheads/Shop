@@ -15,7 +15,8 @@
 
 				$.each(data, function(i, item) {
 					console.log(item);
-					a += '<option value='+item.idx+'>' + item.categoryName + '</option>';
+					a += '<option value='+item.idx+'>' + item.categoryName
+							+ '</option>';
 				});
 				console.log(data.length);
 				$('#second').html(a);
@@ -33,28 +34,27 @@
 		</div>
 
 		<div class="form-group">
-			<label for="exampleInputEmail1">가격</label> 
-			<input type="text"
-				name="itemPrice" class="form-control">
-				 <input type="radio" name="itemLevel" value=1> 최신
-				<input type="radio" name="itemLevel" value=2> 베스트
-				 <input type="radio" name="itemLevel" value=3>
+			<label for="exampleInputEmail1">가격</label> <input type="text"
+				name="itemPrice" class="form-control"> <input type="radio"
+				name="itemLevel" value=1> 최신 <input type="radio"
+				name="itemLevel" value=2> 베스트
+
 		</div>
-		
+
 		<div class="form-group">
 			<label for="exampleInputEmail1">수량</label> <input type="text"
-				name="itemCount" class="form-control"> 
-				
-		</div>
-		
-		<div class="form-group">
-				<label for="exampleInputEmail1">상품 카테고리</label> <select id="first"
-            style="width: 70px;" onchange="categoryChange();"><option>선택</option>
-            <c:forEach items="${firstList}" var="x">
-               <option value="${x.idx }">${x.categoryName }</option>
-            </c:forEach></select> <select id="second"  name ="itemCategory" style="width: 70px;">
+				name="itemCount" class="form-control">
 
-         </select>
+		</div>
+
+		<div class="form-group">
+			<label for="exampleInputEmail1">상품 카테고리</label> <select id="first"
+				style="width: 70px;" onchange="categoryChange();"><option>선택</option>
+				<c:forEach items="${firstList}" var="x">
+					<option value="${x.idx }">${x.categoryName }</option>
+				</c:forEach></select> <select id="second" name="itemCategory" style="width: 70px;">
+
+			</select>
 		</div>
 		<div class="form-group">
 			<label for="exampleInputEmail1">파일</label> <input type="file"

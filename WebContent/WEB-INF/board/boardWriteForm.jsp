@@ -4,7 +4,7 @@
 <body style="padding:30px;">
 <form action="BoardInsert.do" method="post"  enctype="multipart/form-data">
 <input type="hidden" name="member_seq" value="${mem.idx }1">
-<input type="hidden" name="board_code" value="${paramvo.baord_code }">
+<input type="hidden" name="board_code" value="${paramvo.board_code }">
 <input type="hidden" name="page" value="${paramvo.page }">
 <input type="hidden" name="search_txt" value="${paramvo.search_txt }">
 <input type="hidden" name="search_sel" value="${paramvo.search_sel }">
@@ -14,7 +14,7 @@
 
 	<div class="form-group">
    	 	<label for="exampleInputEmail1">작성자</label>
-		<input type="text" name="writer" class="form-control" value="${mem.name }">
+		<input type="text" name="writer" class="form-control" value="${myinfo.member_name }">
 		
 		
   	</div>
